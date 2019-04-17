@@ -34,7 +34,8 @@ while($row = mysqli_fetch_assoc($result)){
         'id' => (int) $row['id'],
         'team_full_name' => $row['team_full_name'],
         'team_name' => $row['team_name'],
-        'team_code' => $row['team_code']
+        'team_code' => $row['team_code'],
+        'colors' => $row['colors']
     ];
 }
 

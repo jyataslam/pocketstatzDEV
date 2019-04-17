@@ -5,31 +5,23 @@ import './nav.scss';
 
 class Nav extends Component {
     renderLinks(){
-        // ask Andy how to avoid these inline styles
-        const style = {
-            "margin": "60px 0 0 0"
-        }
-        const line = {
-            "margin": "0 0 0 20px"
-        }
-
         return (
             <Fragment>
                 <button className="sidenav-close right hide-on-med-and-up">
                     <i className="material-icons">close</i>
                 </button>
-                <li style={style}>
+                <li className="first-li">
                     <Link to="/">Home</Link>
                 </li>
-                <li><div style={line} className="divider red"></div></li>
+                <li><div className="divider red"></div></li>
                 <li>
                     <Link to="/browse">Browse</Link>
                 </li>
-                <li><div style={line} className="divider red"></div></li>
+                <li><div className="divider red"></div></li>
                 <li>
                     <Link to="/log-in">Log In</Link>
                 </li>
-                <li><div style={line} className="divider red"></div></li>
+                <li><div className="divider red"></div></li>
                 <li>
                     <Link to="/about">About Us</Link>
                 </li>
@@ -39,19 +31,16 @@ class Nav extends Component {
 
     render(){
         const links = this.renderLinks();
-        const header = {
-            "height": "80px"
-        }
 
         return (
             <Fragment>
-                <nav style={header}>
+                <nav className="nav-head">
                     <div className="nav-wrapper">
-                        <p className="header-text center">Recharge</p>
+                        <p className="header-text brand-logo center">Recharge</p>
                         <a href="#" data-target="sidenav" className="sidenav-trigger">
                             <i className="material-icons">menu</i>
                         </a>
-                        <ul className="right hide-on-med-and-down">
+                        <ul className="right hide-on-med-and-down desktop-nav">
                             {links}
                         </ul>
                     </div>

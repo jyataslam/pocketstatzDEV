@@ -1,0 +1,16 @@
+{
+	"success": true,
+	"teamList": [{
+			"Id": 1,
+			"name": "Lakers",
+			"image": "http://freevectorlogo.net/wp-content/uploads/2012/10/los-angeles-lakers-logo-vector.png",
+			"colors": ["#552583", "#FDB927", "#000"]
+		},
+		{
+			"Id": 4,
+			"name": "Warriors",
+			"image": "http://freevectorlogo.net/wp-content/uploads/2012/12/golden-state-warriors-logo-vector-400x400.png",
+			"colors": ["#006BB6", "#FDB927", "#262A2A"]
+		}
+	]
+}

@@ -1,16 +1,17 @@
-import React from 'react';
-import ApiTest from './api_test';
+import React, { Component } from 'react';
+import Nav from './nav';
+import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize.min';
 import '../assets/css/app.scss';
-import logo from '../assets/images/logo.svg';
 
-const App = () => (
-    <div>
-        <div className="app center">
-            <img src={logo} className="logo rotate"/>
-            <h1>Welcome to React</h1>
-        </div>
-        <ApiTest/>
-    </div>
-);
+class App extends Component {
+    render() {
+        return (
+            <div>
+                <Nav />
+            </div>
+        )
+    }
+}
 
 export default App;

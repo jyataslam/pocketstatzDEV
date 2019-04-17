@@ -5,7 +5,7 @@
   "main": "index.js",
   "proxy": {
     "/api/*": {
-      "target": "http://localhost:8000"
+      "target": "http://localhost:8888"
     }
   },
   "scripts": {
@@ -21,9 +21,12 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "material-icons": "^0.3.1",
+    "materialize-css": "^1.0.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
+    "react-router-dom": "^5.0.0",
     "redux": "^4.0.1"
   },
   "devDependencies": {

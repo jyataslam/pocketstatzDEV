@@ -1,0 +1,9 @@
+{
+	"success": true,
+	"team": {
+		"id": 1,
+		"name": "Lakers",
+		"image": "http://freevectorlogo.net/wp-content/uploads/2012/10/los-angeles-lakers-logo-vector.png",
+		"colors": ["#552583", "#FDB927", "#000"]
+	}
+}

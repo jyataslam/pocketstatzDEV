@@ -2,7 +2,6 @@ const { resolve } = require('path');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const config = require('./webpack.dev');
-const npm_config = require('./package.json');
 const PORT = process.env.PORT || 3000;
 
 new WebpackDevServer(webpack(config), {
@@ -12,7 +11,11 @@ new WebpackDevServer(webpack(config), {
     historyApiFallback: true,
     quiet: false,
     noInfo: false,
-    proxy: npm_config.proxy,
+    proxy: {
+        "/api/*": {
+          "target": "http://localhost:8888"
+        }
+      },
     stats: {
         assets: false,
         colors: true,

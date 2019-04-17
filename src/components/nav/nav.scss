@@ -1,0 +1,43 @@
+
+nav {
+    .nav-wrapper{
+        background-color: #B9B9B9;
+
+        .sidenav-trigger {
+            
+            i {
+                position: absolute;
+                bottom: 85px;
+            }
+        }
+    }
+
+    .header-text {
+        margin: 0;
+        font-size: 2rem;
+        color: #972C2C;
+        font-weight: 300;
+        line-height: 4.2;
+        letter-spacing: 0.3rem;
+    }
+
+    .sidenav {
+        background-color: #292A3D;
+
+        .sidenav-close {
+            color: white;
+            font-weight: 200;
+        }
+
+        .divider {
+            margin: 0;
+            width: 85%;
+            color: #972C2C;
+        }
+
+        li > a {
+            color: white;
+            font-weight: 100;
+        }
+    }
+}

@@ -2,7 +2,7 @@ const { resolve } = require('path');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const config = require('./webpack.dev');
-const npm_config = require('./package.json');
+// const npm_config = require('./package.json');
 const PORT = process.env.PORT || 3000;
 
 new WebpackDevServer(webpack(config), {
@@ -12,7 +12,11 @@ new WebpackDevServer(webpack(config), {
     historyApiFallback: true,
     quiet: false,
     noInfo: false,
-    proxy: npm_config.proxy,
+    proxy: {
+        "/api/*": {
+          "target": "http://localhost/c219_sportsstats/public"
+        }
+      },
     stats: {
         assets: false,
         colors: true,
@@ -24,7 +28,7 @@ new WebpackDevServer(webpack(config), {
         chunks: false,
         chunkModules: false
     }
-}).listen(PORT, 'localhost', function(err){
+}).listen(PORT, function(err){
     if(err){
         console.log(err);
     }

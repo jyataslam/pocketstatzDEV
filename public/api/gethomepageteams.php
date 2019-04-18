@@ -13,7 +13,7 @@ $output = [
 // }
 
 $user_id = 1;
-//the homepage id is essentially the user_id in the user_teams table
+//the homepage id is created in addteam.php
 $homepage_id = 1;
 // $homepage_id = $_SESSION['homepage_id'];
 

@@ -5,25 +5,29 @@ import Logo from '../../assets/images/lightning.png';
 import './nav.scss';
 
 class Nav extends Component {
+    closeSideNav = () => {
+
+    }
+
     renderLinks(){
         return (
             <Fragment>
                 <button className="sidenav-close right hide-on-med-and-up">
                     <i className="material-icons">close</i>
                 </button>
-                <li className="first-li">
+                <li className="first-li sidenav-close">
                     <Link to="/">Home</Link>
                 </li>
                 <li><div className="divider red"></div></li>
-                <li>
+                <li className="sidenav-close">
                     <Link to="/browse">Browse</Link>
                 </li>
                 <li><div className="divider red"></div></li>
-                <li>
+                <li className="sidenav-close">
                     <Link to="/log-in">Log In</Link>
                 </li>
                 <li><div className="divider red"></div></li>
-                <li>
+                <li className="sidenav-close">
                     <Link to="/about">About Us</Link>
                 </li>
             </Fragment>

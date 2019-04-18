@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Nav from './nav';
 import { Route, Switch } from 'react-router-dom';
+import BrowseSports from './browse_sports';
 import BrowseRoutes from './browse_teams/index';
 import HomeTeamList from './home_team_list';
 import 'materialize-css/dist/css/materialize.min.css';

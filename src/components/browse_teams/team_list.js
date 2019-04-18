@@ -10,31 +10,45 @@ class TeamList extends Component {
     }
 
     componentDidMount() {
-        // call getTeams() to populate list
+        this.getTeams();
     }
 
-    chooseTeam = () => {
-        // on select, store chosen team in state.selectedTeams
-        console.log('Team Clicked');
+    chooseTeam = (id) => {
+        const { selectedTeams } = this.state;
+        this.setState({
+            selectedTeams: [...selectedTeams, id]
+        });  
+        console.log(selectedTeams);
     }
 
     confirmButton = () => {
-        // route to 'choose sport' page
+        // route to user's home page
     }
 
-    getTeams() {
-        // axios call here, store response data in state
-        
+    backToSportList = () => {
+        // route back to list of sports
+    }
+
+    async getTeams() {
+        const response = await axios.get(`/api/data/getteam.json`);
+
+        if (response.data.success){
+            this.setState({
+                teams: response.data.teams
+            });
+        }
     }
 
     render() {
-        // map through array of teams in state, save into variable and deploy below
+        const teamList = this.state.teams.map((team) => {
+            return <Team key={team.id} {...team} chooseTeam={this.chooseTeam} />
+        })
 
         return (
             <div className="team-list row">
                 <div className="container">
                     <ul className="collection team-collection">
-                        <Team handleClicked={this.chooseTeam} teamName={"Los Angeles Lakers"}/> {/* get name from axios call */}
+                        {teamList}
                     </ul>
                 </div>
             </div>

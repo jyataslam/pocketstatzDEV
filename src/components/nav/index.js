@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import { Link } from 'react-router-dom';
 import Sidenav from './sidenav';
+import Logo from '../../assets/images/lightning.png';
 import './nav.scss';
 
 class Nav extends Component {
@@ -31,12 +32,13 @@ class Nav extends Component {
 
     render(){
         const links = this.renderLinks();
+        const headerColor = {'background-color': '#B9B9B9'};
 
         return (
             <Fragment>
-                <nav className="nav-head">
+                <nav style={headerColor} className="nav-head">
                     <div className="nav-wrapper">
-                        <p className="header-text brand-logo center">Recharge</p>
+                        <Link className="header-text brand-logo" to="/">Recharge</Link>
                         <a href="#" data-target="sidenav" className="sidenav-trigger">
                             <i className="material-icons">menu</i>
                         </a>

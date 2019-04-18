@@ -9,7 +9,6 @@ import 'materialize-css/dist/js/materialize.min';
 import '../assets/css/app.scss';
 
 
-
 class App extends Component {
     render() {
         return (
@@ -18,11 +17,10 @@ class App extends Component {
                 <div className="container">
                     <Switch>
                         {/* import Routing and Loading/Home page here */}
-                        <Route path="/browse" component={BrowseSports} />
-                        <Route path="/team-list" component={BrowseRoutes} />
+                        <Route path="/nba-team-list" component={BrowseRoutes} />
+                        <Route path="/user-home" component={HomeTeamList} />
                     </Switch>
                 </div>
-                <HomeTeamList />
             </div>
         )
     }

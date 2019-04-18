@@ -5,10 +5,7 @@ import Logo from '../../assets/images/lightning.png';
 import './nav.scss';
 
 class Nav extends Component {
-    closeSideNav = () => {
-
-    }
-
+    
     renderLinks(){
         return (
             <Fragment>

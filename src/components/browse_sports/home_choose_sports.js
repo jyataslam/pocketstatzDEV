@@ -1,12 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 class BrowseSports extends Component {
-    goToNbaTeamList = () => {
-        this.props.history.push('/nba-team-list');
-    }
-
+   
     render() {
         const collectionStyle = { 'padding': '0' };
 
@@ -17,8 +15,8 @@ class BrowseSports extends Component {
                 <div className="row">
                     <div style={collectionStyle} className="collection col s12 m4 offset-m4">
                         {/* For collection items, href needs correct address */}
-                        <a href="#" onClick={this.goToNbaTeamList} className="collection-item">NBA</a>
-                        <a href="#" className="collection-item">Overwatch</a>
+                        <Link href="#" to="/nba-team-list" className="collection-item">NBA</Link>
+                        <Link href="#" to="/overwatch-team-list" className="collection-item">Overwatch</Link>
                     </div>
                 </div>
             </Fragment>

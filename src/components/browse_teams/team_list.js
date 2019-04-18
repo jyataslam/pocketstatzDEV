@@ -8,7 +8,7 @@ class TeamList extends Component {
         selectedTeams: []
     }
 
-    componentDidMount(){
+    componentDidMount() {
         // call getTeams() to populate list
     }
 
@@ -20,7 +20,7 @@ class TeamList extends Component {
         // route to 'choose sport' page
     }
 
-    getTeams(){
+    getTeams() {
         // axios call here, store response data in state
     }
 
@@ -28,10 +28,12 @@ class TeamList extends Component {
         // map through array of teams in state, save into variable and deploy below
 
         return (
-            <div className="team-list">
-                <ul className="collection team-collection">
-                    <Team/>
-                </ul>
+            <div className="team-list row">
+                <div className="container">
+                    <ul className="collection team-collection">
+                        <Team />
+                    </ul>
+                </div>
             </div>
         )
     }

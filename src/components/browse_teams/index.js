@@ -6,7 +6,7 @@ import './browse.scss';
 export default props => {
     return (
         <div className="browse">
-            <Route path="/team-list" exact component={TeamList}/>
+            <Route path="/nba-team-list" exact component={TeamList}/>
         </div>
     )
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import Team from './team';
 import axios from 'axios';
 
@@ -14,6 +15,7 @@ class TeamList extends Component {
 
     chooseTeam = () => {
         // on select, store chosen team in state.selectedTeams
+        console.log('Team Clicked');
     }
 
     confirmButton = () => {
@@ -22,6 +24,7 @@ class TeamList extends Component {
 
     getTeams() {
         // axios call here, store response data in state
+        
     }
 
     render() {
@@ -31,7 +34,7 @@ class TeamList extends Component {
             <div className="team-list row">
                 <div className="container">
                     <ul className="collection team-collection">
-                        <Team />
+                        <Team handleClicked={this.chooseTeam} teamName={"Los Angeles Lakers"}/> {/* get name from axios call */}
                     </ul>
                 </div>
             </div>
@@ -39,4 +42,4 @@ class TeamList extends Component {
     }
 }
 
-export default TeamList;
+export default withRouter(TeamList);

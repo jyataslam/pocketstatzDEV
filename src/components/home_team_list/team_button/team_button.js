@@ -8,9 +8,8 @@ class TeamButton extends Component {
         return(
             <div className="container">
                 <div className="row">
-                    <button className="btn btn-large yellow darken-2 col s10">{teamName}</button>
+                    <button className="btn btn-large yellow darken-2 col s12">{teamName}</button>
                 </div>
-                
             </div>
             
         );

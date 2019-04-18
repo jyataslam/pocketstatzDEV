@@ -1,11 +1,11 @@
 import React from 'react';
 
-export default props => {
+export default ({ handleClicked, teamName }) => {
     // deconstruct props from team-list and create each team here
 
     return (
-        <li className="collection-item team-from-list center s12 m6 flow-text">
-            Los Angeles Lakers
+        <li onClick={handleClicked} className="collection-item team-from-list center s12 m6 flow-text">
+            {teamName}
         </li>
     )
 }

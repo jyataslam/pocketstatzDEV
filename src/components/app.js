@@ -17,8 +17,9 @@ class App extends Component {
                 <div className="container">
                     <Switch>
                         {/* import Routing and Loading/Home page here */}
+                        <Route path="/" exact component={HomeTeamList} />
+                        <Route path="/browse" component={BrowseSports} />
                         <Route path="/nba-team-list" component={BrowseRoutes} />
-                        <Route path="/user-home" component={HomeTeamList} />
                     </Switch>
                 </div>
             </div>

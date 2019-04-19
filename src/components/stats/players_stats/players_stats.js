@@ -1,22 +1,14 @@
 import React, {Component} from 'react';
 import './players_stats.scss';
 
-class PlayerStats extends Component {
+class PlayerStats extends Component {   
 
-    state = {
-        team1: "LAL",
-        team2: "GSW"
-    }
-    
+        //make funciton to return table jsx here and call in render ternary
     render(){
         return(
-            <div className="container">
-                <div className="row">
-                    <button className="col s6">LAL</button>
-                    <button className="col s6">GSW</button>
-                </div>
-                <div className="center">Player Stats</div>
-            </div>
+            <h1 className="center">
+                {this.props.view === "left" ? "LAKERS" : "WARRIORS"}
+            </h1>
         );
     }
 

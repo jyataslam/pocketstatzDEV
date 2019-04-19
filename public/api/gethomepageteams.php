@@ -24,7 +24,7 @@ $homepage_id = 1;
 //currently works - but will not having a 'cart' as an intermediary screw us in the long term with multiple users? double check with andy
 $homepage_query = "SELECT 
     u_t.`team_id`,
-    t.`id`, t.`team_full_name`, t.`team_name`, t.`team_code`, t.`colors`, t.`league_name`
+    t.`id`, t.`team_full_name`, t.`team_name`, t.`team_code`, t.`colors`, t.`league_name`, t.`image_url`
     FROM `users` AS `u`
     JOIN `user_teams` AS `u_t` ON u_t.`user_id` = u.`id`
     JOIN `teams` AS `t` ON t.`id` = u_t.`team_id`
@@ -48,6 +48,7 @@ while($row = mysqli_fetch_assoc($homepage_data)){
         'team_full_name' => $row['team_full_name'],
         'team_name' => $row['team_name'],
         'team_code' => $row['team_code'],
+        'logo' => $row['image_url'],
         'colors' => $row['colors'],
         'league_name' => $row['league_name']
     ];

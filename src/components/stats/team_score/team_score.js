@@ -3,7 +3,7 @@ import "./team_score.scss";
 
 export default props => {
     return(
-            <div className="container">
+            <div className="container team-score">
                     <div className="center">Date Goes Here</div>
                     <div className="row">
                         <div className="teamName col s6 center">LAL</div>

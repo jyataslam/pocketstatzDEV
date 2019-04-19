@@ -5,7 +5,12 @@ set_exception_handler('handleError');
 require_once('config.php');
 require_once('mysqlconnect.php');
 
-$sport_type = 'NBA';
+//needs the sport type to be sent through a get axios call
+if(empty($_GET['sport'])){
+    throw new Exception('sport is a required value');
+}
+
+$sport_type = $_GET['sport'];
 
 $query = "SELECT t.`id`, t.`team_full_name`, t.`team_name`, t.`team_code`, t.`colors`, t.`image_url`
 	FROM `teams` AS t

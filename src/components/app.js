@@ -19,28 +19,18 @@ class App extends Component {
                 <Nav />
                 <div className="container">
                     <Switch>
-                        {/* import Routing and Loading/Home page here */}
-                        {/* <Route path="/" /exact component={} /> */}
-
                         <Route path="/browse" render={(routingProps) => {
                             return <BrowseSports {...routingProps} />
                         }} />
-
-                        {/* <Route path="/browse" component={BrowseSports} /> */}
                         <Route path="/my-teams" component={HomeTeamList} />
-                        {/* <Route path="/browse" component={BrowseSports} /> */}
                         <Route path="/nba" component={BrowseNba} />
-
-
                         <Route path="/log-in" component={LogIn} />
-                        
-
-                        
-
-                        
                     </Switch>
                 </div>
             </div>
+            <footer>
+                
+            </footer>
         )
     }
 }

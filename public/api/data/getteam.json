@@ -1,4 +1,5 @@
 {
+	"success": true,
 	"teams": [{
 			"id": 1,
 			"team_full_name": "Atlanta Hawks"
@@ -19,6 +20,5 @@
 			"id": 5,
 			"team_full_name": "Chicago Bulls"
 		}
-	],
-	"success": true
+	]
 }

@@ -13,7 +13,7 @@ class Nav extends Component {
                     <i className="material-icons">close</i>
                 </button>
                 <li className="first-li sidenav-close">
-                    <Link to="/">Home</Link>
+                    <Link to="/my-teams">My Teams</Link>
                 </li>
                 <li><div className="divider red"></div></li>
                 <li className="sidenav-close">

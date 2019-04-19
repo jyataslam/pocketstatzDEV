@@ -6,6 +6,7 @@
             "team_full_name": "Boston Celtics",
             "team_name": "Celtics",
             "team_code": "BOS",
+            "logo": "images/boston-celtics.png",
             "colors": "",
             "league_name": "NBA"
         },
@@ -14,8 +15,10 @@
             "team_full_name": "Atlanta Hawks",
             "team_name": "Hawks",
             "team_code": "ATL",
+            "logo": "images/atlanta-hawks.png",
             "colors": "",
             "league_name": "NBA"
         }
     ]
 }
+

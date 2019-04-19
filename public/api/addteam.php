@@ -14,7 +14,7 @@ $team_id = 1;
 // }
 // $team_id = $_GET['team_id'];
 
-$query = "SELECT `team_full_name`, `team_name`, `team_code`, `colors`, `league_name` FROM `teams` WHERE `id` = $team_id";
+$query = "SELECT `team_full_name`, `team_name`, `team_code`, `image_url`, `colors`, `league_name` FROM `teams` WHERE `id` = $team_id";
 $result = mysqli_query($conn, $query);
 
 if(!$result){

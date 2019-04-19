@@ -9,7 +9,7 @@ class HomeTeamList extends Component {
                 <ul>
                     <TeamButton teamName="Lakers"/> {/* Pass in team names as props */}
                     <TeamButton teamName="Warriors"/> {/* Pass in team names as props */}
-                    <TeamButton teamName="Celtics"/> {/* Pass in team names as props */}
+                    <TeamButton teamName="Milwaukee Bucks"/> {/* Pass in team names as props */}
                 </ul>
         );
     }

@@ -10,7 +10,6 @@ class TeamButton extends Component {
                 <div className="row">
                     <button className="btn btn-large yellow darken-2 col s12">{teamName}</button>
                 </div>
-                
             </div>
             
         );

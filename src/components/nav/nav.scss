@@ -1,28 +1,21 @@
 
-nav {
-    .nav-wrapper{
-        background-color: #B9B9B9;
-
-        .sidenav-trigger {
-            
-            i {
-                position: absolute;
-                bottom: 85px;
-            }
-        }
-    }
+.nav-head {
+    padding: 0 10px;
 
     .header-text {
         margin: 0;
         font-size: 2rem;
         color: #972C2C;
-        font-weight: 300;
-        line-height: 4.2;
-        letter-spacing: 0.3rem;
+        font-weight: 400;
+        letter-spacing: 0.1rem;
     }
 
     .sidenav {
         background-color: #292A3D;
+
+        .first-li {
+            margin: 60px 0 0 0;
+        }
 
         .sidenav-close {
             color: white;
@@ -30,7 +23,7 @@ nav {
         }
 
         .divider {
-            margin: 0;
+            margin: 0 0 0 20px;
             width: 85%;
             color: #972C2C;
         }

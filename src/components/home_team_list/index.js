@@ -1,15 +1,38 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import TeamButton from './team_button/team_button';
-class HomeTeamList extends Component {
+import axios from 'axios';
 
-    //Make axios call to get teams from table here
+class HomeTeamList extends Component {
+    state = {
+        userTeams: []
+    }
+    
+    componentDidMount(){
+        this.getUserTeams();
+    }
+
+    async getUserTeams(){
+        const response = await axios.get(`/api/data/gethomepageteams.json`);
+
+        if (response.data.success){
+            this.setState({
+                userTeams: response.data.homepage_items
+            });
+        }
+    }
+
+    goToTeamStats = (teamName) => {
+        this.props.history.push(`/nba-team-list/${teamName}`);
+    }
 
     render(){
+        const homepageTeamList = this.state.userTeams.map((team) => {
+            return <TeamButton key={team.id} {...team} chooseTeam={this.goToTeamStats}/>
+        });
+
         return(
                 <ul>
-                    <TeamButton teamName="Lakers"/> {/* Pass in team names as props */}
-                    <TeamButton teamName="Warriors"/> {/* Pass in team names as props */}
-                    <TeamButton teamName="Celtics"/> {/* Pass in team names as props */}
+                    {homepageTeamList}
                 </ul>
         );
     }

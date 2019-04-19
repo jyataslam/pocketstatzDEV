@@ -1,20 +1,15 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './team_button.scss';
 
-class TeamButton extends Component {
-    render(){
+export default ({ colors, team_full_name, team_id, chooseTeam, team_name }) => {
+    const backgroundColor = {'background-color':`${colors}`}
 
-        const {teamName} = this.props;
         return(
             <div className="container">
                 <div className="row">
-                    <button className="btn btn-large yellow darken-2 col s10">{teamName}</button>
+                    <button onClick={() => {chooseTeam(team_name)}} style={backgroundColor} className="btn btn-large yellow darken-2 col s12">{team_full_name}</button>
                 </div>
-                
             </div>
             
         );
-    }
 }
-
-export default TeamButton;

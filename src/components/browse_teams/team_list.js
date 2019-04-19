@@ -1,40 +1,64 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import Team from './team';
 import axios from 'axios';
 
 class TeamList extends Component {
     state = {
         teams: [],
-        selectedTeams: []
+        selectedTeams: [],
+        view: 'off'
     }
 
-    componentDidMount(){
-        // call getTeams() to populate list
+    componentDidMount() {
+        this.getTeams();
     }
 
-    chooseTeam = () => {
-        // on select, store chosen team in state.selectedTeams
+    chooseTeam = (id) => {
+        const { selectedTeams } = this.state;
+        this.setState({
+            selectedTeams: [...selectedTeams, id]
+        });  
+        console.log(selectedTeams);
     }
 
     confirmButton = () => {
-        // route to 'choose sport' page
+        // route to user's home page
     }
 
-    getTeams(){
-        // axios call here, store response data in state
+    backToSportList = () => {
+        // route back to list of sports
+    }
+
+    showButtons() {
+        
+    }
+
+    async getTeams() {
+        const response = await axios.get(`/api/data/getteam.json`);
+
+        if (response.data.success){
+            this.setState({
+                teams: response.data.teams
+            });
+        }
     }
 
     render() {
-        // map through array of teams in state, save into variable and deploy below
+        const teamList = this.state.teams.map((team) => {
+            return <Team key={team.id} {...team} chooseTeam={this.chooseTeam} />
+        })
 
         return (
-            <div className="team-list">
-                <ul className="collection team-collection">
-                    <Team/>
-                </ul>
+            <div className="team-list row">
+                <div className="container">
+                    <ul className="collection team-collection">
+                        {teamList}
+                    </ul>
+                </div>
             </div>
         )
     }
 }
 
-export default TeamList;
+export default withRouter(TeamList);

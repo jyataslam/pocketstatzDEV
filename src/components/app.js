@@ -5,6 +5,8 @@ import BrowseSports from './browse_sports';
 import BrowseRoutes from './browse_teams/index';
 import HomeTeamList from './home_team_list';
 import LogIn from './log_in';
+import GameInfo from './stats';
+
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize.min';
 import '../assets/css/app.scss';

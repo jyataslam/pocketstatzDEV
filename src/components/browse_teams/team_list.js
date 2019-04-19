@@ -6,7 +6,8 @@ import axios from 'axios';
 class TeamList extends Component {
     state = {
         teams: [],
-        selectedTeams: []
+        selectedTeams: [],
+        view: 'off'
     }
 
     componentDidMount() {
@@ -27,6 +28,10 @@ class TeamList extends Component {
 
     backToSportList = () => {
         // route back to list of sports
+    }
+
+    showButtons() {
+        
     }
 
     async getTeams() {

@@ -21,8 +21,8 @@ class HomeTeamList extends Component {
         }
     }
 
-    goToTeamStats = (teamName) => {
-        this.props.history.push(`/nba-team-list/${teamName}`);
+    goToTeamStats = (teamCode) => {
+        this.props.history.push(`/nba/${teamCode}`);
     }
 
     render(){

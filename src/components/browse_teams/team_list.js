@@ -31,11 +31,11 @@ class TeamList extends Component {
     }
 
     confirmRoute = () => {
-        console.log('confirm')
+        this.props.history.push("/my-teams");
     }
 
     backToSports = () => {
-        console.log('back')
+        this.props.history.push("/browse");
     }
 
     render() {

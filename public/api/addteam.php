@@ -5,14 +5,15 @@ set_exception_handler('handleError');
 require_once('config.php');
 require_once('mysqlconnect.php');
 
-//need to go back and make all of these dymanic
-$user_id = 1;
-$team_id = 1;
+if(empty($_GET['team_id'])){
+	throw new Exception('You must send a team_id with your request');
+}
 
-// if(empty($_GET['team_id'])){
-// 	throw new Exception('You must send a team_id with your request');
-// }
-// $team_id = $_GET['team_id'];
+//the user id eventually needs to be dynamic
+$user_id = 1;
+//should get multiples from the user 'team1,team2,team3'
+//and then explode that in php
+$team_id = $_GET['team_id'];
 
 $query = "SELECT `team_full_name`, `team_name`, `team_code`, `image_url`, `colors`, `league_name` FROM `teams` WHERE `id` = $team_id";
 $result = mysqli_query($conn, $query);

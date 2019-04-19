@@ -5,203 +5,232 @@
             "team_full_name": "Atlanta Hawks",
             "team_name": "Hawks",
             "team_code": "ATL",
-            "colors": null
+            "logo": "images/atlanta-hawks.png",
+            "colors": ""
         },
         {
             "id": 2,
             "team_full_name": "Boston Celtics",
             "team_name": "Celtics",
             "team_code": "BOS",
-            "colors": null
+            "logo": "images/boston-celtics.png",
+            "colors": ""
         },
         {
             "id": 3,
             "team_full_name": "Brooklyn Nets",
             "team_name": "Nets",
             "team_code": "BKN",
-            "colors": null
+            "logo": "images/brooklyn-nets.png",
+            "colors": ""
         },
         {
             "id": 4,
             "team_full_name": "Charlotte Hornets",
             "team_name": "Hornets",
             "team_code": "CHA",
-            "colors": null
+            "logo": "images/charlotte-hornets.png",
+            "colors": ""
         },
         {
             "id": 5,
             "team_full_name": "Chicago Bulls",
             "team_name": "Bulls",
             "team_code": "CHI",
-            "colors": null
+            "logo": "images/chicago-bulls.png",
+            "colors": ""
         },
         {
             "id": 6,
             "team_full_name": "Cleveland Cavaliers",
             "team_name": "Cavaliers",
             "team_code": "CLE",
-            "colors": null
+            "logo": "images/cleveland-cavaliers.png",
+            "colors": ""
         },
         {
             "id": 7,
             "team_full_name": "Dallas Mavericks",
             "team_name": "Mavericks",
             "team_code": "DAL",
-            "colors": null
+            "logo": "images/dallas-mavericks.png",
+            "colors": ""
         },
         {
             "id": 8,
             "team_full_name": "Denver Nuggets",
             "team_name": "Nuggets",
             "team_code": "DEN",
-            "colors": null
+            "logo": "images/denver-nuggets.png",
+            "colors": ""
         },
         {
             "id": 9,
             "team_full_name": "Detroit Pistons",
             "team_name": "Pistons",
             "team_code": "DET",
-            "colors": null
+            "logo": "images/detroit-pistons.png",
+            "colors": ""
         },
         {
             "id": 10,
             "team_full_name": "Golden State Warriors",
             "team_name": "Warriors",
             "team_code": "GSW",
-            "colors": null
+            "logo": "images/golden-state-warriors.png",
+            "colors": ""
         },
         {
             "id": 11,
             "team_full_name": "Houston Rockets",
             "team_name": "Rockets",
             "team_code": "HOU",
-            "colors": null
+            "logo": "images/houston-rockets.png",
+            "colors": ""
         },
         {
             "id": 12,
             "team_full_name": "Indiana Pacers",
             "team_name": "Pacers",
             "team_code": "IND",
-            "colors": null
+            "logo": "images/indiana-pacers.png",
+            "colors": ""
         },
         {
             "id": 13,
             "team_full_name": "LA Clippers",
             "team_name": "Clippers",
             "team_code": "LAC",
-            "colors": null
+            "logo": "images/los-angeles-clippers.png",
+            "colors": ""
         },
         {
             "id": 14,
             "team_full_name": "Los Angeles Lakers",
             "team_name": "Lakers",
             "team_code": "LAL",
-            "colors": null
+            "logo": "images/los-angeles-lakers.png",
+            "colors": ""
         },
         {
             "id": 15,
             "team_full_name": "Memphis Grizzlies",
             "team_name": "Grizzlies",
             "team_code": "MEM",
-            "colors": null
+            "logo": "images/memphis-grizzlies.png",
+            "colors": ""
         },
         {
             "id": 16,
             "team_full_name": "Miami Heat",
             "team_name": "Heat",
             "team_code": "MIA",
-            "colors": null
+            "logo": "images/miami-heat.png",
+            "colors": ""
         },
         {
             "id": 17,
             "team_full_name": "Milwaukee Bucks",
             "team_name": "Bucks",
             "team_code": "MIL",
-            "colors": null
+            "logo": "images/milwaukee-bucks.png",
+            "colors": ""
         },
         {
             "id": 18,
             "team_full_name": "Minnesota Timberwolves",
             "team_name": "Timberwolves",
             "team_code": "MIN",
-            "colors": null
+            "logo": "images/minnesota-timberwolves.png",
+            "colors": ""
         },
         {
             "id": 19,
             "team_full_name": "New Orleans Pelicans",
             "team_name": "Pelicans",
             "team_code": "NOP",
-            "colors": null
+            "logo": "images/new-orleans-pelicans.png",
+            "colors": ""
         },
         {
             "id": 20,
             "team_full_name": "New York Knicks",
             "team_name": "Knicks",
             "team_code": "NYK",
-            "colors": null
+            "logo": "images/new-york-knicks.png",
+            "colors": ""
         },
         {
             "id": 21,
             "team_full_name": "Oklahoma City Thunder",
             "team_name": "Thunder",
             "team_code": "OKC",
-            "colors": null
+            "logo": "images/oklahoma-city-thunder.png",
+            "colors": ""
         },
         {
             "id": 22,
             "team_full_name": "Orlando Magic",
             "team_name": "Magic",
             "team_code": "ORL",
-            "colors": null
+            "logo": "images/orlando-magic.png",
+            "colors": ""
         },
         {
             "id": 23,
             "team_full_name": "Philadelphia 76ers",
             "team_name": "76ers",
             "team_code": "PHI",
-            "colors": null
+            "logo": "images/philadelphia-76ers.png",
+            "colors": ""
         },
         {
             "id": 24,
             "team_full_name": "Phoenix Suns",
             "team_name": "Suns",
             "team_code": "PHX",
-            "colors": null
+            "logo": "images/phoenix-suns.png",
+            "colors": ""
         },
         {
             "id": 25,
             "team_full_name": "Portland Trail Blazers",
             "team_name": "Trail Blazers",
             "team_code": "POR",
-            "colors": null
+            "logo": "images/portland-trail-blazers.png",
+            "colors": ""
         },
         {
             "id": 26,
             "team_full_name": "Sacramento Kings",
             "team_name": "Kings",
             "team_code": "SAC",
-            "colors": null
+            "logo": "images/sacramento-kings.png",
+            "colors": ""
         },
         {
             "id": 27,
             "team_full_name": "San Antonio Spurs",
             "team_name": "Spurs",
             "team_code": "SAS",
-            "colors": null
+            "logo": "images/san-antonio-spurs.png",
+            "colors": ""
         },
         {
             "id": 28,
             "team_full_name": "Toronto Raptors",
             "team_name": "Raptors",
             "team_code": "TOR",
-            "colors": null
+            "logo": "images/toronto-raptors.png",
+            "colors": ""
         },
         {
             "id": 29,
             "team_full_name": "Utah Jazz",
             "team_name": "Jazz",
             "team_code": "UTA",
-            "colors": null
+            "logo": "images/utah-jazz.png",
+            "colors": ""
         }
     ],
     "success": true

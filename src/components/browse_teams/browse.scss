@@ -1,4 +1,33 @@
-.buttons {
-    position: fixed;
+$break-small: 700px;
+$break-large: 800px;
 
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 2% 0;
+
+    button {
+        width: 40%;
+
+        @media screen and (max-width: $break-small) {
+            width: 45%;
+        }
+    }
+}
+
+.team-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .team-item {
+        height: 20vh;
+        width: 30vw;
+        margin: 9% 0;
+
+        @media screen and (min-width: $break-large) {
+            width: 10vw;
+        }
+    }
 }

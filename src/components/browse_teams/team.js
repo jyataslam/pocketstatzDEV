@@ -1,11 +1,13 @@
 import React from 'react';
 
 export default ({ colors, chooseTeam, id, team_full_name, team_code }) => {
-    const backgroundColor = {'background-color':`${colors}`};
+    const backgroundColor = { 'background-color': `${colors}` };
 
     return (
-        <button onClick={() => {chooseTeam(id)}} className="collection-item btn btn-large grey team-from-list col s6 m6">
-            <span className="title">{team_code}</span>
-        </button>
+        <div className="team-container col s6 m6">
+            <button onClick={() => { chooseTeam(id) }} className="team-item btn-flat waves-effect waves-light grey">
+                <span className="title">{team_code}</span>
+            </button>
+        </div>
     )
 }

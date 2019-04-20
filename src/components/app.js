@@ -7,6 +7,7 @@ import HomeTeamList from './home_team_list';
 import LogIn from './log_in';
 import GameInfo from './stats';
 import NavFooter from './nav/nav_footer';
+import SignUp from './sign_up';
 import LandingPage from "./landing_page";
 
 import 'materialize-css/dist/css/materialize.min.css';
@@ -31,6 +32,7 @@ class App extends Component {
                         <Route path="/my-teams" component={HomeTeamList} />
                         <Route path="/nba" component={BrowseNba} />
                         <Route path="/log-in" component={LogIn} />
+                        <Route path="/sign-up" component={SignUp} />
                     </Switch>
                 </div>
                 <div className="navbar-fixed">

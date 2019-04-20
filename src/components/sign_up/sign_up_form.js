@@ -1,7 +1,6 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 
-const LogInForm = props => {
+const SignUpForm = props => {
     const buttonStyle = {
         'color': 'black',
         'font-size': '1.5rem'
@@ -11,22 +10,24 @@ const LogInForm = props => {
         <form>
             <div className="row">
                 <div className="input-field col s12 m6 offset-m3">
-                    <input id="username" type="text"/>
+                    <input type="text" id="username"/>
                     <label for="username">Username</label>
                 </div>
                 <div className="input-field col s12 m6 offset-m3">
-                    <input id="password" type="password"/>
+                    <input type="password" id="password"/>
                     <label for="password">Password</label>
                 </div>
+                <div className="input-field col s12 m6 offset-m3">
+                    <input type="password" id="confirmPassword"/>
+                    <label for="confirmPassword">Confirm Password</label>
+                </div>
             </div>
-            <div className="row center">
-                <Link to="/sign-up">No account? Create one here!</Link>
-            </div>
+
             <div className="row">
-                <button className="btn green col s12 m4 offset-m4" style={buttonStyle}>Log In</button>
+                <button className="btn green col s12 m4 offset-m4" style={buttonStyle}>Sign Up</button>
             </div>
         </form>
     );
 }
 
-export default LogInForm;
+export default SignUpForm;

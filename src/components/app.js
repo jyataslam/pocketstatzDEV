@@ -5,7 +5,7 @@ import BrowseSports from './browse_sports';
 import BrowseNba from './browse_teams/index';
 import HomeTeamList from './home_team_list';
 import LogIn from './log_in';
-import GameInfo from './stats';
+import LandingPage from "./landing_page";
 
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize.min';
@@ -20,7 +20,7 @@ class App extends Component {
                 <div className="container">
                     <Switch>
                         {/* import Routing and Loading/Home page here */}
-                        {/* <Route path="/" /exact component={} /> */}
+                        <Route path="/" exact component={LandingPage} />
 
                         <Route path="/browse" render={(routingProps) => {
                             return <BrowseSports {...routingProps} />

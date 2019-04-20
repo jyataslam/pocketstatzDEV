@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 const LogInForm = props => {
     const buttonStyle = {
         'color': 'black',
-        'font-size': '1.5rem'
+        'fontSize': '1.5rem'
     }
 
     return (
@@ -12,11 +12,11 @@ const LogInForm = props => {
             <div className="row">
                 <div className="input-field col s12 m6 offset-m3">
                     <input id="username" type="text"/>
-                    <label for="username">Username</label>
+                    <label htmlFor="username">Username</label>
                 </div>
                 <div className="input-field col s12 m6 offset-m3">
                     <input id="password" type="password"/>
-                    <label for="password">Password</label>
+                    <label htmlFor="password">Password</label>
                 </div>
             </div>
             <div className="row center">

@@ -1,7 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import { Link } from 'react-router-dom';
 import Sidenav from './sidenav';
-import Logo from '../../assets/images/lightning.png';
 import './nav.scss';
 
 class Nav extends Component {
@@ -33,7 +32,7 @@ class Nav extends Component {
 
     render(){
         const links = this.renderLinks();
-        const headerColor = {'background-color': '#B9B9B9'};
+        const headerColor = {'backgroundColor': '#B9B9B9'};
 
         return (
             <Fragment>

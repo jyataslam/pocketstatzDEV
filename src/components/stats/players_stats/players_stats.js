@@ -11,11 +11,10 @@ class PlayerStats extends Component {
                 player14,player15} = teamPlayers;
         return(   
             <div className="players-table">
-                <div className="center">{teamName} Player Stats</div>
                 <table className="striped">
-                    <thead>
+                    <thead id="stats-title">
                         <tr>
-                            <th>Player</th>
+                            <th className="player-head-width">Player</th>
                             <th>PTS</th>
                             <th>3PTS</th>
                             <th>RBS</th>
@@ -155,9 +154,9 @@ class PlayerStats extends Component {
        
         const {view, team1, team2} = this.props;
         return(
-            <h1 className="center">
+            <div className="center" id="stats-container">
                 {view === "left" ? this.displayPlayersStats(team1) : this.displayPlayersStats(team2)}
-            </h1>
+            </div>
         );
     }
 

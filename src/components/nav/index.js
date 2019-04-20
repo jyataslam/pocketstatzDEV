@@ -39,7 +39,7 @@ class Nav extends Component {
             <Fragment>
                 <nav style={headerColor} className="nav-head">
                     <div className="nav-wrapper">
-                        <Link className="header-text brand-logo" to="/">Sports Statz</Link>
+                        <Link className="header-text brand-logo" to="/">Pocket Statz</Link>
                         <a href="#" data-target="sidenav" className="sidenav-trigger">
                             <i className="material-icons">menu</i>
                         </a>

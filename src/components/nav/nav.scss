@@ -1,6 +1,17 @@
 
+#foot {
+    background-color: orange;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+}
+
+.sidenav-overlay {
+    display: none!important;
+    // hi cody
+}
+
 .nav-head {
-    padding: 0 10px;
 
     .header-text {
         margin: 0;

@@ -59,7 +59,7 @@ class TeamList extends Component {
             return (
                 <div className="team-list">
                     <div className="container">
-                    <Buttons confirm={this.confirmRoute} back={this.backToSports}/>
+                    {/* <Buttons confirm={this.confirmRoute} back={this.backToSports}/> */}
                     <div className="row">
                         <ul style={border} className="collection team-collection">
                             {teamList}

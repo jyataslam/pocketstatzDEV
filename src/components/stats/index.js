@@ -3,7 +3,6 @@ import TeamScore from './team_score/team_score';
 import TeamsTab from './teams_tab/teams_tab';
 import axios from 'axios';
 import PlayerStats from './players_stats/players_stats';
-import { resolve } from 'path';
 
 class GameInfo extends Component {
 

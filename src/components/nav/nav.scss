@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Questrial');
+$navHeaderFont: 'Questrial', sans-serif;
 
 #foot {
     background-color: orange;
@@ -16,9 +18,8 @@
     .header-text {
         margin: 0;
         font-size: 2rem;
-        color: #972C2C;
-        font-weight: 400;
-        letter-spacing: 0.1rem;
+        color: #292A3D;
+        font-family: $navHeaderFont;
     }
 
     .sidenav {

@@ -2,7 +2,7 @@ import React from 'react';
 import './team_button.scss';
 
 export default ({ colors, team_full_name, team_id, chooseTeam, team_code }) => {
-    const backgroundColor = {'background-color':`${colors}`}
+    const backgroundColor = {'backgroundColor':`${colors}`}
 
         return(
             <div className="container">

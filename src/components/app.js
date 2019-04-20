@@ -5,6 +5,7 @@ import BrowseSports from './browse_sports';
 import BrowseNba from './browse_teams/index';
 import HomeTeamList from './home_team_list';
 import LogIn from './log_in';
+import SignUp from './sign_up';
 import LandingPage from "./landing_page";
 
 import 'materialize-css/dist/css/materialize.min.css';
@@ -33,6 +34,7 @@ class App extends Component {
 
 
                         <Route path="/log-in" component={LogIn} />
+                        <Route path="/sign-up" component={SignUp} />
                         
 
                         

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Questrial');
-$navHeaderFont: 'Questrial', sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Passion+One');
+$navHeaderFont: 'Passion One', sans-serif;
 
 #foot {
     background-color: orange;
@@ -17,7 +18,7 @@ $navHeaderFont: 'Questrial', sans-serif;
 
     .header-text {
         margin: 0;
-        font-size: 2rem;
+        font-size: 2.5rem;
         color: #292A3D;
         font-family: $navHeaderFont;
     }

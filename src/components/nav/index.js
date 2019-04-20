@@ -13,7 +13,7 @@ class Nav extends Component {
                     <i className="material-icons">close</i>
                 </button>
                 <li className="first-li sidenav-close">
-                    <Link to="/">Home</Link>
+                    <Link to="/my-teams">My Teams</Link>
                 </li>
                 <li><div className="divider red"></div></li>
                 <li className="sidenav-close">
@@ -39,7 +39,7 @@ class Nav extends Component {
             <Fragment>
                 <nav style={headerColor} className="nav-head">
                     <div className="nav-wrapper">
-                        <Link className="header-text brand-logo" to="/">Recharge</Link>
+                        <Link className="header-text brand-logo" to="/">Sports Statz</Link>
                         <a href="#" data-target="sidenav" className="sidenav-trigger">
                             <i className="material-icons">menu</i>
                         </a>

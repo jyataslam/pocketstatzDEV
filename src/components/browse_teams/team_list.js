@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import Team from './team';
 import axios from 'axios';
+import Buttons from './confirm_buttons';
 
 class TeamList extends Component {
     state = {
         teams: [],
         selectedTeams: [],
-        view: 'off'
     }
 
     componentDidMount() {
@@ -18,20 +17,7 @@ class TeamList extends Component {
         const { selectedTeams } = this.state;
         this.setState({
             selectedTeams: [...selectedTeams, id]
-        });  
-        console.log(selectedTeams);
-    }
-
-    confirmButton = () => {
-        // route to user's home page
-    }
-
-    backToSportList = () => {
-        // route back to list of sports
-    }
-
-    showButtons() {
-        
+        });
     }
 
     async getTeams() {
@@ -44,21 +30,46 @@ class TeamList extends Component {
         }
     }
 
+    confirmRoute = () => {
+        this.props.history.push("/my-teams");
+    }
+
+    backToSports = () => {
+        this.props.history.push("/browse");
+    }
+
     render() {
         const teamList = this.state.teams.map((team) => {
             return <Team key={team.id} {...team} chooseTeam={this.chooseTeam} />
-        })
+        });
+        const {selectedTeams} = this.state;
+        const border = {"border": "none"};
 
-        return (
-            <div className="team-list row">
-                <div className="container">
-                    <ul className="collection team-collection">
-                        {teamList}
-                    </ul>
+        if (selectedTeams.length === 0){
+            return (
+                <div className="team-list row">
+                    <div className="container">
+                        <ul style={border} className="collection team-collection">
+                            {teamList}
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        )
+            )
+        } else {
+            return (
+                <div className="team-list">
+                    <div className="container">
+                    <Buttons confirm={this.confirmRoute} back={this.backToSports}/>
+                    <div className="row">
+                        <ul style={border} className="collection team-collection">
+                            {teamList}
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+            )
+        }  
     }
 }
 
-export default withRouter(TeamList);
+export default TeamList;

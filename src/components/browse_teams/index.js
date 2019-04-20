@@ -6,8 +6,8 @@ import GameInfo from '../stats';
 export default props => {
     return (
         <div className="browse">
-            <Route path="/nba-team-list" exact component={TeamList}/>
-            <Route path="/nba-team-list/:team_name" render={(routingProps) => {
+            <Route path="/browse/nba" exact component={TeamList}/>
+            <Route path="/nba/:team_id" render={(routingProps) => {
                     return <GameInfo />
                 }}/>
         </div>

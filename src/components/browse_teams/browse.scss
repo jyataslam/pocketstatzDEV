@@ -1,4 +1,52 @@
-.buttons {
-    position: fixed;
+$break-small: 700px;
+$break-large: 768px;
 
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; 
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2% 0;
+
+    // button {
+    //     width: 40%;
+
+    //     @media screen and (max-width: $break-small) {
+    //         width: 45%;
+    //     }
+    // }
+}
+
+.team-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .team-item {
+        height: 100px;
+        width: 100px;
+        margin: 10% 0;
+        text-decoration: none;
+        outline: 0;
+        color: #fff;
+        letter-spacing: .5px;
+        line-height: 36px;
+        border: 0;
+        border-radius: 2px;
+        padding: 0 16px;
+
+        @media screen and (min-width: $break-large) {
+            width: 150px;
+            height: 150px;
+        }
+    }
 }

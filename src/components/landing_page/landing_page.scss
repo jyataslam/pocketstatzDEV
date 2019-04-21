@@ -1,3 +1,5 @@
+@import "../../assets/css/media_query_mixins";
+
 div{
     color: white;
     h3{
@@ -5,5 +7,52 @@ div{
     }
     .btn{
         background-color: orange;
+    }
+
+    .welcome-header{
+        font-size: 80px;
+    }
+    @include mobile{
+        .welcome-header{
+            padding-top: 20vh;
+            font-size: 50px;   
+        }
+
+        p{
+            font-size: 20px;
+        }
+    }
+
+    @include tablet{
+        .welcome-header{
+            padding-top: 20vh;
+            font-size: 5em;   
+        }
+
+        p{
+            font-size: 2em;
+        }
+    }
+
+    @include desktop{
+        .welcome-header{
+            padding-top: 20vh;
+            font-size: 5em;   
+        }
+
+        p{
+            font-size: 2em;
+        }
+    }
+
+    @include lg-desktop{
+        .welcome-header{
+            padding-top: 20vh;
+            font-size: 6.1em;   
+        }
+
+        p{
+            font-size: 3em;
+        }
     }
 }

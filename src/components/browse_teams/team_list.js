@@ -15,21 +15,20 @@ class TeamList extends Component {
         this.getTeams();
     }
 
-    chooseTeam = (teamName) => {
+    chooseTeam = (id) => {
         const { selectedTeams } = this.state;
         this.setState({
-            selectedTeams: [...selectedTeams, teamName],
+            selectedTeams: [...selectedTeams, id],
             isLoaded: true
         });
-        this.setTeamForHome();
-        this.props.history.push(`/nba/${teamName}`);
+        // this.setTeamForHome();
+        this.props.history.push(`/nba/${id}`);
     }
 
-    async setTeamForHome(){
-        const { selectedTeams } = this.state;
-        const response = await axios.get(`/api/data/getteam.json?id=${selectedTeams}`);
-        console.log('set team for home, ', response);
-    }
+    // async setTeamForHome(){
+    //     const { selectedTeams } = this.state;
+    //     const response = await axios.get(`/api/data/getteam.json?id=${selectedTeams}`);
+    // }
 
     async getTeams() {
         const response = await axios.get("/api/data/getteam.json");

@@ -25,7 +25,7 @@ export default ({chooseTeam, id, api_key, team_full_name}) => {
 
     return (
         <div className="team-container col s6 m3">
-            <button onClick={() => { chooseTeam(api_key) }} className="team-item waves-effect waves-light white">
+            <button onClick={() => { chooseTeam(id) }} className="team-item waves-effect waves-light white">
                 <img src={teamLogo}  />
             </button>
         </div>

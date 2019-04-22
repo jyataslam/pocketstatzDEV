@@ -13,7 +13,7 @@ if(empty($_GET['sport_name'])){
 
 $sport_type = $_GET['sport_name'];
 
-$query = "SELECT t.`id`, t.`team_full_name`, t.`team_code`, t.`league_name`, t.`image_url`
+$query = "SELECT t.`id`, t.`team_full_name`, t.`team_code`, t.`league_name`, t.`image_url`, t.`api_key`
 	FROM `teams` AS t
     JOIN `league` AS l ON t.`league_name` = l.`mid`
     WHERE l.`mid` = '$sport_type'
@@ -38,7 +38,8 @@ while($row = mysqli_fetch_assoc($result)){
         'team_full_name' => $row['team_full_name'],
         'team_code' => $row['team_code'],
         'image_url' => $row['image_url'],
-        'league_name' => $row['league_name']
+        'league_name' => $row['league_name'],
+        'api_key' => $row['api_key']
     ];
 }
 

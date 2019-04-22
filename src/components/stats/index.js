@@ -18,12 +18,13 @@ class GameInfo extends Component {
     }
 
     getGameStats(){
-        axios.get(`/api/data/getgamestats.json`).then((resp) => {
-            this.setState({
-                isLoaded: true,
-                team1: resp.data.team1,
-                team2: resp.data.team2
-            });
+        console.log('props params: ', this.props.match.params.team_id);
+        // make dynamic call to php file
+        axios.get(`/api/see-a-specific-team.php?team_id=${this.props.match.params.team_id}`).then((resp) => {
+            console.log('specific team response: ', resp);
+            axios.get(`api/getgameid.php?team_name=${resp.data.api_key}`).then((resp) => {
+                console.log('team stats', resp);
+            })
         });
     }
 

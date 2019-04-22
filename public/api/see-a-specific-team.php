@@ -12,7 +12,7 @@ if(empty($_GET['team_id'])){
 
 $team = $_GET['team_id'];
 
-$query = "SELECT t.`id`, t.`team_full_name`, t.`team_name`, t.`team_code`, t.`colors`, t.`league_name`, t.`image_url`
+$query = "SELECT t.`id`, t.`team_full_name`, t.`team_name`, t.`team_code`, t.`colors`, t.`league_name`, t.`image_url`, t.`api_key`
 	FROM `teams` AS t
     WHERE t.`id` = $team
 ";
@@ -37,7 +37,8 @@ while($row = mysqli_fetch_assoc($data)){
         'team_code' => $row['team_code'],
         'logo' => $row['image_url'],
         'colors' => $row['colors'],
-        'league_name' => $row['league_name']
+        'league_name' => $row['league_name'],
+        'api_key' => $row['api_key']
     ];
 }
 

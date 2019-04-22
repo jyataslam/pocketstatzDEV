@@ -11,13 +11,11 @@ class GameInfo extends Component {
         isLoaded: false,
         team1: null,
         team2: null
-       
     }   
 
     componentDidMount(){
         this.getGameStats();  
     }
-
 
     getGameStats(){
         axios.get(`/api/data/getgamestats.json`).then((resp) => {

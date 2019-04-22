@@ -5,29 +5,32 @@ import Buttons from './confirm_buttons';
 
 class TeamList extends Component {
     state = {
-        teams: [],
-        selectedTeams: [],
+        isLoaded: false,
+        teams: null,
+        selectedTeams: []
     }
 
     componentDidMount() {
+        
         this.getTeams();
     }
 
     chooseTeam = (id) => {
         const { selectedTeams } = this.state;
         this.setState({
-            selectedTeams: [...selectedTeams, id]
+            selectedTeams: [...selectedTeams, id],
+            isLoaded: true
         });
     }
 
     async getTeams() {
-        const response = await axios.get(`/api/data/getteam.json`);
-
+        const response = await axios.get("/api/data/getteam.json");
         if (response.data.success){
             this.setState({
+                isLoaded: true,
                 teams: response.data.teams
             });
-        }
+        }       
     }
 
     confirmRoute = () => {
@@ -39,36 +42,43 @@ class TeamList extends Component {
     }
 
     render() {
-        const teamList = this.state.teams.map((team) => {
-            return <Team key={team.id} {...team} chooseTeam={this.chooseTeam} />
-        });
-        const {selectedTeams} = this.state;
-        const border = {"border": "none"};
+        if(this.state.isLoaded)
+        {
+            const teamList = this.state.teams.map((team) => {
+                return <Team key={team.id} {...team} chooseTeam={this.chooseTeam} />
+            });
 
-        if (selectedTeams.length === 0){
-            return (
-                <div className="team-list row">
-                    <div className="container">
-                        <ul style={border} className="collection team-collection">
-                            {teamList}
-                        </ul>
+            const {selectedTeams} = this.state;
+
+            const border = {"border": "none"};
+    
+            if (selectedTeams.length === 0){
+                return (
+                    <div className="team-list row">
+                        <div className="container">
+                            <ul style={border} className="collection team-collection">
+                                {teamList}
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            )
-        } else {
-            return (
-                <div className="team-list">
-                    <div className="container">
-                    {/* <Buttons confirm={this.confirmRoute} back={this.backToSports}/> */}
-                    <div className="row">
-                        <ul style={border} className="collection team-collection">
-                            {teamList}
-                        </ul>
+                )
+            } 
+            else {
+                return (
+                    <div className="team-list">
+                        <div className="container">
+                        <Buttons confirm={this.confirmRoute} back={this.backToSports}/>
+                        <div className="row">
+                            <ul style={border} className="collection team-collection">
+                                {teamList}
+                            </ul>
+                        </div>
+                        </div>
                     </div>
-                    </div>
-                </div>
-            )
-        }  
+                )
+            }  
+        }
+        return(null);
     }
 }
 

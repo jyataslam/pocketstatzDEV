@@ -3,11 +3,20 @@ import React from 'react';
 export default ({chooseTeam, id, team_full_name}) => {
 
     const replaceSpaceWithDash = (str) => {
+        let newStr = "";
+
         for (let i = 0; i < str.length; i++)
         {
-            str = str.replace(" ", "-");
+            if (str[i] === " ")
+            {
+                newStr += "-";
+            }
+            else
+            {
+                newStr = newStr + str[i];
+            }
         }
-        return str.toLowerCase();
+        return newStr.toLowerCase();
     }
 
     const teamName = replaceSpaceWithDash(team_full_name);

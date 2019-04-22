@@ -5,18 +5,18 @@ set_exception_handler('handleError');
 require_once('config.php');
 require_once('mysqlconnect.php');
 
-//needs the sport id (unique id from league table) to be sent through a get axios call
-if(empty($_GET['sport_id'])){
-    throw new Exception('sport_id is a required value');
+//needs the sport name (mid from league table) to be sent through a get axios call
+//must be 'nba' or 'overwatch'
+if(empty($_GET['sport_name'])){
+    throw new Exception('sport_name is a required value');
 }
 
-$sport_type = $_GET['sport_id'];
+$sport_type = $_GET['sport_name'];
 
-//prints out an alphabetical list of team names from nba (1) or overwatch (2)
-$query = "SELECT t.`id`, t.`team_full_name`, t.`league_name`
+$query = "SELECT t.`id`, t.`team_full_name`, t.`league_name`, t.`image_url`
 	FROM `teams` AS t
     JOIN `league` AS l ON t.`league_name` = l.`mid`
-    WHERE l.`id` = $sport_type
+    WHERE l.`mid` = '$sport_type'
 	ORDER BY t.`league_name`
 ";
 
@@ -36,6 +36,7 @@ while($row = mysqli_fetch_assoc($result)){
     $output['teams'][] = [
         'id' => (int) $row['id'],
         'team_full_name' => $row['team_full_name'],
+        'image_url' => $row['image_url'],
         'league_name' => $row['league_name']
     ];
 }

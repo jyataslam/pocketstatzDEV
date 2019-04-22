@@ -9,7 +9,7 @@ export default props => {
         <div className="browse">
             <Route path="/browse/nba" exact component={TeamList}/>
             <Route path="/nba/:team_id" render={(routingProps) => {
-                    return <GameInfo />
+                    return <GameInfo {...routingProps}/>
                 }}/>
         </div>
     )

@@ -15,12 +15,20 @@ class TeamList extends Component {
         this.getTeams();
     }
 
-    chooseTeam = (id) => {
+    chooseTeam = (teamName) => {
         const { selectedTeams } = this.state;
         this.setState({
-            selectedTeams: [...selectedTeams, id],
+            selectedTeams: [...selectedTeams, teamName],
             isLoaded: true
         });
+        this.setTeamForHome();
+        this.props.history.push(`/nba/${teamName}`);
+    }
+
+    async setTeamForHome(){
+        const { selectedTeams } = this.state;
+        const response = await axios.get(`/api/data/getteam.json?id=${selectedTeams}`);
+        console.log('set team for home, ', response);
     }
 
     async getTeams() {
@@ -34,11 +42,13 @@ class TeamList extends Component {
     }
 
     confirmRoute = () => {
-        this.props.history.push("/my-teams");
+        this.props.history.push(`/my-teams/`);
+        console.log(this.state.selectedTeams);
     }
 
     backToSports = () => {
         this.props.history.push("/browse");
+        console.log(this.state.selectedTeams);
     }
 
     render() {

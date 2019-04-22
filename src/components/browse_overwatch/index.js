@@ -6,7 +6,7 @@ import './browse.scss';
 export default props => {
     return (
         <div className="browse">
-            <Route path="/overwatch-team-list" exact component={OWTeamList}/>
+            <Route path="/overwatch" exact component={OWTeamList}/>
         </div>
     )
 }

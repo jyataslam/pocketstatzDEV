@@ -29,12 +29,15 @@ if (!$resp) {
     $decodedResp = json_decode($resp);
     $output = [
         "success" => true,
+        "date" => substr($decodedResp->lastUpdatedOn, 0, 10),
         "homeTeam" => [
             "teamName" => $decodedResp->game->homeTeam->abbreviation,
+            "teamScore" => $decodedResp->scoring->homeScoreTotal,
             "teamPlayers" => []
         ],
         "awayTeam" => [
             "teamName" => $decodedResp->game->awayTeam->abbreviation,
+            "teamScore" => $decodedResp->scoring->awayScoreTotal,
             "teamPlayers" => []
         ]
     ];

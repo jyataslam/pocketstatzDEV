@@ -18,12 +18,13 @@ class GameInfo extends Component {
     }
 
     getGameStats(){
-        console.log('props params: ', this.props.match.params.team_id);
-        // make dynamic call to php file
         axios.get(`/api/see-a-specific-team.php?team_id=${this.props.match.params.team_id}`).then((resp) => {
-            console.log('specific team response: ', resp);
-            axios.get(`api/getgameid.php?team_name=${resp.data.api_key}`).then((resp) => {
-                console.log('team stats', resp);
+            axios.get(`/api/getgameid.php?team_name=${resp.data.api_key}`).then((resp) => {
+                this.setState({
+                    team1: resp.data.awayTeam,
+                    team2: resp.data.homeTeam,
+                    isLoaded: true
+                });
             })
         });
     }
@@ -42,13 +43,12 @@ class GameInfo extends Component {
 
     render(){
         const {view, team1, team2, isLoaded} = this.state;
-
         const {showLeft, showRight} = this;
         return(
             
             <Fragment>
-                <TeamScore />   {/*pass in data from axios call as props*/}
-                <TeamsTab showLeft={showLeft} showRight={showRight}/>
+                {isLoaded && <TeamScore team1={team1} team2={team2}/>}
+                {isLoaded && <TeamsTab team1={team1} team2={team2} showLeft={showLeft} showRight={showRight}/>}
                 {isLoaded && <PlayerStats view={view} team1={team1} team2={team2}/>}
             </Fragment> 
             

@@ -1,33 +1,44 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 
-export default ({chooseTeam, id, api_key, team_full_name}) => {
+class TeamSquare extends Component {
 
-    const replaceSpaceWithDash = (str) => {
+    componentDidMount() {
+        M.Dropdown.init(this.dropdown);
+    }
+
+    replaceSpaceWithDash = (str) => {
         let newStr = "";
 
-        for (let i = 0; i < str.length; i++)
-        {
-            if (str[i] === " ")
-            {
+        for (let i = 0; i < str.length; i++) {
+            if (str[i] === " ") {
                 newStr += "-";
             }
-            else
-            {
+            else {
                 newStr = newStr + str[i];
             }
         }
         return newStr.toLowerCase();
     }
 
-    const teamName = replaceSpaceWithDash(team_full_name);
-    const teamLogo = require(`../../assets/images/${teamName}.png`);
-    //had to change file name: 'los-angeles-clippers' to 'la-clippers'
+    render() {
+        const { chooseTeam, id, api_key, team_full_name } = this.props;
+        const teamName = this.replaceSpaceWithDash(team_full_name);
+        const teamLogo = require(`../../assets/images/${teamName}.png`);
 
-    return (
-        <div className="team-container col s6 m3">
-            <button onClick={() => { chooseTeam(id) }} className="team-item waves-effect waves-light white">
-                <img src={teamLogo}  />
-            </button>
-        </div>
-    )
+            return (
+                <Fragment>
+                    <div className="team-container col s6 m3" >
+                        <button ref={(element) => { this.dropdown = element }} className="team-item dropdown-trigger" data-target="dropdown1">
+                            <img src={teamLogo} />
+                        </button>
+                    </div>
+                    <ul  id="dropdown1" className="dropdown-content">
+                        <li><a onClick={() => { chooseTeam(id) }}><i className="material-icons">add</i></a></li>
+                        <li><a><i className="material-icons">cloud</i>five</a></li>
+                    </ul>
+                </Fragment>
+            )
+    }
 }
+
+export default TeamSquare;

@@ -4,7 +4,8 @@ import axios from 'axios';
 
 class HomeTeamList extends Component {
     state = {
-        userTeams: []
+        userTeams: [],
+        isLoaded: false
     }
     
     componentDidMount(){
@@ -12,27 +13,29 @@ class HomeTeamList extends Component {
     }
 
     async getUserTeams(){
-        const response = await axios.get(`/api/data/gethomepageteams.json`);
+        const response = await axios.get(`/api/gethomepageteams.php`);
 
         if (response.data.success){
             this.setState({
-                userTeams: response.data.homepage_items
+                userTeams: response.data.homepage_items,
+                isLoaded: true
             });
         }
     }
 
-    goToTeamStats = (teamCode) => {
-        this.props.history.push(`/nba/${teamCode}`);
+    goToTeamStats = (teamID) => {
+        this.props.history.push(`/nba/${teamID}`);
     }
 
     render(){
         const homepageTeamList = this.state.userTeams.map((team) => {
             return <TeamButton key={team.id} {...team} chooseTeam={this.goToTeamStats}/>
         });
+        const { isLoaded } = this.state;
 
         return(
                 <ul>
-                    {homepageTeamList}
+                    {isLoaded && homepageTeamList}
                 </ul>
         );
     }

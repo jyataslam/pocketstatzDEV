@@ -4,10 +4,12 @@
 $ch = curl_init();
 
 // Will need to get team abbreviation dynamically
-$team = 'gsw';
+$team = $_GET['team_name'];
+// print_r($team);
+// exit();
 
 // Set url
-curl_setopt($ch, CURLOPT_URL, "https://api.mysportsfeeds.com/v2.1/pull/nba/current/games.json?limit=1&status=final&sort=game.starttime.d&team=".$team);
+curl_setopt($ch, CURLOPT_URL, "https://api.mysportsfeeds.com/v2.1/pull/nba/latest/games.json?limit=1&status=final&sort=game.starttime.d&team=$team");
 
 // Set method
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
@@ -34,7 +36,6 @@ if (!$resp) {
     $_GET['game_id'] = $gameId;
     include 'getgamestats.php';
 }
-
 // Close request to clear up some resources
 // curl_close($ch);
 

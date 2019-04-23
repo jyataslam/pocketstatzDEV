@@ -11,24 +11,22 @@ class TeamList extends Component {
     }
 
     componentDidMount() {
-        
         this.getTeams();
     }
 
-    chooseTeam = (teamName) => {
+    chooseTeam = (id) => {
         const { selectedTeams } = this.state;
-        this.setState({
-            selectedTeams: [...selectedTeams, teamName],
-            isLoaded: true
-        });
-        this.setTeamForHome();
-        this.props.history.push(`/nba/${teamName}`);
-    }
-
-    async setTeamForHome(){
-        const { selectedTeams } = this.state;
-        const response = await axios.get(`/api/data/getteam.json?id=${selectedTeams}`);
-        console.log('set team for home, ', response);
+        if (selectedTeams.includes(id)) {
+            return
+        } else {
+            this.setState({
+                selectedTeams: [...selectedTeams, id],
+                isLoaded: true
+            });
+        }
+        console.log('selected teams', selectedTeams);
+        // this.setTeamForHome();
+        // this.props.history.push(`/nba/${id}`);
     }
 
     async getTeams() {
@@ -42,14 +40,15 @@ class TeamList extends Component {
     }
 
     confirmRoute = () => {
+        // selectedTeams holds an array of unique NBA team id's
         this.props.history.push(`/my-teams/`);
         console.log(this.state.selectedTeams);
     }
 
-    backToSports = () => {
-        this.props.history.push("/browse");
-        console.log(this.state.selectedTeams);
-    }
+    // backToSports = () => {
+    //     this.props.history.push("/browse");
+    //     console.log(this.state.selectedTeams);
+    // }
 
     render() {
         if(this.state.isLoaded)
@@ -59,10 +58,9 @@ class TeamList extends Component {
             });
 
             const {selectedTeams} = this.state;
-
             const border = {"border": "none"};
     
-            if (selectedTeams.length === 0){
+            // if (selectedTeams.length === 0){
                 return (
                     <div className="team-list row">
                         <div className="container">
@@ -72,21 +70,21 @@ class TeamList extends Component {
                         </div>
                     </div>
                 )
-            } 
-            else {
-                return (
-                    <div className="team-list">
-                        <div className="container">
-                        <Buttons confirm={this.confirmRoute} back={this.backToSports}/>
-                        <div className="row">
-                            <ul style={border} className="collection team-collection">
-                                {teamList}
-                            </ul>
-                        </div>
-                        </div>
-                    </div>
-                )
-            }  
+            // } 
+            // else {
+            //     return (
+            //         <div className="team-list">
+            //             <div className="container">
+            //             <Buttons confirm={this.confirmRoute} back={this.backToSports}/>
+            //             <div className="row">
+            //                 <ul style={border} className="collection team-collection">
+            //                     {teamList}
+            //                 </ul>
+            //             </div>
+            //             </div>
+            //         </div>
+            //     )
+            // }  
         }
         return(null);
     }

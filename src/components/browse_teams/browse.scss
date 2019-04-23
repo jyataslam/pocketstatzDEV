@@ -38,17 +38,17 @@ img{
     align-items: center;
 
     .team-item {
-        height: 100px;
-        width: 100px;
+        height: 110px;
+        width: 110px;
         margin: 10% 0;
         text-decoration: none;
         outline: 0;
         color: #fff;
         letter-spacing: .5px;
-        line-height: 36px;
-        border: 1px solid black;
-        border-radius: 8px;
+        line-height: 15px;
+        border-radius: 10px;
         padding: 0 16px;
+        
 
         @media screen and (min-width: $break-large) {
             width: 150px;

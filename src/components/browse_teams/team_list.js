@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Team from './team';
 import axios from 'axios';
-import Buttons from './confirm_buttons';
+import Button from './confirm_buttons';
 
 class TeamList extends Component {
     state = {
@@ -15,18 +15,16 @@ class TeamList extends Component {
     }
 
     chooseTeam = (id) => {
+        debugger;
+        console.log('clicked team id: ', id);
         const { selectedTeams } = this.state;
         if (selectedTeams.includes(id)) {
             return
         } else {
             this.setState({
-                selectedTeams: [...selectedTeams, id],
-                isLoaded: true
+                selectedTeams: [...selectedTeams, id]
             });
         }
-        console.log('selected teams', selectedTeams);
-        // this.setTeamForHome();
-        // this.props.history.push(`/nba/${id}`);
     }
 
     async getTeams() {
@@ -39,52 +37,45 @@ class TeamList extends Component {
         }       
     }
 
-    confirmRoute = () => {
-        // selectedTeams holds an array of unique NBA team id's
-        this.props.history.push(`/my-teams/`);
-        console.log(this.state.selectedTeams);
+    goToMyTeams = async () => {
+        const sendTeamIds = this.state.selectedTeams.toString();
+        const homeTeamsResponse = await axios.get("/api/list-user-teams.php", {
+            params: {
+                team_ids: sendTeamIds
+            }
+        });
+        let homeTeamsIds = [];
+        for (var index = 0; index < homeTeamsResponse.data.user_teams.length; index++){
+            homeTeamsIds.push(homeTeamsResponse.data.user_teams[index].id);
+        }
+        localStorage.homeTeamIds = homeTeamsIds.toString();
+        this.props.history.push(`/my-teams`);
     }
 
-    // backToSports = () => {
-    //     this.props.history.push("/browse");
-    //     console.log(this.state.selectedTeams);
-    // }
+    checkStats = (id) => {
+        this.props.history.push(`/nba/${id}`);
+    }
 
     render() {
         if(this.state.isLoaded)
         {
             const teamList = this.state.teams.map((team) => {
-                return <Team key={team.id} {...team} chooseTeam={this.chooseTeam} />
+                return <Team key={team.id} {...team} chooseTeam={this.chooseTeam} checkStats={this.checkStats}/>
             });
 
             const {selectedTeams} = this.state;
             const border = {"border": "none"};
     
-            // if (selectedTeams.length === 0){
                 return (
                     <div className="team-list row">
-                        <div className="container">
-                            <ul style={border} className="collection team-collection">
+                        <div className="container row">
+                            <Button goToMyTeams={this.goToMyTeams} />
+                            <div style={border}>
                                 {teamList}
-                            </ul>
+                            </div>
                         </div>
                     </div>
                 )
-            // } 
-            // else {
-            //     return (
-            //         <div className="team-list">
-            //             <div className="container">
-            //             <Buttons confirm={this.confirmRoute} back={this.backToSports}/>
-            //             <div className="row">
-            //                 <ul style={border} className="collection team-collection">
-            //                     {teamList}
-            //                 </ul>
-            //             </div>
-            //             </div>
-            //         </div>
-            //     )
-            // }  
         }
         return(null);
     }

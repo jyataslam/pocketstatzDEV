@@ -15,8 +15,6 @@ class TeamList extends Component {
     }
 
     chooseTeam = (id) => {
-        debugger;
-        console.log('clicked team id: ', id);
         const { selectedTeams } = this.state;
         if (selectedTeams.includes(id)) {
             return

@@ -34,7 +34,7 @@ if (!$resp) {
     $decodedResp = json_decode($resp);
     $gameId = $decodedResp->games[0]->schedule->id;
     $_GET['game_id'] = $gameId;
-    include 'getgamestats.php';
+    include 'getnbagamestats.php';
 }
 // Close request to clear up some resources
 // curl_close($ch);

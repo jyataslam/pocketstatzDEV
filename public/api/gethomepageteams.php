@@ -17,11 +17,6 @@ $user_id = 1;
 $homepage_id = 1;
 // $homepage_id = $_SESSION['homepage_id'];
 
-
-//linking the team info to the user teams (id from teams to team_id from user_teams)
-//linking the user teams for the user (user_id from user_teams to id from users)
-
-//currently works - but will not having a 'cart' as an intermediary screw us in the long term with multiple users? double check with andy
 $homepage_query = "SELECT 
     u_t.`team_id`,
     t.`id`, t.`team_full_name`, t.`team_name`, t.`team_code`, t.`colors`, t.`league_name`, t.`image_url`

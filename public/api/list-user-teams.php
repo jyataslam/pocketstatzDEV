@@ -10,13 +10,13 @@ if(empty($_GET['team_ids'])){
 
 $teams = $_GET['team_ids'];
 
-$array_to_string = explode(",", $teams);
-$string_teams = implode(" , ", $array_to_string);
+// $array_to_string = explode(",", $teams);
+// $string_teams = implode(" , ", $array_to_string);
 
 $teams_query = "SELECT 
     t.`id`, t.`api_key`, t.`team_full_name`, t.`team_name`, t.`team_code`, t.`colors`, t.`league_name`, t.`image_url`
     FROM `teams` AS `t`
-    WHERE t.`id` IN ($string_teams)
+    WHERE t.`id` IN ($teams)
 ";
 
 $teams_data = mysqli_query($conn, $teams_query);

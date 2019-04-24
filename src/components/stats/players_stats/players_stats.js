@@ -13,6 +13,7 @@ class PlayerStats extends Component {
             return (
             <tr>
                 <td>{player.name}</td>
+                <td>{player.position}</td>
                 <td>{player.points}</td>
                 <td>{player.triplePoints}</td>
                 <td>{player.rebounds}</td>
@@ -27,6 +28,7 @@ class PlayerStats extends Component {
                     <thead id="stats-title">
                         <tr>
                             <th className="player-head-width">Player</th>
+                            <th>POS</th>
                             <th>PTS</th>
                             <th>3PTS</th>
                             <th>RBS</th>

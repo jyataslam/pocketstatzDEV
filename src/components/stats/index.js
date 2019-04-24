@@ -21,12 +21,17 @@ class GameInfo extends Component {
     getGameStats(){
         axios.get(`/api/see-a-specific-team.php?team_id=${this.props.match.params.team_id}`).then((resp) => {
             axios.get(`/api/getnbagameid.php?team_name=${resp.data.api_key}`).then((resp) => {
+                if (typeof resp.data === 'object'){
                 this.setState({
                     team1: resp.data.awayTeam,
                     team2: resp.data.homeTeam,
                     gameDetails: resp.data.gameDetails,
                     isLoaded: true
                 });
+                } else {
+                    // make axios call to get last game available from regular season and setState as above
+                    console.log('no team data available');
+                }
             })
         });
     }

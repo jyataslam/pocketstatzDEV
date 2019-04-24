@@ -21,8 +21,7 @@ class Team extends Component {
     }
 
     render() {
-        // console.log("Team component props", this.props);
-        const { image_url, chooseTeam, id, team_full_name} = this.props;
+        const { image_url, chooseTeam, id, team_full_name } = this.props;
         
         return (
             <Fragment>

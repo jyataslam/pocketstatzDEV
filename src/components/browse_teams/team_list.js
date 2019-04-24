@@ -26,7 +26,8 @@ class TeamList extends Component {
     }
 
     async getTeams() {
-        const response = await axios.get("/api/data/getteam.json");
+        const response = await axios.get("/api/getteam.php?sport_name=nba");
+        console.log("Resp is,", response);
         if (response.data.success){
             this.setState({
                 isLoaded: true,

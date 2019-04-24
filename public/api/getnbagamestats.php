@@ -30,6 +30,7 @@ if (!$resp) {
     $output = [
         "success" => true,
         "gameDetails" => [
+            // Need to adjust date/time for timezones, take 7 hours off (ex: POR@LAL was on April 9, not 10, but startTime is ahead by 7 hours)
             "gameDate" => date_format(date_create(substr($decodedResp->game->startTime, 0, 10)), "F j, Y"),
             "currentQuarter" => $decodedResp->scoring->currentQuarter,
             "quarterTimeRemaining" => $decodedResp->scoring->currentQuarterSecondsRemaining

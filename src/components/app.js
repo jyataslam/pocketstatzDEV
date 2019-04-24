@@ -9,6 +9,7 @@ import GameInfo from './stats';
 import NavFooter from './nav/nav_footer';
 import SignUp from './sign_up';
 import LandingPage from "./landing_page";
+import LoadingScreen from "./loading_screen";
 
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize.min';
@@ -35,6 +36,8 @@ class App extends Component {
                 <div className="navbar-fixed">
                 <NavFooter/>
                 </div>
+
+                <LoadingScreen />
             </div>
         )
     }

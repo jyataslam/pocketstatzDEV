@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 
 class Sidenav extends Component {
     componentDidMount(){
-        M.Sidenav.init(this.sidenav);
+        const config = {
+            draggable: true,
+            inDuration: 350,
+            outDuration: 350,
+            preventScrolling: true
+        }
+
+        M.Sidenav.init(this.sidenav, config);
     }
 
     render() {

@@ -26,7 +26,8 @@ class TeamList extends Component {
     }
 
     async getTeams() {
-        const response = await axios.get("/api/data/getteam.json");
+        const response = await axios.get(`/api/getteam.php?sport_name=${this.props.leagueName}`);
+        
         if (response.data.success){
             this.setState({
                 isLoaded: true,
@@ -51,7 +52,7 @@ class TeamList extends Component {
     }
 
     checkStats = (id) => {
-        this.props.history.push(`/nba/${id}`);
+        this.props.history.push(`/${this.props.leagueName}/${id}`);
     }
 
     render() {

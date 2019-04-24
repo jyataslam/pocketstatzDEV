@@ -9,11 +9,11 @@ class Sidenav extends Component {
         const { links } = this.props;
 
         return (
-            <div>
+            
                 <ul ref={(element) => {this.sidenav = element}} id="sidenav" className="sidenav">
                     {links}
                 </ul>
-            </div>
+            
         )
     }
 }

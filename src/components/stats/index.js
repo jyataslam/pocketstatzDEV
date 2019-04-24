@@ -10,7 +10,8 @@ class GameInfo extends Component {
         view: "left",
         isLoaded: false,
         team1: null,
-        team2: null
+        team2: null,
+        gameDetails: null
     }   
 
     componentDidMount(){
@@ -21,9 +22,9 @@ class GameInfo extends Component {
         axios.get(`/api/see-a-specific-team.php?team_id=${this.props.match.params.team_id}`).then((resp) => {
             axios.get(`/api/getnbagameid.php?team_name=${resp.data.api_key}`).then((resp) => {
                 this.setState({
-                    //switch statement for name? Default resp.data.team, with cases for BKN, OKC, etc.
                     team1: resp.data.awayTeam,
                     team2: resp.data.homeTeam,
+                    gameDetails: resp.data.gameDetails,
                     isLoaded: true
                 });
             })
@@ -43,12 +44,12 @@ class GameInfo extends Component {
     }
 
     render(){
-        const {view, team1, team2, isLoaded} = this.state;
+        const {view, team1, team2, gameDetails, isLoaded} = this.state;
         const {showLeft, showRight} = this;
         return(
             
             <Fragment>
-                {isLoaded && <TeamScore team1={team1} team2={team2}/>}
+                {isLoaded && <TeamScore team1={team1} team2={team2} gameDetails={gameDetails}/>}
                 {isLoaded && <TeamsTab team1={team1} team2={team2} showLeft={showLeft} showRight={showRight}/>}
                 {isLoaded && <PlayerStats view={view} team1={team1} team2={team2}/>}
             </Fragment> 

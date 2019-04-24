@@ -12,8 +12,8 @@ export default ({ team1, team2 }) => {
                         <div className="teamName col s6 center">{team2.teamName}</div>
                     </div>
                     <div className="row" id="scores">
-                        <div className="teamName col s6 center">120</div>
-                        <div className="teamName col s6 center">82</div>
+                        <div className="teamName col s6 center">{team1.teamScore}</div>
+                        <div className="teamName col s6 center">{team2.teamScore}</div>
                     </div>
                     <div className="center" id="quarter">Quarter Goes Here</div>
                     <div className="center" id="time">Timer Goes Here</div>

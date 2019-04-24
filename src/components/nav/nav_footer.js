@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 
 class NavFooter extends Component {
 
-    
-
     render() {
        const margin = {"marginBottom":"0px"};
        const padding = {"paddingLeft": "0px", "paddingRight": "0px"};

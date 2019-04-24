@@ -19,12 +19,9 @@ class App extends Component {
     render() {
         return (
             <div>
-                <div className="navbar-fixed">
                 <Nav />
-                </div>
                 <div className="container" id="landing-container">
                     <Switch>
-                        {/* import Routing and Loading/Home page here */}
                         <Route path="/" exact component={LandingPage} />
                         <Route path="/browse" render={(routingProps) => {
                             return <BrowseSports {...routingProps} />

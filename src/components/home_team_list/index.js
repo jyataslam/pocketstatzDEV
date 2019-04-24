@@ -1,6 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import TeamButton from './team_button/team_button';
+import EmptyHomepage from './empty_homepage';
 import axios from 'axios';
+
+import './home_team_list.scss';
 
 class HomeTeamList extends Component {
     state = {
@@ -14,27 +17,32 @@ class HomeTeamList extends Component {
 
     async getUserTeams() {
         let localData = localStorage.homeTeamIds;
-        console.log('local data string: ', localData);
+        if (localData === undefined){
+            return 
+        }
         const response = await axios.get("/api/list-user-teams.php", {
             params: {
                 team_ids: localData
             }
         });
-        console.log('response', response.data.user_teams);
         this.setState({
             userTeams: response.data.user_teams,
             isLoaded: true
         });
-        console.log('state after update: ', this.state);
     }
 
-    goToTeamStats = (teamID) => {
+    goToTeamStats = teamID => {
         this.props.history.push(`/nba/${teamID}`);
     }
 
+    goToBrowse = () => {
+        this.props.history.push("/browse");
+        console.log('clicked');
+    }
+
     render() {
-        const { isLoaded } = this.state;
-        if (isLoaded) {
+        const { isLoaded, userTeams } = this.state;
+        if (isLoaded && userTeams.length > 0) {
             console.log('state loaded: ', this.state.userTeams);
             const homepageTeamList = this.state.userTeams.map((team) => {
                 console.log(team);
@@ -45,6 +53,8 @@ class HomeTeamList extends Component {
                     {isLoaded && homepageTeamList}
                 </ul>
             );
+        } else if (userTeams.length === 0){
+            return <EmptyHomepage goToBrowse={this.goToBrowse} />
         } else {
             console.log('state not loaded: ', this.state.userTeams);
             return <h1>Loading...</h1>

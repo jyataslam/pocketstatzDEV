@@ -1,0 +1,19 @@
+.link-container {
+    display: flex;
+    justify-content: center;
+    height: 65vh;
+
+    #symbol {
+        font-size: 16rem;
+        opacity: 0.4;
+    }
+}
+
+.main-text {
+    position: absolute;
+    bottom: 300px;
+    padding: 0 10px;
+    opacity: 0.4;
+    text-align: center;
+}
+

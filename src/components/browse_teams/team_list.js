@@ -25,6 +25,15 @@ class TeamList extends Component {
         }
     }
 
+    checkNumberOfSavedTeams = () => {
+        if (localStorage.getItem("homeTeamIds") !== null) {
+            let savedTeams = JSON.parse("[" + localStorage.getItem("homeTeamIds") + "]");
+            if(savedTeams.length > 3){
+                console.log('user has three teams');
+            }
+        }
+    }
+
     async getTeams() {
         const response = await axios.get(`/api/getteam.php?sport_name=${this.props.leagueName}`);
 
@@ -48,6 +57,13 @@ class TeamList extends Component {
 
         if (localStorage.getItem("homeTeamIds") !== null) {
             homeTeamsIds = JSON.parse("[" + localStorage.getItem("homeTeamIds") + "]");
+
+            // if(homeTeamsIds.length > 3){
+            //     console.log('old array:', homeTeamsIds);
+            //     homeTeamsIds.length = 3;
+            //     console.log('new array:', homeTeamsIds);
+            // }
+
         }
 
 
@@ -77,7 +93,7 @@ class TeamList extends Component {
             return (
                 <div className="team-list row">
                     <div className="container row">
-                        <Button goToMyTeams={this.goToMyTeams} />
+                        <Button goToMyTeams={this.goToMyTeams} checkNumberOfSavedTeams={this.checkNumberOfSavedTeams}/>
                         <div style={border}>
                             {teamList}
                         </div>

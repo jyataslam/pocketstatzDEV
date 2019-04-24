@@ -43,9 +43,9 @@ class HomeTeamList extends Component {
     render() {
         const { isLoaded, userTeams } = this.state;
         if (isLoaded && userTeams.length > 0) {
-            console.log('state loaded: ', this.state.userTeams);
+            // console.log('state loaded: ', this.state.userTeams);
             const homepageTeamList = this.state.userTeams.map((team) => {
-                console.log(team);
+                // console.log(team);
                 return <TeamButton key={team.id} {...team} chooseTeam={this.goToTeamStats} />
             });
             return (

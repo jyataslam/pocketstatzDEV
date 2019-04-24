@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import LandingChoose from './home_choose_sports';
-// import BrowseSports from './browse_sports';
 import BrowseNba from '../browse_teams/index';
 
 import './browse_sports.scss';

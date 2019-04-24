@@ -36,8 +36,6 @@ class App extends Component {
                 <div className="navbar-fixed">
                 <NavFooter/>
                 </div>
-
-                <LoadingScreen />
             </div>
         )
     }

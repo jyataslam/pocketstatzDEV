@@ -32,6 +32,13 @@ if (!$resp) {
 	die('Error: "' . curl_error($ch) . '" - Code: ' . curl_errno($ch));
 } else {
     $decodedResp = json_decode($resp);
+    if ($decodedResp->games === []) {
+        unset($resp, $decodedResp);
+        $lastSeason = (date("Y")-1)."-".date("Y");
+        curl_setopt($ch, CURLOPT_URL, "https://api.mysportsfeeds.com/v2.1/pull/nba/$lastSeason/games.json?limit=1&status=final&sort=game.starttime.d&team=$team");
+        $resp = curl_exec($ch);
+        $decodedResp = json_decode($resp);
+    }
     $gameId = $decodedResp->games[0]->schedule->id;
     $_GET['game_id'] = $gameId;
     include 'getnbagamestats.php';

@@ -19,7 +19,7 @@ class GameInfo extends Component {
 
     getGameStats(){
         axios.get(`/api/see-a-specific-team.php?team_id=${this.props.match.params.team_id}`).then((resp) => {
-            axios.get(`/api/getgameid.php?team_name=${resp.data.api_key}`).then((resp) => {
+            axios.get(`/api/getnbagameid.php?team_name=${resp.data.api_key}`).then((resp) => {
                 this.setState({
                     team1: resp.data.awayTeam,
                     team2: resp.data.homeTeam,

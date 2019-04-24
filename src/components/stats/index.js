@@ -42,7 +42,7 @@ class GameInfo extends Component {
     }
 
     render(){
-        const {view, team1, team2, isLoaded} = this.state;
+        const {view, team1, team2, isLoaded, image_url} = this.state;
         const {showLeft, showRight} = this;
         return(
             

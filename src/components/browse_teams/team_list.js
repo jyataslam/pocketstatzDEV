@@ -26,11 +26,11 @@ class TeamList extends Component {
     }
 
     async getTeams() {
-        const response = await axios.get("/api/data/getteam.json");
+        const response = await axios.get("/api/data/getteam.php");
         if (response.data.success){
             this.setState({
                 isLoaded: true,
-                teams: response.data.teams
+                teams: response.data.teams,
             });
         }       
     }
@@ -58,7 +58,7 @@ class TeamList extends Component {
         if(this.state.isLoaded)
         {
             const teamList = this.state.teams.map((team) => {
-                return <Team key={team.id} {...team} chooseTeam={this.chooseTeam} checkStats={this.checkStats}/>
+                return <Team key={team.id} {...team} teamLogo = {team.image_url}  chooseTeam={this.chooseTeam} checkStats={this.checkStats}/>
             });
 
             const {selectedTeams} = this.state;

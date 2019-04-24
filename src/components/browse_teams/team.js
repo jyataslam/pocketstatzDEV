@@ -21,15 +21,15 @@ class TeamSquare extends Component {
     }
 
     render() {
-        const { chooseTeam, id, api_key, team_full_name } = this.props;
+        const { chooseTeam, id, api_key, team_full_name, teamLogo } = this.props;
         const teamName = this.replaceSpaceWithDash(team_full_name);
-        const teamLogo = require(`../../assets/images/${teamName}.png`);
+        const teamLogoImage = require(`../../assets/${teamLogo}`);
 
             return (
                 <Fragment>
                     <div className="team-container col s6 m3" >
                         <button ref={(element) => { this.dropdown = element }} className="team-item dropdown-trigger" data-target="dropdown1">
-                            <img src={teamLogo} />
+                            <img src={teamLogoImage} />
                         </button>
                     </div>
                     <ul  id="dropdown1" className="dropdown-content">

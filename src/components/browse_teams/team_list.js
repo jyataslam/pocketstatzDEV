@@ -25,15 +25,24 @@ class TeamList extends Component {
         }
     }
 
+    checkNumberOfSavedTeams = () => {
+        if (localStorage.getItem("homeTeamIds") !== null) {
+            let savedTeams = JSON.parse("[" + localStorage.getItem("homeTeamIds") + "]");
+            if(savedTeams.length > 3){
+                console.log('user has three teams');
+            }
+        }
+    }
+
     async getTeams() {
         const response = await axios.get(`/api/getteam.php?sport_name=${this.props.leagueName}`);
-        
-        if (response.data.success){
+
+        if (response.data.success) {
             this.setState({
                 isLoaded: true,
                 teams: response.data.teams
             });
-        }       
+        }
     }
 
     goToMyTeams = async () => {
@@ -43,9 +52,26 @@ class TeamList extends Component {
                 team_ids: sendTeamIds
             }
         });
+
         let homeTeamsIds = [];
-        for (var index = 0; index < homeTeamsResponse.data.user_teams.length; index++){
+
+        if (localStorage.getItem("homeTeamIds") !== null) {
+            homeTeamsIds = JSON.parse("[" + localStorage.getItem("homeTeamIds") + "]");
+
+            // if(homeTeamsIds.length > 3){
+            //     console.log('old array:', homeTeamsIds);
+            //     homeTeamsIds.length = 3;
+            //     console.log('new array:', homeTeamsIds);
+            // }
+
+        }
+
+
+        for (var index = 0; index < homeTeamsResponse.data.user_teams.length; index++) {
             homeTeamsIds.push(homeTeamsResponse.data.user_teams[index].id);
+            if (localStorage.getItem("homeTeamIds") === null) {
+                localStorage.setItem("homeTeamIds", homeTeamsIds);
+            }
         }
         localStorage.homeTeamIds = homeTeamsIds.toString();
         this.props.history.push(`/my-teams`);
@@ -56,27 +82,26 @@ class TeamList extends Component {
     }
 
     render() {
-        if(this.state.isLoaded)
-        {
+        if (this.state.isLoaded) {
             const teamList = this.state.teams.map((team) => {
-                return <Team key={team.id} {...team} chooseTeam={this.chooseTeam} checkStats={this.checkStats}/>
+                return <Team key={team.id} {...team} chooseTeam={this.chooseTeam} checkStats={this.checkStats} />
             });
 
-            const {selectedTeams} = this.state;
-            const border = {"border": "none"};
-    
-                return (
-                    <div className="team-list row">
-                        <div className="container row">
-                            <Button goToMyTeams={this.goToMyTeams} />
-                            <div style={border}>
-                                {teamList}
-                            </div>
+            const { selectedTeams } = this.state;
+            const border = { "border": "none" };
+
+            return (
+                <div className="team-list row">
+                    <div className="container row">
+                        <Button goToMyTeams={this.goToMyTeams} checkNumberOfSavedTeams={this.checkNumberOfSavedTeams}/>
+                        <div style={border}>
+                            {teamList}
                         </div>
                     </div>
-                )
+                </div>
+            )
         }
-        return(null);
+        return (null);
     }
 }
 

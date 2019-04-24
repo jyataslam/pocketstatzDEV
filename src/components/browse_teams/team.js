@@ -2,6 +2,10 @@ import React, { Component, Fragment } from 'react';
 
 class Team extends Component {
 
+    componentDidMount(){
+
+    }
+
     replaceSpaceWithDash = (str) => {
         let newStr = "";
 
@@ -22,7 +26,7 @@ class Team extends Component {
         return (
             <Fragment>
                 <div className="team-container col s6 m3" >
-                    <button className="team-item z-depth-3" onClick={() => { chooseTeam(id) }}>
+                    <button className="team-item z-depth-3" onClick={() => { chooseTeam(id)}}>
                         <img src={`/dist/assets/${image_url}`} />
                     </button>
                 </div>

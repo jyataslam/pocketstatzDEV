@@ -29,7 +29,11 @@ if (!$resp) {
     $decodedResp = json_decode($resp);
     $output = [
         "success" => true,
-        "date" => substr($decodedResp->lastUpdatedOn, 0, 10),
+        "gameDetails" => [
+            "gameDate" => date_format(date_create(substr($decodedResp->game->startTime, 0, 10)), "F j, Y"),
+            "currentQuarter" => $decodedResp->scoring->currentQuarter,
+            "quarterTimeRemaining" => $decodedResp->scoring->currentQuarterSecondsRemaining
+        ],
         "homeTeam" => [
             "teamName" => $decodedResp->game->homeTeam->abbreviation,
             "teamScore" => $decodedResp->scoring->homeScoreTotal,
@@ -49,6 +53,7 @@ if (!$resp) {
     
     foreach($homePlayers as $player) {
         $name = $player->player->firstName.' '.$player->player->lastName;
+        $position = $player->player->position;
         $points = $player->playerStats[0]->offense->pts;
         $triplePoints = $player->playerStats[0]->fieldGoals->fg3PtMade;
         $rebounds = $player->playerStats[0]->rebounds->reb;
@@ -56,6 +61,7 @@ if (!$resp) {
         $steals = $player->playerStats[0]->defense->stl;
 
         $output["homeTeam"]["teamPlayers"]["player".$playerNum]["name"] = $name;
+        $output["homeTeam"]["teamPlayers"]["player".$playerNum]["position"] = $position;
         $output["homeTeam"]["teamPlayers"]["player".$playerNum]["points"] = $points;
         $output["homeTeam"]["teamPlayers"]["player".$playerNum]["triplePoints"] = $triplePoints;
         $output["homeTeam"]["teamPlayers"]["player".$playerNum]["rebounds"] = $rebounds;
@@ -69,6 +75,7 @@ if (!$resp) {
 
     foreach($awayPlayers as $player) {
         $name = $player->player->firstName.' '.$player->player->lastName;
+        $position = $player->player->position;
         $points = $player->playerStats[0]->offense->pts;
         $triplePoints = $player->playerStats[0]->fieldGoals->fg3PtMade;
         $rebounds = $player->playerStats[0]->rebounds->reb;
@@ -76,6 +83,7 @@ if (!$resp) {
         $steals = $player->playerStats[0]->defense->stl;
 
         $output["awayTeam"]["teamPlayers"]["player".$playerNum]["name"] = $name;
+        $output["awayTeam"]["teamPlayers"]["player".$playerNum]["position"] = $position;
         $output["awayTeam"]["teamPlayers"]["player".$playerNum]["points"] = $points;
         $output["awayTeam"]["teamPlayers"]["player".$playerNum]["triplePoints"] = $triplePoints;
         $output["awayTeam"]["teamPlayers"]["player".$playerNum]["rebounds"] = $rebounds;

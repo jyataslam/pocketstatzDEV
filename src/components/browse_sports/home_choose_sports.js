@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import axios from "axios";
 import './browse_sports.scss';
 
 
@@ -17,7 +16,7 @@ class BrowseSports extends Component {
                     <div style={collectionStyle} className="collection col s12 m4 offset-m4">
                         <Link href="#" to="/browse/nba" className="grey lighten-2 collection-item">NBA</Link>
                         <br/>
-                        <Link href="#" to="/overwatch" className="grey lighten-2 collection-item">Overwatch</Link>
+                        <Link href="#" to="/browse/nhl" className="grey lighten-2 collection-item">NHL</Link>
                     </div>
                 </div>
             </Fragment>

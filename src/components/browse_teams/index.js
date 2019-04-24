@@ -14,6 +14,13 @@ export default props => {
             <Route path="/nba/:team_id" render={(routingProps) => {
                     return <GameInfo {...routingProps}/>
                 }}/>
+
+            <Route path="/browse/nhl" render={(routingProps) => {
+                    return <TeamList {...routingProps} leagueName = 'nhl'/>
+                }}/>
+            <Route path="/nhl/:team_id" render={(routingProps) => {
+                    return <GameInfo {...routingProps}/>
+                }}/>
         </div>
     )
 }

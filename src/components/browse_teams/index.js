@@ -7,7 +7,10 @@ import './browse.scss';
 export default props => {
     return (
         <div className="browse">
-            <Route path="/browse/nba" exact component={TeamList}/>
+            
+            <Route path="/browse/nba" render={(routingProps) => {
+                    return <TeamList {...routingProps} leagueName = 'nba'/>
+                }}/>
             <Route path="/nba/:team_id" render={(routingProps) => {
                     return <GameInfo {...routingProps}/>
                 }}/>

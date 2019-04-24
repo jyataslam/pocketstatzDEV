@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-class TeamSquare extends Component {
+class Team extends Component {
 
     replaceSpaceWithDash = (str) => {
         let newStr = "";
@@ -17,16 +17,14 @@ class TeamSquare extends Component {
     }
 
     render() {
-        const { checkStats, chooseTeam, id, api_key, team_full_name } = this.props;
-        const teamName = this.replaceSpaceWithDash(team_full_name);
-        const teamLogo = require(`../../assets/images/${teamName}.png`);
-        const fontSize = { "fontSize": "14px" };
-
+        console.log("Team component props", this.props);
+        const { image_url, chooseTeam, id, team_full_name } = this.props;
+        
         return (
             <Fragment>
                 <div className="team-container col s6 m3" >
                     <button className="team-item z-depth-3" onClick={() => { chooseTeam(id) }}>
-                        <img src={teamLogo} />
+                        <img src={`/dist/assets/${image_url}`} />
                     </button>
                 </div>
             </Fragment>
@@ -34,5 +32,5 @@ class TeamSquare extends Component {
     }
 }
 
-export default TeamSquare;
+export default Team;
 

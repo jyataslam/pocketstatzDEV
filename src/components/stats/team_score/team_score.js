@@ -25,6 +25,7 @@ export default ({ team1, team2, gameDetails }) => {
                 <div className="teamName col s6 center">{team2.teamScore}</div>
             </div>
             <div className="center" id="quarter">{
+                //Currently displays Final between quarters. Try using currentIntermission !== null or something
                 (!gameDetails.currentQuarter ? (gameDetails.currentQuarter = "Final", gameDetails.currentQuarter) : gameDetails.currentQuarter)
             }
             </div>

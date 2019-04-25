@@ -1,14 +1,16 @@
 import React, { Component, Fragment } from 'react';
+import ReactDOM from 'react-dom';
 import TeamButton from './team_button/team_button';
 import EmptyHomepage from './empty_homepage';
 import axios from 'axios';
+import Swipeout from 'rc-swipeout';
 
 import './home_team_list.scss';
 
 class HomeTeamList extends Component {
     state = {
         userTeams: [],
-        isLoaded: false
+        isLoaded: false,
     }
 
     componentDidMount() {
@@ -17,8 +19,8 @@ class HomeTeamList extends Component {
 
     async getUserTeams() {
         let localData = localStorage.homeTeamIds;
-        if (localData === undefined){
-            return 
+        if (localData === undefined) {
+            return
         }
         const response = await axios.get("/api/list-user-teams.php", {
             params: {
@@ -31,34 +33,72 @@ class HomeTeamList extends Component {
         });
     }
 
+    deleteUserTeam = async (id) => {
+        let localStorageArr = JSON.parse("[" + localStorage.getItem("homeTeamIds") + "]");
+        var index = localStorageArr.indexOf(id);
+        if (index > -1) {
+            localStorageArr.splice(index, 1);
+            if (localStorageArr.length === 0){
+                localStorage.removeItem('homeTeamIds', index);
+                this.setState({
+                    userTeams: [],
+                    isLoaded: false
+                })
+                return
+            }
+            localStorage.setItem('homeTeamIds', localStorageArr);
+            let newTeamsStr = localStorageArr.toString();
+            const response = await axios.get("/api/list-user-teams.php", {
+                params: {
+                    team_ids: newTeamsStr
+                }
+            });
+            this.setState({
+                userTeams: response.data.user_teams,
+                isLoaded: true
+            });
+        } 
+    }
+
     goToTeamStats = teamID => {
         this.props.history.push(`/nba/${teamID}`);
     }
 
     goToBrowse = () => {
         this.props.history.push("/browse");
-        console.log('clicked');
     }
 
     render() {
         const { isLoaded, userTeams } = this.state;
-        if (isLoaded && userTeams.length > 0) {
-            // console.log('state loaded: ', this.state.userTeams);
+
+        if (isLoaded && userTeams) {
             const homepageTeamList = this.state.userTeams.map((team) => {
-                // console.log(team);
-                return <TeamButton key={team.id} {...team} chooseTeam={this.goToTeamStats} />
+                return (
+                    <Swipeout
+                        right={[
+                            {
+                                text: 'delete',
+                                onPress: () => this.deleteUserTeam(team.id),
+                                style: { backgroundColor: 'red', color: 'white' },
+                                className: 'custom-class-2'
+                            }
+                        ]}
+                        onOpen={() => console.log('open')}
+                        onClose={() => console.log('closed')}
+                        autoClose = 'true'
+                    >
+                        <TeamButton key={team.id} {...team} chooseTeam={this.goToTeamStats} />
+                    </Swipeout>
+                )
             });
             return (
                 <ul>
                     {isLoaded && homepageTeamList}
                 </ul>
             );
-        } else if (userTeams.length === 0){
+        } else if (!isLoaded) {
             return <EmptyHomepage goToBrowse={this.goToBrowse} />
-        } else {
-            console.log('state not loaded: ', this.state.userTeams);
-            return <h1>Loading...</h1>
-        }
+        } 
     }
 }
 

@@ -7,9 +7,8 @@ export default ({ colors, team_full_name, id, chooseTeam, team_code }) => {
         return(
             <div className="container">
                 <div className="row">
-                    <button onClick={() => {chooseTeam(id)}} style={backgroundColor} className="btn btn-large home-team-button col s12">{team_full_name}</button>
+                    <button onClick={() => {chooseTeam(id)}} style={backgroundColor} id="tabs-swipe-demo" className="btn btn-large home-team-button col s12">{team_full_name}</button>
                 </div>
             </div>
-            
         );
 }

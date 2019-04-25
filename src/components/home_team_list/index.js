@@ -31,6 +31,11 @@ class HomeTeamList extends Component {
         });
     }
 
+    // deleteUserTeam = (id) => {
+    //     localStorage.removeItem(id);
+
+    // }
+
     goToTeamStats = teamID => {
         this.props.history.push(`/nba/${teamID}`);
     }
@@ -42,11 +47,10 @@ class HomeTeamList extends Component {
 
     render() {
         const { isLoaded, userTeams } = this.state;
+
         if (isLoaded && userTeams.length > 0) {
-            // console.log('state loaded: ', this.state.userTeams);
             const homepageTeamList = this.state.userTeams.map((team) => {
-                // console.log(team);
-                return <TeamButton key={team.id} {...team} chooseTeam={this.goToTeamStats} />
+                return <TeamButton key={team.id} {...team} chooseTeam={this.goToTeamStats} deleteTeam={this.deleteUserTeam}/>
             });
             return (
                 <ul>
@@ -56,8 +60,7 @@ class HomeTeamList extends Component {
         } else if (userTeams.length === 0){
             return <EmptyHomepage goToBrowse={this.goToBrowse} />
         } else {
-            console.log('state not loaded: ', this.state.userTeams);
-            return <h1>Loading...</h1>
+            return
         }
     }
 }

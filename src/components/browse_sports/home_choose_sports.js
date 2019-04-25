@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import axios from "axios";
 import './browse_sports.scss';
 
 

@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+$scoreFont: 'Roboto', sans-serif;
+
+.players-table{
+    color: white;
+    font-family: $scoreFont;
+
+    #stats-title {
+        font-size: 1em;
+        margin-top: 0px;
+        width: 100%;
+    }
+
+    .player-head-width {
+        width: 20vw;
+    }
+
+    th{
+        font-size: 1em;
+        font-weight: 900;
+    }
+
+    td{
+        font-size: .8em;
+    }
+}
+
+#stats-container {
+    margin: 0 0 20px 0;
+}
+
+tbody {
+    display:block;
+    height:435px;
+    overflow:auto;
+
+    tr {
+        td:first-child {
+            width: 20vw;
+        }
+    }
+}
+thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+thead {
+    width: calc( 100% - 1em )
+}
+table {
+    width:100%;
+}

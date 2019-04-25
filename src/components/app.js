@@ -17,6 +17,7 @@ import '../assets/css/app.scss';
 
 
 class App extends Component {
+
     render() {
         return (
             <div>
@@ -34,7 +35,7 @@ class App extends Component {
                     </Switch>
                 </div>
                 <div className="navbar-fixed">
-                <NavFooter/>
+                    <NavFooter />
                 </div>
             </div>
         )

@@ -25,11 +25,24 @@ if(empty($input['password']))
 $username = $input['username'];
 $password = $input['password'];
 
-
-$username = addslashes($username);
-
 $hashedPassword = sha1($password);
 unset($input['password']);
+
+// check if username already exists here
+$checkUsernameQuery = "SELECT `username` FROM `users` WHERE `username` = '$username'"; 
+
+$checkUsernameResult = mysqli_query($conn, $checkUsernameQuery);
+
+if(!$checkUsernameResult)
+{
+    throw new Exception(mysqli_error($conn));
+}
+if(mysqli_affected_rows($conn) === 1)
+{
+    throw new Exception('That username already exists');
+}
+
+$username = addslashes($username);
 
 $query = "INSERT INTO `users` SET 
 		`username` = '$username',

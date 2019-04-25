@@ -8,21 +8,27 @@ $output = [
     'success' => false
 ];
 
-if(empty($_POST['username']))
+$jsonInput = file_get_contents("php://input");
+
+$input = json_decode($jsonInput, true);
+
+if(empty($input['username']))
 {
     throw new Exception('Username is a required value');
 }
 
-if(empty($_POST['password']))
+if(empty($input['password']))
 {
     throw new Exception('Password is a required value');
 }
 
-$username = $_POST['username'];
-$password = $_POST['password'];
+$username = $input['username'];
+$password = $input['password'];
+
+$username = addslashes($username);
 
 $hashedPassword = sha1($password);
-unset($_POST['password']);
+unset($input['password']);
 
 $query = "SELECT `id`, `username` FROM `users`
     WHERE `username` = '$username' AND `password` = '$hashedPassword'";
@@ -39,16 +45,43 @@ if(mysqli_num_rows($result) !== 1)
     throw new Exception('Invalid username or password');
 }
 
+// $data holds id and username
 $data = mysqli_fetch_assoc($result);
+
+$token = $username . $data['id'] . microtime();
+$token = sha1($token);
+
+$connectQuery = "INSERT INTO `user_connections` SET
+    `token` = '$token',
+    `users_id` =  {$data['id']},
+    `created` = NOW(),
+    `ip_address` = '{$_SERVER['REMOTE_ADDR']}'
+";
+
+$connectResult= mysqli_query($conn, $connectQuery);
+
+if(!$connectResult)
+{
+    throw new Exception(mysqli_error($conn));
+}
+
+if(mysqli_affected_rows($conn) !== 1)
+{
+    throw new Exception('Could not log you in: connection not saved');
+}
+
+$_SESSION['user_data'] = [
+    'id' => $data['id'],
+    'username' => $data['username'],
+    'token' => $token
+];
 
 $output['success'] = true;
 $output['username'] = $data['username'];
+$output['token'] = $token;
 
 $jsonOutput = json_encode($output);
 
 print($jsonOutput);
-
-
-
 
 ?>

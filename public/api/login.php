@@ -12,8 +12,6 @@ $jsonInput = file_get_contents("php://input");
 
 $input = json_decode($jsonInput, true);
 
-
-
 if(empty($input['username']))
 {
     throw new Exception('Username is a required value');
@@ -27,8 +25,10 @@ if(empty($input['password']))
 $username = $input['username'];
 $password = $input['password'];
 
+$username = addslashes($username);
+
 $hashedPassword = sha1($password);
-unset($_POST['password']);
+unset($input['password']);
 
 $query = "SELECT `id`, `username` FROM `users`
     WHERE `username` = '$username' AND `password` = '$hashedPassword'";
@@ -76,8 +76,6 @@ $_SESSION['user_data'] = [
     'token' => $token
 ];
 
-
-
 $output['success'] = true;
 $output['username'] = $data['username'];
 $output['token'] = $token;
@@ -85,8 +83,5 @@ $output['token'] = $token;
 $jsonOutput = json_encode($output);
 
 print($jsonOutput);
-
-
-
 
 ?>

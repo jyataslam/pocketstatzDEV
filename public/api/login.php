@@ -8,18 +8,24 @@ $output = [
     'success' => false
 ];
 
-if(empty($_POST['username']))
+$jsonInput = file_get_contents("php://input");
+
+$input = json_decode($jsonInput, true);
+
+
+
+if(empty($input['username']))
 {
     throw new Exception('Username is a required value');
 }
 
-if(empty($_POST['password']))
+if(empty($input['password']))
 {
     throw new Exception('Password is a required value');
 }
 
-$username = $_POST['username'];
-$password = $_POST['password'];
+$username = $input['username'];
+$password = $input['password'];
 
 $hashedPassword = sha1($password);
 unset($_POST['password']);

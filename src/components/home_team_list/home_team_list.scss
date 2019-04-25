@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     height: 65vh;
+    margin-bottom: -170px;
 
     #symbol {
         font-size: 16rem;
@@ -10,7 +11,6 @@
 }
 
 .main-text {
-    position: absolute;
     bottom: 300px;
     padding: 0 10px;
     opacity: 0.4;

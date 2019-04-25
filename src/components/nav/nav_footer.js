@@ -11,7 +11,7 @@ class NavFooter extends Component {
                 <div className="row" id="frow" style={margin}>
                     <div className="col s12" style={padding}>
                         <ul className="tabs tabs-fixed-width transparent white-text">
-                            <li className="tab col s4 white-text"><Link to="/my-teams" className="active white-text"><i className="material-icons">home</i></Link></li>
+                            <li className="tab col s4 white-text"><Link to="/my-teams" className="white-text"><i className="material-icons">home</i></Link></li>
                             <li className="tab col s4"><Link to="/browse" className="white-text"><i className="material-icons">search</i></Link></li>
                             <li className="tab col s4"><Link to="/log-in" className="white-text"><i className="material-icons">account_circle</i></Link></li>
                         </ul>

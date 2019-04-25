@@ -3,13 +3,10 @@
 // Get cURL resource
 $ch = curl_init();
 
-// Will need to get team abbreviation dynamically
 $team = $_GET['team_name'];
-// print_r($team);
-// exit();
 
 // Set url
-curl_setopt($ch, CURLOPT_URL, "https://api.mysportsfeeds.com/v2.1/pull/nba/latest/games.json?limit=1&status=final&sort=game.starttime.d&team=$team");
+curl_setopt($ch, CURLOPT_URL, "https://api.mysportsfeeds.com/v2.1/pull/nba/latest/games.json?date=until-today&limit=2&sort=game.starttime.d&team=$team");
 
 // Set method
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
@@ -32,6 +29,8 @@ if (!$resp) {
 	die('Error: "' . curl_error($ch) . '" - Code: ' . curl_errno($ch));
 } else {
     $decodedResp = json_decode($resp);
+
+    //if team is not playing in current season (ex: team is not in playoffs), go back further
     if ($decodedResp->games === []) {
         unset($resp, $decodedResp);
         $lastSeason = (date("Y")-1)."-".date("Y");
@@ -39,11 +38,16 @@ if (!$resp) {
         $resp = curl_exec($ch);
         $decodedResp = json_decode($resp);
     }
-    $gameId = $decodedResp->games[0]->schedule->id;
-    $_GET['game_id'] = $gameId;
+
+    //store ID from most recent game in $_GET
+    $_GET['latestGameId'] = $decodedResp->games[0]->schedule->id;
+
+    //if team is in current season, should give 2 most recent IDs, so store the second too
+    if (!empty($decodedResp->games[1])) {
+        $_GET['backupGameId'] = $decodedResp->games[1]->schedule->id;
+    }
+    
     include 'getnbagamestats.php';
 }
-// Close request to clear up some resources
-// curl_close($ch);
 
 ?>

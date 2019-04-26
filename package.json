@@ -27,7 +27,8 @@
     "react-swipe-to-delete-component": "^0.4.0",
     "react-toastify": "^5.1.0",
     "redux": "^4.0.1",
-    "redux-form": "^8.2.0"
+    "redux-form": "^8.2.0",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",

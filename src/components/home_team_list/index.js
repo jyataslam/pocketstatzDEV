@@ -60,8 +60,8 @@ class HomeTeamList extends Component {
         } 
     }
 
-    goToTeamStats = teamID => {
-        this.props.history.push(`/nba/${teamID}`);
+    goToTeamStats = (teamID, leagueName) => {
+        this.props.history.push(`/${leagueName}/${teamID}`);
     }
 
     goToBrowse = () => {
@@ -69,6 +69,7 @@ class HomeTeamList extends Component {
     }
 
     render() {
+        console.log('home team render: ', this.state.userTeams);
         const { isLoaded, userTeams } = this.state;
 
         if (isLoaded && userTeams) {

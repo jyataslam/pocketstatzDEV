@@ -2,6 +2,7 @@ import React from 'react';
 import "./team_score.scss";
 
 export default ({ team1, team2, gameDetails }) => {
+    console.log('game details', gameDetails);
     // use props from rest of score stats when available
 
     return (

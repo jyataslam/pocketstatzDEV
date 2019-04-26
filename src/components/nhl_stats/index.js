@@ -40,8 +40,11 @@ class GameInfo extends Component {
     }
 
     render() {
-        const { view, team1, team2, gameDetails } = this.props;
+        console.log('game props', this.props);
+        const { view, gameStats} = this.props;
+        const { team1, team2 } = gameStats;
         const { showLeft, showRight } = this;
+        console.log('team 1', team1);
 
         if (!this.props.isLoaded) {
             return <LoadingScreen />
@@ -49,7 +52,7 @@ class GameInfo extends Component {
 
         return (
             <Fragment>
-                {<GameScore team1={team1} team2={team2} gameDetails={gameDetails} />}
+                {<GameScore team1={team1} team2={team2} gameDetails={gameStats} />}
                 {<TeamsTab team1={team1} team2={team2} showLeft={showLeft} showRight={showRight} />}
                 {<PlayerStats view={view} team1={team1} team2={team2} />}
             </Fragment>

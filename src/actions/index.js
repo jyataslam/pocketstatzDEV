@@ -46,8 +46,11 @@ export const gameInfo = (props) => async dispatch => {
 }
 
 export const nhlGameInfo = (props) => async dispatch => {
-    const resp = await axios.get(`/api/see-a-specific-team.php?team_id=${props.match.params.team_id}`);g
-    const resp2 = await axios.get(`/api/getnhlgameid.php?team_name=${resp.data.api_key}`);
+    const resp = await axios.get(`/api/see-a-specific-team.php?team_id=${props.match.params.team_id}`);
+    // const resp2 = await axios.get(`/api/getnhlgamestats.json?team_name=${resp.data.api_key}`);
+    
+    // resp2 is currently calling dummy data. use above when endpoint is finished
+    const resp2 = await axios.get(`/api/data/getnhlgamestats.json`);
 
     if (typeof resp2.data === 'object'){
         return dispatch({

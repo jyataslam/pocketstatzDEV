@@ -5,7 +5,13 @@ set_exception_handler('handleError');
 require_once('config.php');
 require_once('mysqlconnect.php');
 
-$user_id = 1;
+// $_SESSION['user_data'] = [
+//     'id' => $data['id'],
+//     'username' => $data['username'],
+//     'token' => $token
+// ];
+
+$user_id = $_SESSION['user_data']['id'];
 
 if(empty($_GET['team_id'])){
 	throw new Exception('You must send a team_id with your request');
@@ -30,20 +36,22 @@ $team_data = mysqli_fetch_assoc($result);
 
 print_r($team_data);
 
-if(empty($_SESSION['homepage_id'])){
-	$homepage_create_query = "INSERT INTO `user_teams` SET 
-		`user_id` = $user_id,
-		`team_id` = $team_id
-	";
-	$homepage_result = mysqli_query($conn, $homepage_create_query);
+if(empty($_SESSION['user_data'])){
+	// $homepage_create_query = "INSERT INTO `user_teams` SET 
+	// 	`user_id` = $user_id,
+	// 	`team_id` = $team_id
+	// ";
+	// $homepage_result = mysqli_query($conn, $homepage_create_query);
+
+	throw new Exception("You need to be logged in to add teams");
 	if(!$homepage_result){
 		throw new Exception(mysqli_error($conn));
 	}
 	if(mysqli_affected_rows($conn)===0){
 		throw new Exception('data was not added to user_teams table');
 	}
-	$homepage_id = mysqli_insert_id($conn);
-	$_SESSION['homepage_id'] = $homepage_id;
+	// $homepage_id = mysqli_insert_id($conn);
+	// $_SESSION['homepage_id'] = $homepage_id;
 } else {
 	$homepage_create_query = "INSERT INTO `user_teams` SET 
 		`user_id` = $user_id,

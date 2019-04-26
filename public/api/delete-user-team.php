@@ -5,14 +5,13 @@ set_exception_handler('handleError');
 require_once('config.php');
 require_once('mysqlconnect.php');
 
-$user_id = 1;
+$user_id = $_SESSION['user_data']['id'];
 
 if(empty($_GET['team_id'])){
 	throw new Exception('You must send a team_id with your request');
 }
 
 $team_id = $_GET['team_id'];
-$user_id = $_GET['user_id'];
 
 $query = "DELETE FROM `user_teams`
     WHERE `user_id` = $user_id AND `team_id` = $team_id";

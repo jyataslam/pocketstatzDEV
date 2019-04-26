@@ -8,14 +8,7 @@ $output = [
     'success' => false
 ];
 
-// if(empty($_SESSION['homepage_id'])){
-//     throw new Exception('Missing homepage id');
-// }
-
-$user_id = 1;
-//the homepage id is created in addteam.php
-$homepage_id = 1;
-// $homepage_id = $_SESSION['homepage_id'];
+$user_id = $_SESSION['user_data']['id'];
 
 $homepage_query = "SELECT 
     u_t.`team_id`,
@@ -23,7 +16,7 @@ $homepage_query = "SELECT
     FROM `users` AS `u`
     JOIN `user_teams` AS `u_t` ON u_t.`user_id` = u.`id`
     JOIN `teams` AS `t` ON t.`id` = u_t.`team_id`
-    WHERE u_t.`user_id` = $homepage_id AND u.`id` = $user_id";
+    WHERE u_t.`user_id` = $user_id AND u.`id` = $user_id";
 
 $homepage_data = mysqli_query($conn, $homepage_query);
 

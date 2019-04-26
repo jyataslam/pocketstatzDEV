@@ -41,8 +41,10 @@ $output = [
     "success" => true,
     "gameDetails" => [
         "gameDate" => $formattedDate,
+        "gameStatus" => $decodedResp->game->playedStatus,
         "currentQuarter" => $decodedResp->scoring->currentQuarter,
-        "quarterTimeRemaining" => $decodedResp->scoring->currentQuarterSecondsRemaining
+        "quarterTimeRemaining" => $decodedResp->scoring->currentQuarterSecondsRemaining,
+        "currentIntermission" => $decodedResp->scoring->currentIntermission
     ],
     "homeTeam" => [
         "teamName" => $decodedResp->game->homeTeam->abbreviation,

@@ -4,6 +4,24 @@ import "./team_score.scss";
 export default ({ team1, team2, gameDetails }) => {
     // use props from rest of score stats when available
 
+    var currentQuarter = "FINAL";
+    if (gameDetails.currentQuarter) {
+        currentQuarter = "Q" + gameDetails.currentQuarter;
+    }
+    if (gameDetails.currentIntermission && gameDetails.playedStatus === "COMPLETED_PENDING_REVIEW") {
+        currentQuarter = "End of Q" + gameDetails.currentIntermission;
+    }
+
+    var minutesRemaining = Math.floor(gameDetails.quarterTimeRemaining / 60);
+    var secondsRemaining = gameDetails.quarterTimeRemaining % 60;
+    var timeRemaining = minutesRemaining + ":" + secondsRemaining;
+    if (secondsRemaining < 10) {
+        secondsRemaining = "0" + secondsRemaining;
+    }
+    if (gameDetails.gameStatus === "COMPLETED" || gameDetails.gameStatus === "COMPLETED_PENDING_REVIEW") {
+        timeRemaining = "";
+    }
+
     return (
         <div className="container" id="team-score">
             <div className="center" id="date">{gameDetails.gameDate}</div>
@@ -24,13 +42,8 @@ export default ({ team1, team2, gameDetails }) => {
                 <div className="teamName col s6 center">{team1.teamScore}</div>
                 <div className="teamName col s6 center">{team2.teamScore}</div>
             </div>
-            <div className="center" id="quarter">{
-                //Currently displays Final between quarters. Try using currentIntermission !== null or something
-                (!gameDetails.currentQuarter ? (gameDetails.currentQuarter = "Final", gameDetails.currentQuarter) : gameDetails.currentQuarter)
-            }
-            </div>
-            {/* quarterTimeRemaining will need to be formatted; divide by 60, add a colon before the last 2 digits? Need to see live data to be sure */}
-            <div className="center" id="time">{gameDetails.quarterTimeRemaining}</div>
+            <div className="center" id="quarter">{currentQuarter}</div>
+            <div className="center" id="time">{timeRemaining}</div>
         </div>
     );
 }

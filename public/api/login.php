@@ -10,7 +10,10 @@ $output = [
 
 $jsonInput = file_get_contents("php://input");
 
+
 $input = json_decode($jsonInput, true);
+
+
 
 if(empty($input['username']))
 {

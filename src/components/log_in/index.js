@@ -1,7 +1,13 @@
 import React, {Component} from 'react';
 import LogInForm from './log_in_form';
 
+
 class LogIn extends Component {
+
+    handleSignIn = (values) =>
+    {
+        
+    }
     render() {
         return (
             <div>

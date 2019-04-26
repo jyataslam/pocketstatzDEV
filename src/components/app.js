@@ -3,6 +3,7 @@ import Nav from './nav';
 import { Route, Switch } from 'react-router-dom';
 import BrowseSports from './browse_sports';
 import BrowseNba from './browse_teams/index';
+import BrowseNhl from './browse_teams/index';
 import HomeTeamList from './home_team_list';
 import LogIn from './log_in';
 import NavFooter from './nav/nav_footer';
@@ -29,6 +30,7 @@ class App extends Component {
                         }} />
                         <Route path="/my-teams" component={HomeTeamList} />
                         <Route path="/nba" component={BrowseNba} />
+                        <Route path="/nhl" component={BrowseNhl} />
                         <Route path="/log-in" component={LogIn} />
                         <Route path="/sign-up" component={SignUp} />
                     </Switch>

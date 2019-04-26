@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import './players_stats.scss';
 
 class PlayerStats extends Component {
+    // teamPlayers => forwards , defensemen, => player
+    // forwards (name, position, goals, assists, shots, shotpercentage)
+    // defensemen (name, position, goals, assists, blokedshots, hits)
+    // goalies (name, position, shots against, goals against, saves, save percentage)
 
     displayPlayersStats(team) {
-        const { teamName, teamPlayers } = team;
+        const { teamPlayers } = team;
         var result = Object.keys(teamPlayers).map(function(key) {
             return teamPlayers[key];
           });

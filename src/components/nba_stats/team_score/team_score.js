@@ -8,7 +8,7 @@ export default ({ team1, team2, gameDetails }) => {
     if (gameDetails.currentQuarter) {
         currentQuarter = "Q" + gameDetails.currentQuarter;
     }
-    if (gameDetails.currentIntermission && gameDetails.playedStatus === "COMPLETED_PENDING_REVIEW") {
+    if (gameDetails.currentIntermission && gameDetails.gameStatus === "COMPLETED_PENDING_REVIEW") {
         currentQuarter = "End of Q" + gameDetails.currentIntermission;
     }
 
@@ -18,6 +18,7 @@ export default ({ team1, team2, gameDetails }) => {
     if (secondsRemaining < 10) {
         secondsRemaining = "0" + secondsRemaining;
     }
+    var timeRemaining = minutesRemaining + ":" + secondsRemaining;
     if (gameDetails.gameStatus === "COMPLETED" || gameDetails.gameStatus === "COMPLETED_PENDING_REVIEW") {
         timeRemaining = "";
     }

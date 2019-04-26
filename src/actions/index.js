@@ -20,6 +20,19 @@ export function loadEnd() {
     }
 }
 
+export const teamList = (props) => async dispatch => {
+    const response = await axios.get(`/api/getteam.php?sport_name=${props.leagueName}`);
+        if (response.data.success) {
+            return dispatch({
+                type: types.RETRIEVE_TEAMS,
+                response: {
+                    isLoaded: true,
+                    teams: response.data.teams
+                }
+            });
+        }
+}
+
 export const gameInfo = (props) => async dispatch => {
     const resp = await axios.get(`/api/see-a-specific-team.php?team_id=${props.match.params.team_id}`);
     const resp2 = await axios.get(`/api/getnbagameid.php?team_name=${resp.data.api_key}`);

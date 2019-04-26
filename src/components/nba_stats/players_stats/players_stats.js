@@ -5,10 +5,11 @@ class PlayerStats extends Component {
 
     displayPlayersStats(team) {
         const { teamName, teamPlayers } = team;
+        console.log("team before map:", team);
         var result = Object.keys(teamPlayers).map(function(key) {
             return teamPlayers[key];
           });
-
+          console.log("result of map:", result);
         const players = result.map((player) => {
             return (
             <tr>

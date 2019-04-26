@@ -1,5 +1,6 @@
 const DEFAULT_STATE = {
-    auth: false
+    auth: false,
+    username: ""
 };
 
 export default (state = DEFAULT_STATE, action) => {
@@ -8,3 +9,4 @@ export default (state = DEFAULT_STATE, action) => {
             return state;
     }
 }
+

@@ -1,7 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import TeamScore from './team_score/team_score';
 import TeamsTab from './teams_tab/teams_tab';
-import axios from 'axios';
 import PlayerStats from './players_stats/players_stats';
 import {connect} from "react-redux";
 import {gameInfo, loadStart, loadEnd} from "../../actions";

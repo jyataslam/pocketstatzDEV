@@ -1,8 +1,11 @@
-import React, {Component, Fragment} from 'react';
-import GameScore from './team_score/game_score';
+import React, { Component, Fragment } from 'react';
+import GameScore from './game_score/game_score';
 import TeamsTab from './teams_tab/teams_tab';
-import axios from 'axios';
 import PlayerStats from './players_stats/players_stats';
+import { connect } from "react-redux";
+import { nhlGameInfo, loadStart, loadEnd } from "../../actions";
+import LoadingScreen from "../loading_screen";
+
 
 class GameInfo extends Component {
 
@@ -12,28 +15,16 @@ class GameInfo extends Component {
         team1: null,
         team2: null,
         gameDetails: null
-    }   
-
-    componentDidMount(){
-        this.getGameStats();  
     }
 
-    getGameStats(){
-        axios.get(`/api/see-a-specific-team.php?team_id=${this.props.match.params.team_id}`).then((resp) => {
-            axios.get(`/api/getnhlgameid.php?team_name=${resp.data.api_key}`).then((resp) => {
-                if (typeof resp.data === 'object'){
-                this.setState({
-                    team1: resp.data.awayTeam,
-                    team2: resp.data.homeTeam,
-                    gameDetails: resp.data.gameDetails,
-                    isLoaded: true
-                });
-                } else {
-                    // make axios call to get last game available from regular season and setState as above
-                    console.log('no team data available');
-                }
-            })
-        });
+    async componentDidMount() {
+        this.props.loadStart();
+        await this.props.nhlGameInfo(this.props);
+        this.props.loadEnd();
+    }
+
+    componentWillUnmount() {
+        this.props.loadStart();
     }
 
     showLeft = () => {
@@ -48,19 +39,31 @@ class GameInfo extends Component {
         });
     }
 
-    render(){
-        const {view, team1, team2, gameDetails, isLoaded} = this.state;
-        const {showLeft, showRight} = this;
-        return(
-            
+    render() {
+        const { view, team1, team2, gameDetails } = this.props;
+        const { showLeft, showRight } = this;
+
+        if (!this.props.isLoaded) {
+            return <LoadingScreen />
+        }
+
+        return (
             <Fragment>
-                {isLoaded && <GameScore team1={team1} team2={team2} gameDetails={gameDetails}/>}
-                {isLoaded && <TeamsTab team1={team1} team2={team2} showLeft={showLeft} showRight={showRight}/>}
-                {isLoaded && <PlayerStats view={view} team1={team1} team2={team2}/>}
-            </Fragment> 
-            
+                {<GameScore team1={team1} team2={team2} gameDetails={gameDetails} />}
+                {<TeamsTab team1={team1} team2={team2} showLeft={showLeft} showRight={showRight} />}
+                {<PlayerStats view={view} team1={team1} team2={team2} />}
+            </Fragment>
+
         );
     }
 }
 
-export default GameInfo;
+function mapStateToProps(state) {
+    console.log(state);
+    return {
+        isLoaded: state.loading.isLoaded,
+        gameStats: state.stats
+    }
+}
+
+export default connect(mapStateToProps, { nhlGameInfo, loadStart, loadEnd })(GameInfo);

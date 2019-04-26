@@ -5,7 +5,6 @@ import BrowseSports from './browse_sports';
 import BrowseNba from './browse_teams/index';
 import HomeTeamList from './home_team_list';
 import LogIn from './log_in';
-import GameInfo from './stats';
 import NavFooter from './nav/nav_footer';
 import SignUp from './sign_up';
 import LandingPage from "./landing_page";

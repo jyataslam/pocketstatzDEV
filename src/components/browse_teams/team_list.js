@@ -3,6 +3,9 @@ import Team from './team';
 import axios from 'axios';
 import Button from './confirm_buttons';
 import { ToastContainer, toast } from 'react-toastify';
+import {connect} from 'react-redux';
+import {teamList, loadStart, loadEnd} from "../../actions";
+import LoadingScreen from "../loading_screen";
 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -23,8 +26,14 @@ class TeamList extends Component {
         draggable: true
     });
 
-    componentDidMount() {
-        this.getTeams();
+    async componentDidMount() {
+        this.props.loadStart();
+        await this.props.teamList(this.props);
+        this.props.loadEnd();
+    }
+
+    componentWillUnmount() {
+        this.props.loadStart();
     }
 
     chooseTeam = (id) => {
@@ -44,17 +53,6 @@ class TeamList extends Component {
             if (savedTeams.length > 3) {
                 console.log('user has three teams');
             }
-        }
-    }
-
-    async getTeams() {
-        const response = await axios.get(`/api/getteam.php?sport_name=${this.props.leagueName}`);
-
-        if (response.data.success) {
-            this.setState({
-                isLoaded: true,
-                teams: response.data.teams
-            });
         }
     }
 
@@ -96,12 +94,17 @@ class TeamList extends Component {
     }
 
     render() {
-        if (this.state.isLoaded) {
-            const teamList = this.state.teams.map((team) => {
+
+        if(!this.props.isLoaded)
+        {
+            return <LoadingScreen />
+        }
+        else
+        {
+            const teamsList = this.props.teams.map((team) => {
                 return <Team key={team.id} {...team} chooseTeam={this.chooseTeam} checkStats={this.checkStats} />
             });
 
-            const { selectedTeams } = this.state;
             const border = { "border": "none" };
 
             return (
@@ -120,14 +123,23 @@ class TeamList extends Component {
                         </div>
                         <Button goToMyTeams={this.goToMyTeams} checkNumberOfSavedTeams={this.checkNumberOfSavedTeams} />
                         <div style={border}>
-                            {teamList}
+                            {teamsList}
                         </div>
                     </div>
                 </div>
             )
         }
-        return (null);
     }
 }
 
-export default TeamList;
+function mapStateToProps(state)
+{
+    return{
+        isLoaded: state.loading.isLoaded,
+        teams: state.listOfTeams.teams
+    }
+}
+
+export default connect(mapStateToProps, {
+    teamList, loadStart, loadEnd
+})(TeamList);

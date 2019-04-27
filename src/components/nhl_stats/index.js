@@ -54,13 +54,11 @@ class GameInfo extends Component {
                 {<TeamsTab team1={team1} team2={team2} showLeft={showLeft} showRight={showRight} />}
                 {<PlayerStats view={view} team1={team1} team2={team2} />}
             </Fragment>
-
         );
     }
 }
 
 function mapStateToProps(state) {
-    console.log(state);
     return {
         isLoaded: state.loading.isLoaded,
         gameStats: state.stats

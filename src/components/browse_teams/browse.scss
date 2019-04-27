@@ -49,10 +49,24 @@ img{
         border-radius: 10px;
         padding: 0 16px;
         
-
         @media screen and (min-width: $break-large) {
             width: 150px;
             height: 150px;
         }
     }
+
+    .team-item-clicked {
+        height: 110px;
+        width: 110px;
+        margin: 10% 0;
+        text-decoration: none;
+        outline: 0;
+        color: #fff;
+        letter-spacing: .5px;
+        line-height: 15px;
+        border-radius: 10px;
+        padding: 0 16px;
+        opacity: 0.3;
+    }
 }
+

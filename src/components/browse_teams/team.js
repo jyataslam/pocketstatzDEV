@@ -2,10 +2,6 @@ import React, { Component, Fragment } from 'react';
 
 class Team extends Component {
 
-    componentDidMount(){
-
-    }
-
     replaceSpaceWithDash = (str) => {
         let newStr = "";
 

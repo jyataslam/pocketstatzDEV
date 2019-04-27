@@ -22,7 +22,7 @@ class PlayerStats extends Component {
             )
         })
         return (
-            <div className="players-table">
+            <div className="players-table nba-stats">
                 <table className="striped">
                     <thead id="stats-title">
                         <tr>

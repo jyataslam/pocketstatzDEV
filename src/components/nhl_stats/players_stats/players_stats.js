@@ -58,8 +58,10 @@ class PlayerStats extends Component {
         })
         
         return (
-            <div className="players-table">
+            <div className="players-table nhl-stats">
                 <table className="striped">
+                {/* maybe a divider on top? different color? let me know your thoughts */}
+                <div class="divider nhl-divider"></div>
                     <thead id="stats-title">
                         <tr>
                             <th className="player-head-width">Forwards</th>
@@ -73,9 +75,10 @@ class PlayerStats extends Component {
                     <tbody>
                        {forwardsStats}
                     </tbody>
+                    <div class="divider nhl-divider"></div>
                     <thead id="stats-title">
                         <tr>
-                            <th className="player-head-width">Defensemen</th>
+                            <th className="player-head-width">Defense</th>
                             <th>POS</th>
                             <th>G</th>
                             <th>AST</th>
@@ -86,6 +89,7 @@ class PlayerStats extends Component {
                     <tbody>
                        {defensemenStats}
                     </tbody>
+                    <div class="divider nhl-divider"></div>
                     <thead id="stats-title">
                         <tr>
                             <th className="player-head-width">Goalies</th>

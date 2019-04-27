@@ -10,7 +10,7 @@ class PlayerStats extends Component {
         });
         const players = result.map((player) => {
             return (
-            <tr>
+            <tr key={player.id}>
                 <td>{player.name}</td>
                 <td>{player.position}</td>
                 <td>{player.points}</td>

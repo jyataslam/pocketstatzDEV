@@ -20,7 +20,7 @@ class PlayerStats extends Component {
         
         const forwardsStats = forwardsArray.map((player) => {
             return (
-            <tr>
+            <tr key={player.id}>
                 <td>{player.name}</td>
                 <td>{player.position}</td>
                 <td>{player.goals}</td>
@@ -33,7 +33,7 @@ class PlayerStats extends Component {
 
         const defensemenStats = defensemenArray.map((player) => {
             return (
-            <tr>
+            <tr key={player.id}>
                 <td>{player.name}</td>
                 <td>{player.position}</td>
                 <td>{player.goals}</td>
@@ -46,7 +46,7 @@ class PlayerStats extends Component {
 
         const goaliesStats = goaliesArray.map((player) => {
             return (
-            <tr>
+            <tr key={player.id}>
                 <td>{player.name}</td>
                 <td>{player.position}</td>
                 <td>{player.shotsAgainst}</td>
@@ -60,8 +60,6 @@ class PlayerStats extends Component {
         return (
             <div className="players-table nhl-stats">
                 <table className="striped">
-                {/* maybe a divider on top? different color? let me know your thoughts */}
-                <div class="divider nhl-divider"></div>
                     <thead id="stats-title">
                         <tr>
                             <th className="player-head-width">Forwards</th>
@@ -75,7 +73,7 @@ class PlayerStats extends Component {
                     <tbody>
                        {forwardsStats}
                     </tbody>
-                    <div class="divider nhl-divider"></div>
+                    <div className="divider nhl-divider"></div>
                     <thead id="stats-title">
                         <tr>
                             <th className="player-head-width">Defense</th>
@@ -89,7 +87,7 @@ class PlayerStats extends Component {
                     <tbody>
                        {defensemenStats}
                     </tbody>
-                    <div class="divider nhl-divider"></div>
+                    <div className="divider nhl-divider"></div>
                     <thead id="stats-title">
                         <tr>
                             <th className="player-head-width">Goalies</th>

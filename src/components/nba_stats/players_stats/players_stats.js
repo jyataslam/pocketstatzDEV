@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import './players_stats.scss';
+import './nba_players_stats.scss';
 
 class PlayerStats extends Component {
 
     displayPlayersStats(team) {
-        const { teamName, teamPlayers } = team;
-        console.log("team before map:", team);
+        const { teamPlayers } = team;
         var result = Object.keys(teamPlayers).map(function(key) {
             return teamPlayers[key];
-          });
-          console.log("result of map:", result);
+        });
         const players = result.map((player) => {
             return (
             <tr>

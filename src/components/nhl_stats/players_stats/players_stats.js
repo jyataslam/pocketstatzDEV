@@ -1,47 +1,103 @@
 import React, { Component } from 'react';
-import './players_stats.scss';
+import './nhl_players_stats.scss';
 
 class PlayerStats extends Component {
-    // teamPlayers => forwards , defensemen, => player
-    // forwards (name, position, goals, assists, shots, shotpercentage)
-    // defensemen (name, position, goals, assists, blokedshots, hits)
-    // goalies (name, position, shots against, goals against, saves, save percentage)
 
     displayPlayersStats(team) {
-        const { teamPlayers } = team;
-        var result = Object.keys(teamPlayers).map(function(key) {
-            return teamPlayers[key];
-          });
+        const { teamPlayers: {forwards, defensemen, goalies} } = team;
 
-        const players = result.map((player) => {
+        var forwardsArray = Object.keys(forwards).map(function(key) {
+            return forwards[key];
+        });
+
+        var defensemenArray = Object.keys(defensemen).map(function(key) {
+            return defensemen[key];
+        });
+
+        var goaliesArray = Object.keys(goalies).map(function(key) {
+            return goalies[key];
+        });
+        
+        const forwardsStats = forwardsArray.map((player) => {
             return (
             <tr>
                 <td>{player.name}</td>
                 <td>{player.position}</td>
-                <td>{player.points}</td>
-                <td>{player.triplePoints}</td>
-                <td>{player.rebounds}</td>
+                <td>{player.goals}</td>
                 <td>{player.assists}</td>
-                <td>{player.steals}</td>
+                <td>{player.shots}</td>
+                <td>{player.shotPercentage}</td>
             </tr>
             )
         })
+
+        const defensemenStats = defensemenArray.map((player) => {
+            return (
+            <tr>
+                <td>{player.name}</td>
+                <td>{player.position}</td>
+                <td>{player.goals}</td>
+                <td>{player.assists}</td>
+                <td>{player.blockedShots}</td>
+                <td>{player.hits}</td>
+            </tr>
+            )
+        })
+
+        const goaliesStats = goaliesArray.map((player) => {
+            return (
+            <tr>
+                <td>{player.name}</td>
+                <td>{player.position}</td>
+                <td>{player.shotsAgainst}</td>
+                <td>{player.goalsAgainst}</td>
+                <td>{player.saves}</td>
+                <td>{player.savePercentage}</td>
+            </tr>
+            )
+        })
+        
         return (
             <div className="players-table">
                 <table className="striped">
                     <thead id="stats-title">
                         <tr>
-                            <th className="player-head-width">Player</th>
+                            <th className="player-head-width">Forwards</th>
                             <th>POS</th>
-                            <th>PTS</th>
-                            <th>3PTS</th>
-                            <th>RBS</th>
+                            <th>G</th>
                             <th>AST</th>
-                            <th>STL</th>
+                            <th>S</th>
+                            <th>S%</th>
                         </tr>
                     </thead>
                     <tbody>
-                       {players}
+                       {forwardsStats}
+                    </tbody>
+                    <thead id="stats-title">
+                        <tr>
+                            <th className="player-head-width">Defensemen</th>
+                            <th>POS</th>
+                            <th>G</th>
+                            <th>AST</th>
+                            <th>BS</th>
+                            <th>HT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       {defensemenStats}
+                    </tbody>
+                    <thead id="stats-title">
+                        <tr>
+                            <th className="player-head-width">Goalies</th>
+                            <th>POS</th>
+                            <th>SA</th>
+                            <th>GA</th>
+                            <th>SV</th>
+                            <th>SV%</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       {goaliesStats}
                     </tbody>
                 </table>
             </div>

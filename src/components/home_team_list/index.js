@@ -14,10 +14,13 @@ class HomeTeamList extends Component {
     }
 
     componentDidMount() {
-        this.getUserTeams();
+        //call login status ednpoint to determine login or not
+        this.checkUserLoggedIn();
+        //add contitional to render either local or db
+        // this.getUserTeams();
     }
 
-    async getUserTeams() {
+    async getGuestUserTeams() {
         let localData = localStorage.homeTeamIds;
         if (localData === undefined) {
             return
@@ -31,6 +34,29 @@ class HomeTeamList extends Component {
             userTeams: response.data.user_teams,
             isLoaded: true
         });
+    }
+
+    async getUserTeamsFromDb(userId){
+        const resp = await axios.get(`/api/gethomepageteams.php?user_id=${userId}`);
+        console.log("respone from db is:", resp);
+        this.setState({
+            userTeams: resp.data.homepage_items,
+            isLoaded: true
+        });
+    }
+
+    async checkUserLoggedIn(){
+        const resp = await axios.get(`api/login-status.php`);
+        console.log("user logged in? resp:", resp);
+        
+        const {success, user_id} = resp.data; 
+        if(success)
+        {
+            this.getUserTeamsFromDb(user_id)
+        }
+        else{
+            this.getGuestUserTeams();
+        }
     }
 
     deleteUserTeam = async (id) => {
@@ -92,6 +118,7 @@ class HomeTeamList extends Component {
                     </Swipeout>
                 )
             });
+
             return (
                 <ul>
                     {isLoaded && homepageTeamList}

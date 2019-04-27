@@ -5,7 +5,8 @@ require_once('config.php');
 require_once('mysqlconnect.php');
 
 $output = [
-    'success' => false
+    'success' => false,
+    'user_id' => ''
 ];
 
 if(!empty($_SESSION['user_data']))
@@ -41,8 +42,6 @@ if(mysqli_num_rows($loginResult) !== 1)
 
 $data = mysqli_fetch_assoc($loginResult);
 
-$output['success'] = true;
-
 if(!empty($_SESSION['user_data']))
 {
     $_SESSION['user_data'] = [
@@ -50,6 +49,9 @@ if(!empty($_SESSION['user_data']))
         'token' => $token
     ];
 }
+
+$output['success'] = true;
+$output['user_id'] = $_SESSION['user_data']['id'];
 
 $jsonOutput = json_encode($output);
 

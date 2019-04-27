@@ -3,15 +3,22 @@ import "./team_score.scss";
 
 export default ({ team1, team2, gameDetails }) => {
     // use props from rest of score stats when available
-    // needs more error handling (NBA too?); displays FINAL between periods and when tied after 3rd period
-    // also displays "P4" during overtime
+    // may need condition for just after a game ends:
+      // if status="COMPLETED_PENDING_REVIEW", display FINAL (same for nba)
     
     var currentPeriod = "FINAL";
+
     if (gameDetails.currentPeriod) {
         currentPeriod = "P" + gameDetails.currentPeriod;
     }
-    if (gameDetails.currentIntermission && gameDetails.gameStatus === "COMPLETED_PENDING_REVIEW") {
+    if (gameDetails.currentPeriod > 3) {
+        currentPeriod = "OT" + (gameDetails.currentPeriod - 3);
+    }
+    if (gameDetails.currentIntermission) {
         currentPeriod = "End of P" + gameDetails.currentIntermission;
+    }
+    if (gameDetails.currentIntermission > 3) {
+        currentPeriod = "End of OT" + (gameDetails.currentIntermission - 3);
     }
 
     var minutesRemaining = Math.floor(gameDetails.periodTimeRemaining / 60);

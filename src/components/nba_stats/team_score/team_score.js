@@ -5,11 +5,18 @@ export default ({ team1, team2, gameDetails }) => {
     // use props from rest of score stats when available
 
     var currentQuarter = "FINAL";
+
     if (gameDetails.currentQuarter) {
         currentQuarter = "Q" + gameDetails.currentQuarter;
     }
-    if (gameDetails.currentIntermission && gameDetails.gameStatus === "COMPLETED_PENDING_REVIEW") {
+    if (gameDetails.currentQuarter > 4) {
+        currentQuarter = "OT" + (gameDetails.currentQuarter - 4);
+    }
+    if (gameDetails.currentIntermission) {
         currentQuarter = "End of Q" + gameDetails.currentIntermission;
+    }
+    if (gameDetails.currentIntermission > 4) {
+        currentQuarter = "End of OT" + (gameDetails.currentIntermission - 4);
     }
 
     var minutesRemaining = Math.floor(gameDetails.quarterTimeRemaining / 60);

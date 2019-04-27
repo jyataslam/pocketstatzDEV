@@ -43,6 +43,7 @@ class TeamList extends Component {
         if (localStorage.getItem("homeTeamIds") !== null) {
             let currentHomeTeams = JSON.parse("[" + localStorage.getItem("homeTeamIds") + "]");
             if (currentHomeTeams.length === 3) {
+                console.log(currentHomeTeams);
                 this.alert();
             }
         }
@@ -72,34 +73,32 @@ class TeamList extends Component {
         });
 
         let homeTeamsIds = [];
+        let currentLength = null;
 
         if (localStorage.getItem("homeTeamIds") !== null) {
             homeTeamsIds = JSON.parse("[" + localStorage.getItem("homeTeamIds") + "]");
+            currentLength = homeTeamsIds.length;
         }
 
         for (var index = 0; index < homeTeamsResponse.data.user_teams.length; index++) {
-            homeTeamsIds.push(homeTeamsResponse.data.user_teams[index].id);
+            //prevents the user from adding duplicate teams
+            if(!homeTeamsIds.includes(homeTeamsResponse.data.user_teams[index].id)){
+                homeTeamsIds.push(homeTeamsResponse.data.user_teams[index].id);
+            }
             if (localStorage.getItem("homeTeamIds") === null) {
                 localStorage.setItem("homeTeamIds", homeTeamsIds);
             }
         }
 
         //if their array is longer than three teams and they're not signed in, it'll cut them off at three and trigger the toast
-        // if (homeTeamsIds.length > 3) {
-        //     this.notify();
-        //     homeTeamsIds.length = 3;
-        // } else {
-        //     localStorage.homeTeamIds = homeTeamsIds.toString();
-        //     this.props.history.push(`/my-teams`);
-        // }
-
-        if (homeTeamsIds.length < 2) {
+        if (homeTeamsIds.length > 3) {
+            this.notify();
+            homeTeamsIds.length = currentLength;
+        } else {
             localStorage.homeTeamIds = homeTeamsIds.toString();
             this.props.history.push(`/my-teams`);
-        } else {
-            this.notify();
-            homeTeamIds.length = 3;
         }
+
     }
 
     checkStats = (id) => {

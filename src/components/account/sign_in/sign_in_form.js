@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from "axios";
-import "./log_in.scss";
+import "./sign_in_form.scss";
 
 
-class LogInForm extends Component{
+class SignInForm extends Component{
     
     state = {
         username: "",
@@ -71,4 +71,4 @@ class LogInForm extends Component{
     }
 }
 
-export default LogInForm;
+export default SignInForm;

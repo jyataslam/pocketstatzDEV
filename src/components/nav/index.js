@@ -20,11 +20,11 @@ class Nav extends Component {
                 </li>
                 <li><div className="divider red"></div></li>
                 <li className="sidenav-close">
-                    <Link to="/log-in">Log In</Link>
+                    <Link to="/account/sign-in">Sign-In</Link>
                 </li>
                 <li><div className="divider red"></div></li>
                 <li className="sidenav-close">
-                    <Link to="/sign-up">Sign Up</Link>
+                    <Link to="/account/sign-up">Sign Up</Link>
                 </li>
                 <li><div className="divider red"></div></li>
                 <li className="sidenav-close">

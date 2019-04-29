@@ -16,7 +16,7 @@ class Nav extends Component {
         guestLinks: [
             {
                 to: "/account/sign-in",
-                text: "Sign In"
+                text: "Log In"
             },
             {
                 to: "/account/sign-up",
@@ -27,9 +27,12 @@ class Nav extends Component {
 
     buildLinks(link){
         return(
+            <Fragment>
             <li key={link.to} className="sidenav-close">
                 <Link to={link.to}>{link.text}</Link>
             </li>
+            <li><div className="divider red"></div></li>
+            </Fragment>
         );
     }
     
@@ -69,7 +72,6 @@ class Nav extends Component {
                 <li className="sidenav-close">
                     <Link to="/account/sign-up">Sign Up</Link>
                 </li> */}
-                <li><div className="divider red"></div></li>
                 <li className="sidenav-close">
                     <Link to="/about">About Us</Link>
                 </li>

@@ -18,13 +18,23 @@ class Team extends Component {
     }
 
     render() {
-        console.log(this.props);
-        const { image_url, chooseTeam, id } = this.props;
-        
+        const { image_url, chooseTeam, id, selected } = this.props;
+
+        if (selected) {
+            return (
+                <Fragment>
+                    <div className="team-container col s6 m3" >
+                        <button className="team-item-clicked z-depth-3" onClick={() => { chooseTeam(id) }}>
+                            <img src={`/dist/assets/${image_url}`} />
+                        </button>
+                    </div>
+                </Fragment>
+            )
+        }
         return (
             <Fragment>
                 <div className="team-container col s6 m3" >
-                    <button className="team-item z-depth-3" onClick={() => { chooseTeam(id)}}>
+                    <button className="team-item z-depth-3" onClick={() => { chooseTeam(id) }}>
                         <img src={`/dist/assets/${image_url}`} />
                     </button>
                 </div>
@@ -33,7 +43,7 @@ class Team extends Component {
     }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {
         clicked: state.listOfTeams.clicked
     }

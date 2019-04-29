@@ -14,10 +14,7 @@ class HomeTeamList extends Component {
     }
 
     componentDidMount() {
-        //call login status ednpoint to determine login or not
         this.checkUserLoggedIn();
-        //add contitional to render either local or db
-        // this.getUserTeams();
     }
 
     async getGuestUserTeams() {
@@ -30,6 +27,7 @@ class HomeTeamList extends Component {
                 team_ids: localData
             }
         });
+        console.log("response from local storage", response);
         this.setState({
             userTeams: response.data.user_teams,
             isLoaded: true
@@ -95,11 +93,10 @@ class HomeTeamList extends Component {
     }
 
     render() {
-        console.log('home team render: ', this.state.userTeams);
         const { isLoaded, userTeams } = this.state;
 
         if (isLoaded && userTeams) {
-            const homepageTeamList = this.state.userTeams.map((team) => {
+            const homepageTeamList = userTeams.map((team) => {
                 return (
                     <Swipeout
                         right={[

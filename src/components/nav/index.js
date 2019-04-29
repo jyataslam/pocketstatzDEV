@@ -27,7 +27,7 @@ class Nav extends Component {
 
     buildLinks(link){
         return(
-            <li key={link.to }>
+            <li key={link.to} className="sidenav-close">
                 <Link to={link.to}>{link.text}</Link>
             </li>
         );

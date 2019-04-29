@@ -10,6 +10,7 @@ import NavFooter from './nav/nav_footer';
 import SignUp from './sign_up';
 import LandingPage from "./landing_page";
 import LoadingScreen from "./loading_screen";
+import About from './about_page';
 
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize.min';
@@ -33,6 +34,7 @@ class App extends Component {
                         <Route path="/nhl" component={BrowseNhl} />
                         <Route path="/log-in" component={LogIn} />
                         <Route path="/sign-up" component={SignUp} />
+                        <Route path="/about" component={About} />
                     </Switch>
                 </div>
                 <div className="navbar-fixed">

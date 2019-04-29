@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black');
+
+$nameFont: 'Archivo Black', sans-serif;
+
+.team-card {
+    margin-top: 5%;
+    
+    h3 {
+        font-family: $nameFont;
+        text-transform: uppercase;
+        color: darkslategray;
+        margin: 2% 0;
+    }
+
+    .team-link {
+        margin: 0 3%;
+    }
+
+    img {
+        margin-top: 2%;
+    }
+}

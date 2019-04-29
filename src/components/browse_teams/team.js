@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { teamList } from "../../actions";
 
 class Team extends Component {
-
     replaceSpaceWithDash = (str) => {
         let newStr = "";
 
@@ -17,7 +18,8 @@ class Team extends Component {
     }
 
     render() {
-        const { image_url, chooseTeam, id, team_full_name } = this.props;
+        console.log(this.props);
+        const { image_url, chooseTeam, id } = this.props;
         
         return (
             <Fragment>
@@ -31,5 +33,13 @@ class Team extends Component {
     }
 }
 
-export default Team;
+function mapStateToProps(state){
+    return {
+        clicked: state.listOfTeams.clicked
+    }
+}
+
+export default connect(mapStateToProps, {
+    teamList
+})(Team);
 

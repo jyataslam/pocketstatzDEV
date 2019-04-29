@@ -3,7 +3,8 @@ import types from '../actions/types';
 const DEFAULT_STATE = {
     isLoaded: false,
     teams: null,
-    selectedTeams: []
+    selectedTeams: [],
+    clicked: false
 };
 
 export default (state = DEFAULT_STATE, action) => {

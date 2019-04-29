@@ -13,7 +13,8 @@ class TeamList extends Component {
     state = {
         isLoaded: false,
         teams: null,
-        selectedTeams: []
+        selectedTeams: [],
+        clicked: false
     }
 
     notify = async () => toast.error('Please log in or sign up to add more than three teams to your list.', {
@@ -59,7 +60,8 @@ class TeamList extends Component {
             return
         } else {
             this.setState({
-                selectedTeams: [...selectedTeams, id]
+                selectedTeams: [...selectedTeams, id],
+                clicked: true
             });
         }
     }
@@ -98,7 +100,6 @@ class TeamList extends Component {
             localStorage.homeTeamIds = homeTeamsIds.toString();
             this.props.history.push(`/my-teams`);
         }
-
     }
 
     checkStats = (id) => {
@@ -106,7 +107,6 @@ class TeamList extends Component {
     }
 
     render() {
-
         if (!this.props.isLoaded) {
             return <LoadingScreen />
         }

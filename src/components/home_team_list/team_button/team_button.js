@@ -9,7 +9,7 @@ export default (props) => {
         return(
             <div className="container">
                 <div className="row">
-                    <button onClick={() => {chooseTeam(team_id || id, league_name)}} style={backgroundColor} id="tabs-swipe-demo" className="btn btn-large home-team-button col s12">{team_full_name}</button>
+                    <button onClick={() => {chooseTeam(id, league_name)}} style={backgroundColor} className="btn btn-large home-team-button col s12">{team_full_name}</button>
                 </div>
             </div>
         );

@@ -1,11 +1,53 @@
 import React, {Component, Fragment} from 'react';
 import { Link } from 'react-router-dom';
+import {connect} from 'react-redux';
 import Sidenav from './sidenav';
 import './nav.scss';
 
 class Nav extends Component {
+
+    state= {
+        authLinks: [
+            {
+                to: "/account/sign-out",
+                text: "Sign Out"
+            }
+        ],
+        guestLinks: [
+            {
+                to: "/account/sign-in",
+                text: "Sign In"
+            },
+            {
+                to: "/account/sign-up",
+                text: "Sign Up"
+            }
+        ]
+    };
+
+    buildLinks(link){
+        return(
+            <li key={link.to} className="sidenav-close">
+                <Link to={link.to}>{link.text}</Link>
+            </li>
+        );
+    }
     
     renderLinks(){
+
+        const {userAuth} = this.props;
+        const {authLinks, guestLinks} = this.state;
+        let navLinks = null;
+
+        if(userAuth)
+        {
+            navLinks = authLinks.map(this.buildLinks);
+        }
+        else
+        {
+            navLinks = guestLinks.map(this.buildLinks); 
+        }
+
         return (
             <Fragment>
                 <button className="sidenav-close right hide-on-med-and-up">
@@ -19,13 +61,14 @@ class Nav extends Component {
                     <Link to="/browse">Browse</Link>
                 </li>
                 <li><div className="divider red"></div></li>
-                <li className="sidenav-close">
+                {navLinks}
+                {/* <li className="sidenav-close">
                     <Link to="/account/sign-in">Sign-In</Link>
                 </li>
                 <li><div className="divider red"></div></li>
                 <li className="sidenav-close">
                     <Link to="/account/sign-up">Sign Up</Link>
-                </li>
+                </li> */}
                 <li><div className="divider red"></div></li>
                 <li className="sidenav-close">
                     <Link to="/about">About Us</Link>
@@ -57,4 +100,10 @@ class Nav extends Component {
     }
 }
 
-export default Nav;
+function mapStateToProps(state){
+    return {  
+        userAuth: state.user.auth
+    }
+}
+
+export default connect(mapStateToProps)(Nav);

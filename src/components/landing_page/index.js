@@ -9,10 +9,10 @@ export default props => {
             <div className="divider"></div>
             <p className="center">Get the latest stats from your favorite sport teams</p>
             <div className="row">
-                <Link to="/log-in" className="center btn  col s4 offset-s1 hide-on-med-and-up grey darken-3">Login</Link>                
-                <Link to="/log-in" className="center btn col s4 offset-s2 hide-on-med-and-up grey darken-3">Sign-up</Link>               
-                <Link to="/log-in" className="center btn btn-large col m3 offset-m3 hide-on-small-only grey darken-3">Login</Link>
-                <Link to="/log-in" className="center btn btn-large col  m3 hide-on-small-only grey darken-3">Sign-up</Link>
+                <Link to="/account/sign-in" className="center btn  col s4 offset-s1 hide-on-med-and-up grey darken-3">Sign In</Link>                
+                <Link to="/account/sign-up" className="center btn col s4 offset-s2 hide-on-med-and-up grey darken-3">Sign Up</Link>               
+                <Link to="/account/sign-in" className="center btn btn-large col m3 offset-m3 hide-on-small-only grey darken-3">Sign In</Link>
+                <Link to="/account/sign-up" className="center btn btn-large col  m3 hide-on-small-only grey darken-3">Sign Up</Link>
             </div>
 
             <div className="row">

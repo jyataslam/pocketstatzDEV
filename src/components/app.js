@@ -8,6 +8,7 @@ import HomeTeamList from './home_team_list';
 import NavFooter from './nav/nav_footer';
 import LandingPage from "./landing_page";
 import LoadingScreen from "./loading_screen";
+import About from './about_page';
 import AccountRoutes from "./account";
 
 import 'materialize-css/dist/css/materialize.min.css';
@@ -30,6 +31,9 @@ class App extends Component {
                         <Route path="/my-teams" component={HomeTeamList} />
                         <Route path="/nba" component={BrowseNba} />
                         <Route path="/nhl" component={BrowseNhl} />
+                        <Route path="/log-in" component={LogIn} />
+                        <Route path="/sign-up" component={SignUp} />
+                        <Route path="/about" component={About} />
                         <Route path="/account" component={AccountRoutes} />
                     </Switch>
                 </div>

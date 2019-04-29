@@ -1,74 +1,38 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
-import axios from "axios";
+import {reduxForm, Field} from "redux-form";
+import Input from "../../general/input";
 import "./sign_in_form.scss";
 
 
-class SignInForm extends Component{
-    
-    state = {
-        username: "",
-        password: ""
-    };
+const SignInForm = props => {
+    // console.log("Sign in form props:", props);
+    const {handleSubmit, signIn} = props;
+    return(
+        <form onSubmit={handleSubmit(signIn)}>
+            <div className="row">
 
-    handleUsernameChange = (event) =>
-    {
-        this.setState({
-            username: event.target.value
-        });
-    }
-
-    handlePasswordChange = (event) => 
-    {
-        this.setState({
-            password: event.target.value
-        });
-    }
-
-    handleSubmit = (event) => { 
-        const user = {
-            username: this.state.username,
-            password: this.state.password
-        };
-
-        axios.post(`/api/login.php`, user).then(resp => {
-            console.log("repsonse:", resp);
-            if(resp.data.success)
-            {
-                console.log(`${resp.data.username} Logged in!`);
-            }
-            else
-            {
-                console.log(resp.data.error);
-            }
-        });
-        event.preventDefault();
-    }
-    
-    render()
-    {
-        return(
-            <form onSubmit={this.handleSubmit}>
-                <div className="row">
-                    <div className="input-field col s12 m6 offset-m3">
-                        <input id="username" type="text" value={this.state.username} onChange={this.handleUsernameChange}/>
-                        <label htmlFor="username">Username</label>
-                    </div>
-                    <div className="input-field col s12 m6 offset-m3">
-                        <input id="password" type="password" value={this.state.password} onChange={this.handlePasswordChange}/>
-                        <label htmlFor="password">Password</label>
-                    </div>
+                <div className= "col s12 m6 offset-m3">
+                    <Field id="username" name="username" label="username" component={Input}/>
                 </div>
-                <div className="row center">
-                    <Link to="/sign-up">No account? Create one here!</Link>
-                </div>
-                <div className="row">
-                    <button type ="submit" className="btn green col s12 m4 offset-m4">Log In</button>
-                </div>
-            </form>
-        );
 
-    }
+                <div className="col s12 m6 offset-m3">
+                    <Field id="password" name="password" type="password" label ="password" component={Input}/>
+                </div>
+
+            </div>
+            <div className="row center">
+                <Link to="/account/sign-up">No account? Create one here!</Link>
+            </div>
+            <div className="row">
+                <button type ="submit" className="btn green col s12 m4 offset-m4">Log In</button>
+            </div>
+        </form>
+    );
 }
 
-export default SignInForm;
+export default reduxForm({
+    form: "sign-in-form"
+})(SignInForm);
+
+

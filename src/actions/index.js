@@ -1,6 +1,7 @@
 import axios from 'axios';
 import types from './types';
 
+
 export function loadStart() {
     return {
         type: types.LOAD_START
@@ -10,6 +11,25 @@ export function loadStart() {
 export function loadEnd() {
     return {
         type: types.LOAD_END
+    }
+}
+
+export const signIn = (user) => async dispatch => {
+    const response = await axios.post(`/api/login.php`, user);
+    if(response.data.success)
+    {
+        console.log(`${response.data.username} Logged in!`);
+        return dispatch({
+            type: types.SIGN_IN_USER,
+            response: {
+                auth: true,
+                username: response.data.username
+            }
+        })
+    }
+    else
+    {
+        console.log(response.data.error);
     }
 }
 

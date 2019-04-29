@@ -56,10 +56,17 @@ class TeamList extends Component {
     chooseTeam = (id) => {
         const { selectedTeams } = this.state;
         if (selectedTeams.includes(id)) {
-            return
+            const teamsArray = [...this.state.selectedTeams];
+            const index = teamsArray.indexOf(id);
+            teamsArray.splice(index, 1);
+            this.setState({
+                selectedTeams: teamsArray,
+                clicked: false
+            });
         } else {
             this.setState({
-                selectedTeams: [...selectedTeams, id]
+                selectedTeams: [...selectedTeams, id],
+                clicked: true
             });
         }
     }
@@ -98,7 +105,6 @@ class TeamList extends Component {
             localStorage.homeTeamIds = homeTeamsIds.toString();
             this.props.history.push(`/my-teams`);
         }
-
     }
 
     checkStats = (id) => {
@@ -106,15 +112,17 @@ class TeamList extends Component {
     }
 
     render() {
-
         if (!this.props.isLoaded) {
             return <LoadingScreen />
         }
         else {
+            console.log(this.state.selectedTeams);
             const teamsList = this.props.teams.map((team) => {
+                if (this.state.selectedTeams.includes(team.id)) {
+                    return <Team key={team.id} {...team} chooseTeam={this.chooseTeam} checkStats={this.checkStats} selected={true} />
+                }
                 return <Team key={team.id} {...team} chooseTeam={this.chooseTeam} checkStats={this.checkStats} />
             });
-
             const border = { "border": "none" };
 
             return (
@@ -145,7 +153,8 @@ class TeamList extends Component {
 function mapStateToProps(state) {
     return {
         isLoaded: state.loading.isLoaded,
-        teams: state.listOfTeams.teams
+        teams: state.listOfTeams.teams,
+        clicked: state.listOfTeams.clicked
     }
 }
 

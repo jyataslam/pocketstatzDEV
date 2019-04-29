@@ -1,3 +1,5 @@
+@import "../../assets/css/media_query_mixins";
+
 .link-container {
     display: flex;
     justify-content: center;
@@ -45,12 +47,12 @@
   }
 
 .rc-swipeout-actions {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    display: flex;
-    overflow: hidden;
-    white-space: nowrap;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      overflow: hidden;
+      white-space: nowrap;
   }
 
 .rc-swipeout-actions-left {

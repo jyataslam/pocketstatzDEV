@@ -1,33 +1,36 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+import {reduxForm, Field} from "redux-form";
+import Input from "../../general/input";
 
 const SignUpForm = props => {
-    const buttonStyle = {
-        'color': 'black',
-        'font-size': '1.5rem'
-    }
 
+    const {handleSubmit, signUp} = props;
     return (
-        <form>
+        <form onSubmit={handleSubmit(signUp)}>
             <div className="row">
-                <div className="input-field col s12 m6 offset-m3">
-                    <input type="text" id="username"/>
-                    <label for="username">Username</label>
+
+                <div className="col s12 m6 offset-m3">
+                    <Field id="username" name="username" label="Username" component={Input}/>
                 </div>
-                <div className="input-field col s12 m6 offset-m3">
-                    <input type="password" id="password"/>
-                    <label for="password">Password</label>
+
+                <div className="col s12 m6 offset-m3">
+                    <Field id="password" name="password" type="password" label ="Password" component={Input}/>
                 </div>
+
                 <div className="input-field col s12 m6 offset-m3">
-                    <input type="password" id="confirmPassword"/>
-                    <label for="confirmPassword">Confirm Password</label>
+                    <Field id="confirm-password" name="confirm-password" type="password" label ="Confirm Password" component={Input}/>
                 </div>
+
             </div>
 
             <div className="row">
-                <button className="btn green col s12 m4 offset-m4" style={buttonStyle}>Sign Up</button>
+                <button className="btn green col s12 m4 offset-m4" >Sign Up</button>
             </div>
         </form>
     );
 }
 
-export default SignUpForm;
+export default reduxForm({
+    form: "sign-up-form"
+})(SignUpForm);

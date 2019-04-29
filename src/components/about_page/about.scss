@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Archivo+Black');
 
-$nameFont: 'Archivo Black', sans-serif;
+$nameFont: 'Archivo Black',
+sans-serif;
 
 .team-card {
     margin-top: 5%;
-    
+
     h3 {
         font-family: $nameFont;
         text-transform: uppercase;
@@ -20,10 +21,18 @@ $nameFont: 'Archivo Black', sans-serif;
         margin-top: 2%;
     }
 
-    .link-icon {
-        height: 10%;
-        width: 10%;
-        display: inline-block;
-        margin: 0 3%;
+    a {
+        .link-icon {
+            height: 10%;
+            width: 10%;
+            display: inline-block;
+            margin: 0 3%;
+
+            path {
+                &:hover {
+                    fill: #ffa500;
+                }
+            }
+        }
     }
 }

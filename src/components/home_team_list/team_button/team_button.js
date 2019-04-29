@@ -5,6 +5,7 @@ export default (props) => {
     const { colors, team_full_name, team_id, id ,chooseTeam, league_name } = props;
     
     const backgroundColor = {'backgroundColor': `${colors}`};
+    const borderColor = {'borderBottom': 'black'};
 
         return(
             <div className="container">

@@ -25,6 +25,8 @@ if(empty($input['password']))
 $username = $input['username'];
 $password = $input['password'];
 
+$username = addslashes($username);
+
 $hashedPassword = sha1($password);
 unset($input['password']);
 
@@ -41,8 +43,6 @@ if(mysqli_affected_rows($conn) === 1)
 {
     throw new Exception('That username already exists');
 }
-
-$username = addslashes($username);
 
 $query = "INSERT INTO `users` SET 
 		`username` = '$username',

@@ -33,6 +33,25 @@ export const signIn = (user) => async dispatch => {
     }
 }
 
+export const signUp = (user) => async  dispatch => {
+    const response = await axios.post(`/api/add-user.php`, user);
+    console.log("Response from signUp:", response);
+    if(response.data.success)
+    {
+        console.log(`Created account for ${response.data.username}`);
+        return dispatch({
+            type: types.SIGN_UP_USER,
+            response: {
+                username: response.data.username
+            }
+        });
+    }
+    else
+    {
+        console.log(response.data.error);
+    }
+}
+
 export const teamList = (props) => async dispatch => {
     const response = await axios.get(`/api/getteam.php?sport_name=${props.leagueName}`);
         if (response.data.success) {

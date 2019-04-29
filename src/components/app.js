@@ -31,8 +31,6 @@ class App extends Component {
                         <Route path="/my-teams" component={HomeTeamList} />
                         <Route path="/nba" component={BrowseNba} />
                         <Route path="/nhl" component={BrowseNhl} />
-                        <Route path="/log-in" component={LogIn} />
-                        <Route path="/sign-up" component={SignUp} />
                         <Route path="/about" component={About} />
                         <Route path="/account" component={AccountRoutes} />
                     </Switch>

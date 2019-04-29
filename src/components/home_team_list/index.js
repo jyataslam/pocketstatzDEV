@@ -14,10 +14,10 @@ class HomeTeamList extends Component {
     }
 
     componentDidMount() {
-        this.getUserTeams();
+        this.checkUserLoggedIn();
     }
 
-    async getUserTeams() {
+    async getGuestUserTeams() {
         let localData = localStorage.homeTeamIds;
         if (localData === undefined) {
             return
@@ -27,10 +27,34 @@ class HomeTeamList extends Component {
                 team_ids: localData
             }
         });
+        console.log("response from local storage", response);
         this.setState({
             userTeams: response.data.user_teams,
             isLoaded: true
         });
+    }
+
+    async getUserTeamsFromDb(userId){
+        const resp = await axios.get(`/api/gethomepageteams.php?user_id=${userId}`);
+        console.log("respone from db is:", resp);
+        this.setState({
+            userTeams: resp.data.homepage_items,
+            isLoaded: true
+        });
+    }
+
+    async checkUserLoggedIn(){
+        const resp = await axios.get(`api/login-status.php`);
+        console.log("user logged in? resp:", resp);
+        
+        const {success, user_id} = resp.data; 
+        if(success)
+        {
+            this.getUserTeamsFromDb(user_id)
+        }
+        else{
+            this.getGuestUserTeams();
+        }
     }
 
     deleteUserTeam = async (id) => {
@@ -69,11 +93,10 @@ class HomeTeamList extends Component {
     }
 
     render() {
-        console.log('home team render: ', this.state.userTeams);
         const { isLoaded, userTeams } = this.state;
 
         if (isLoaded && userTeams) {
-            const homepageTeamList = this.state.userTeams.map((team) => {
+            const homepageTeamList = userTeams.map((team) => {
                 return (
                     <Swipeout
                         right={[
@@ -92,6 +115,7 @@ class HomeTeamList extends Component {
                     </Swipeout>
                 )
             });
+
             return (
                 <ul>
                     {isLoaded && homepageTeamList}

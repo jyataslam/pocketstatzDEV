@@ -44,7 +44,7 @@ class HomeTeamList extends Component {
     }
 
     async checkUserLoggedIn(){
-        const resp = await axios.get(`api/login-status.php`);
+        const resp = await axios.get(`/api/login-status.php`);
         console.log("user logged in? resp:", resp);
         
         const {success, user_id} = resp.data; 

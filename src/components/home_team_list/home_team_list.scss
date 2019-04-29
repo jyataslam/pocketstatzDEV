@@ -1,77 +1,76 @@
 @import "../../assets/css/media_query_mixins";
 
 .link-container {
-    display: flex;
-    justify-content: center;
-    height: 65vh;
-    margin-bottom: -170px;
+  display: flex;
+  justify-content: center;
+  height: 65vh;
+  margin-bottom: -170px;
 
-    #symbol {
-        font-size: 16rem;
-        opacity: 0.4;
-    }
+  #symbol {
+    font-size: 16rem;
+    opacity: 0.4;
+  }
 }
 
 .main-text {
-    bottom: 300px;
-    padding: 0 10px;
-    opacity: 0.4;
-    text-align: center;
+  bottom: 300px;
+  padding: 0 10px;
+  opacity: 0.4;
+  text-align: center;
 }
 
 .rc-swipeout {
-    position: relative;
-  }
+  position: relative;
+}
 
 .rc-swipeout-content {
-    position: relative;
-  }
+  position: relative;
+}
 
 .rc-swipeout-cover {
-    position: absolute;
-    z-index: 2;
-    background: transparent;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    display: none;
-  }
+  position: absolute;
+  z-index: 2;
+  background: transparent;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  display: none;
+}
 
 .rc-swipeout .rc-swipeout-content,
 .rc-swipeout .rc-swipeout-actions {
-    transition: all 250ms;
-  }
+  transition: all 250ms;
+}
 
 .rc-swipeout-swiping .rc-swipeout-content {
-    transition: none;
-  }
+  transition: none;
+}
 
 .rc-swipeout-actions {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      display: flex;
-      overflow: hidden;
-      white-space: nowrap;
-  }
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+}
 
 .rc-swipeout-actions-left {
-    left: 0;
-  }
+  left: 0;
+}
 
 .rc-swipeout-actions-right {
-    right: 19px;
-  }
+  right: 19px;
+}
 
 .rc-swipeout-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
 
 .rc-swipeout-btn-text {
-    padding: 0 12px;
-  }
-  
+  padding: 0 12px;
+}

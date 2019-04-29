@@ -5,12 +5,11 @@ import BrowseSports from './browse_sports';
 import BrowseNba from './browse_teams/index';
 import BrowseNhl from './browse_teams/index';
 import HomeTeamList from './home_team_list';
-import LogIn from './log_in';
 import NavFooter from './nav/nav_footer';
-import SignUp from './sign_up';
 import LandingPage from "./landing_page";
 import LoadingScreen from "./loading_screen";
 import About from './about_page';
+import AccountRoutes from "./account";
 
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize.min';
@@ -35,6 +34,7 @@ class App extends Component {
                         <Route path="/log-in" component={LogIn} />
                         <Route path="/sign-up" component={SignUp} />
                         <Route path="/about" component={About} />
+                        <Route path="/account" component={AccountRoutes} />
                     </Switch>
                 </div>
                 <div className="navbar-fixed">

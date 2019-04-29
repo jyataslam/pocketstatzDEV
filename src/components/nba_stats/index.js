@@ -17,6 +17,7 @@ class GameInfo extends Component {
     }   
 
     async componentDidMount(){
+        console.log("gameinfo props:", this.props);
         this.props.loadStart();
         await this.props.gameInfo(this.props);
         this.props.loadEnd(); 

@@ -7,24 +7,10 @@ import {connect} from "react-redux";
 class SignIn extends Component {
 
     handleSignIn = (values) => { 
-        const user = {
-            username: this.state.username,
-            password: this.state.password
-        }; 
-        signIn(values);
-
-        axios.post(`/api/login.php`, user).then(resp => {
-            console.log("repsonse:", resp);
-            if(resp.data.success)
-            {
-                console.log(`${resp.data.username} Logged in!`);
-            }
-            else
-            {
-                console.log(resp.data.error);
-            }
-        });
-        event.preventDefault();
+        if(this.props.signIn(values))
+        {
+            this.props.history.push(`/my-teams`);
+        }
     }
     
     render() {
@@ -38,8 +24,7 @@ class SignIn extends Component {
     }
 }
 
-function mapStateToProps(state)
-{
+function mapStateToProps(state){
     return{
         signIn: state.user
     }

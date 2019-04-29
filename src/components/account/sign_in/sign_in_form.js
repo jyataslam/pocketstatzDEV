@@ -6,7 +6,7 @@ import "./sign_in_form.scss";
 
 
 const SignInForm = props => {
-    console.log("Sign in form props:", props);
+    // console.log("Sign in form props:", props);
     const {handleSubmit, signIn} = props;
     return(
         <form onSubmit={handleSubmit(signIn)}>

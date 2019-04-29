@@ -1,7 +1,7 @@
 import React from "react";
 
 export default props => {
-    console.log("Input props", props);
+    // console.log(props);
     const {input, id, label, type = "text"} = props;
     return(
         <div className="input-field">

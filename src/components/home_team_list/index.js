@@ -34,7 +34,7 @@ class HomeTeamList extends Component {
         });
     }
 
-    async getUserTeamsFromDb(userId){
+    async getSignedInUserTeams(userId){
         const resp = await axios.get(`/api/gethomepageteams.php?user_id=${userId}`);
         console.log("respone from db is:", resp);
         this.setState({
@@ -50,14 +50,47 @@ class HomeTeamList extends Component {
         const {success, user_id} = resp.data; 
         if(success)
         {
-            this.getUserTeamsFromDb(user_id)
+            this.getSignedInUserTeams(user_id)
         }
         else{
             this.getGuestUserTeams();
         }
     }
 
-    deleteUserTeam = async (id) => {
+    deleteGuestOrSignedInTeam = async (teamId) => {
+        const resp = await axios.get(`/api/login-status.php`);
+        const {success} = resp.data;
+
+        if(success)
+        {
+            this.deleteSignedInUserTeam(teamId);
+        }
+        else
+        {
+            this.deleteGuestUserTeam(teamId)
+        }
+    }
+
+    deleteSignedInUserTeam = async (targetTeamId) => {
+        const resp = await axios.get(`/api/delete-user-team.php?team_id=${targetTeamId}`)
+        console.log("delete signed in user response:", resp);
+        const newTeamsArray = [...this.state.userTeams];
+
+        if(resp.data.success)
+        {
+            this.setState({
+                userTeams: newTeamsArray.filter((team) => {
+                    return team.team_id !== targetTeamId;
+                })
+            });
+        }
+        else
+        {
+            console.log(resp.error);
+        }
+    }
+
+    deleteGuestUserTeam = async (id) => {
         let localStorageArr = JSON.parse("[" + localStorage.getItem("homeTeamIds") + "]");
         var index = localStorageArr.indexOf(id);
         if (index > -1) {
@@ -97,12 +130,13 @@ class HomeTeamList extends Component {
 
         if (isLoaded && userTeams) {
             const homepageTeamList = userTeams.map((team) => {
+
                 return (
                     <Swipeout
                         right={[
                             {
                                 text: 'delete',
-                                onPress: () => this.deleteUserTeam(team.id),
+                                onPress: () => this.deleteGuestOrSignedInTeam(team.team_id || team.id),
                                 style: { backgroundColor: 'red', color: 'white' },
                                 className: 'custom-class-2'
                             }

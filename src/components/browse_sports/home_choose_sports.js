@@ -17,7 +17,6 @@ class BrowseSports extends Component {
                         <div style={collectionStyle} className=" col s12 m8 offset-m2">
                             <Link href="#" to="/browse/nba" className="btn btn-large grey col s12">NBA</Link>
                             <Link href="#" to="/browse/nhl" className="btn btn-large grey darken-1 col s12 ">NHL</Link>
-                            <Link href="#" to="/browse/overwatch" className="btn btn-large grey darken-2 col s12">Overwatch</Link>
                         </div>
                     </div>
                 </div>

@@ -10,7 +10,7 @@ class SignIn extends Component {
         const user = {
             username: this.state.username,
             password: this.state.password
-        }; 
+        };
         signIn(values);
 
         axios.post(`/api/login.php`, user).then(resp => {
@@ -51,3 +51,20 @@ export default connect(mapStateToProps, {
 
 
 
+
+
+
+
+    // handleUsernameChange = (event) =>
+    // {
+    //     this.setState({
+    //         username: event.target.value
+    //     });
+    // }
+
+    // handlePasswordChange = (event) => 
+    // {
+    //     this.setState({
+    //         password: event.target.value
+    //     });
+    // }

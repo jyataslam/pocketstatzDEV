@@ -7,10 +7,11 @@ const DEFAULT_STATE = {
 
 export default (state = DEFAULT_STATE, action) => {
     switch(action.type){
-        case types.LOG_IN_USER:
+        case types.SIGN_IN_USER:
             return{...state, ...action.response};
         default:
             return state;
     }
 };
 
+ 

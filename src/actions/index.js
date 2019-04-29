@@ -1,6 +1,12 @@
 import axios from 'axios';
 import types from './types';
 
+export function signIn(user){
+    return{
+        
+    }
+}
+
 export function loadStart() {
     return {
         type: types.LOAD_START

@@ -1,10 +1,8 @@
 @import "../../assets/css/media_query_mixins";
 
 .link-container {
-  display: flex;
   justify-content: center;
-  height: 65vh;
-  margin-bottom: -170px;
+  height: 68vh;
 
   #symbol {
     font-size: 16rem;
@@ -13,8 +11,6 @@
 }
 
 .main-text {
-  bottom: 300px;
-  padding: 0 10px;
   opacity: 0.4;
   text-align: center;
 }

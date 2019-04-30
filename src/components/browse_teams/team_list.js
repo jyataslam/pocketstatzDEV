@@ -71,7 +71,27 @@ class TeamList extends Component {
         }
     }
 
-    goToMyTeams = async () => {
+    checkUserLoggedIn = async () => {
+        const resp = await axios.get(`/api/login-status.php`);
+        console.log("user logged in? resp:", resp);
+        const {success, user_id} = resp.data; 
+        if(success)
+        {
+            this.goToMyTeamsSignedInUser(user_id);
+        }
+        else{
+            this.goToMyTeamsGuest();
+        }
+    }
+
+    goToMyTeamsSignedInUser = async (userId) => { 
+        const sendTeamIds = this.state.selectedTeams.toString();
+
+        await axios.get(`/api/addteam.php?user_id=${userId}&team_id=${sendTeamIds}`);
+        this.props.history.push(`/my-teams`);
+    }
+
+    goToMyTeamsGuest = async () => {
         const sendTeamIds = this.state.selectedTeams.toString();
         const homeTeamsResponse = await axios.get("/api/list-user-teams.php", {
             params: {
@@ -139,7 +159,7 @@ class TeamList extends Component {
                                 draggable
                             />
                         </div>
-                        <Button goToMyTeams={this.goToMyTeams} checkNumberOfSavedTeams={this.checkNumberOfSavedTeams} />
+                        <Button checkUserLoggedIn={this.checkUserLoggedIn} checkNumberOfSavedTeams={this.checkNumberOfSavedTeams} />
                         <div style={border}>
                             {teamsList}
                         </div>

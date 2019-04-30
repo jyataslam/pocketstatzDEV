@@ -8,13 +8,29 @@ import Swipeout from 'rc-swipeout';
 import './home_team_list.scss';
 
 class HomeTeamList extends Component {
+    constructor(props) {
+        super(props);
+
+        window.addEventListener('resize', this.checkScreenWidth);
+    }
+
     state = {
         userTeams: [],
         isLoaded: false,
+        isMobile: false
     }
 
     componentDidMount() {
         this.checkUserLoggedIn();
+    }
+
+    checkScreenWidth = (event) => {
+        const { outerWidth } = event.target;
+        let mobile = outerWidth < 601 ? true : false;
+    
+        this.setState({
+            isMobile: mobile
+        })
     }
 
     async getGuestUserTeams() {
@@ -27,7 +43,7 @@ class HomeTeamList extends Component {
                 team_ids: localData
             }
         });
-        console.log("response from local storage", response);
+
         this.setState({
             userTeams: response.data.user_teams,
             isLoaded: true
@@ -36,7 +52,7 @@ class HomeTeamList extends Component {
 
     async getSignedInUserTeams(userId){
         const resp = await axios.get(`/api/gethomepageteams.php?user_id=${userId}`);
-        console.log("respone from db is:", resp);
+
         this.setState({
             userTeams: resp.data.homepage_items,
             isLoaded: true
@@ -45,7 +61,6 @@ class HomeTeamList extends Component {
 
     async checkUserLoggedIn(){
         const resp = await axios.get(`/api/login-status.php`);
-        console.log("user logged in? resp:", resp);
         
         const {success, user_id} = resp.data; 
         if(success)
@@ -72,8 +87,7 @@ class HomeTeamList extends Component {
     }
 
     deleteSignedInUserTeam = async (targetTeamId) => {
-        const resp = await axios.get(`/api/delete-user-team.php?team_id=${targetTeamId}`)
-        console.log("delete signed in user response:", resp);
+        const resp = await axios.get(`/api/delete-user-team.php?team_id=${targetTeamId}`);
         const newTeamsArray = [...this.state.userTeams];
 
         if(resp.data.success)
@@ -126,28 +140,32 @@ class HomeTeamList extends Component {
     }
 
     render() {
-        const { isLoaded, userTeams } = this.state;
+        const { isLoaded, userTeams, isMobile } = this.state;
 
         if (isLoaded && userTeams) {
             const homepageTeamList = userTeams.map((team) => {
-
+                if (isMobile) {
+                    return (
+                        <Swipeout
+                            right={[
+                                {
+                                    text: 'delete',
+                                    onPress: () => this.deleteGuestOrSignedInTeam(team.team_id || team.id),
+                                    style: { backgroundColor: 'red', color: 'white' },
+                                    className: 'custom-class-2'
+                                }
+                            ]}
+                            onOpen={() => console.log('open')}
+                            onClose={() => console.log('closed')}
+                            autoClose = 'true'
+                        >
+                            <TeamButton key={team.id} {...team} chooseTeam={this.goToTeamStats} isMobile={isMobile}/>
+                        </Swipeout>
+                    )
+                }
                 return (
-                    <Swipeout
-                        right={[
-                            {
-                                text: 'delete',
-                                onPress: () => this.deleteGuestOrSignedInTeam(team.team_id || team.id),
-                                style: { backgroundColor: 'red', color: 'white' },
-                                className: 'custom-class-2'
-                            }
-                        ]}
-                        onOpen={() => console.log('open')}
-                        onClose={() => console.log('closed')}
-                        autoClose = 'true'
-                    >
-                        <TeamButton key={team.id} {...team} chooseTeam={this.goToTeamStats} />
-                    </Swipeout>
-                )
+                    <TeamButton key={team.id} {...team} chooseTeam={this.goToTeamStats} isMobile={isMobile} deleteTeam={this.deleteGuestOrSignedInTeam}/>
+                );
             });
 
             return (

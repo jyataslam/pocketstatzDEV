@@ -2,15 +2,17 @@ import React from 'react';
 import './team_button.scss';
 
 export default (props) => {
-    const { colors, team_full_name, team_id, id ,chooseTeam, league_name } = props;
-    
+    console.log('button props: ', props);
+    const { colors, team_full_name, team_id, id ,chooseTeam, league_name, isMobile, deleteTeam } = props;
     const backgroundColor = {'backgroundColor': `${colors}`};
-    const borderColor = {'borderBottom': 'black'};
 
         return(
             <div className="container">
                 <div className="row">
-                    <button onClick={() => {chooseTeam(team_id || id, league_name)}} style={backgroundColor} className="btn btn-large home-team-button col s12">{team_full_name}</button>
+                    <button onClick={() => {chooseTeam(team_id || id, league_name)}} style={backgroundColor} className="btn btn-large home-team-button col s12 m9 offset-m1">{team_full_name}</button>
+                    {!isMobile && (
+                        <button onClick={() => {deleteTeam(team_id || id, league_name)}} className="btn btn-large red col m1 offset-m1">X</button>
+                    )}
                 </div>
             </div>
         );

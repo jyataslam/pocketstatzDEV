@@ -65,13 +65,7 @@ class Nav extends Component {
                 </li>
                 <li><div className="divider red"></div></li>
                 {navLinks}
-                {/* <li className="sidenav-close">
-                    <Link to="/account/sign-in">Sign-In</Link>
-                </li>
-                <li><div className="divider red"></div></li>
-                <li className="sidenav-close">
-                    <Link to="/account/sign-up">Sign Up</Link>
-                </li> */}
+
                 <li className="sidenav-close">
                     <Link to="/about">About Us</Link>
                 </li>

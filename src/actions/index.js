@@ -33,6 +33,19 @@ export const signIn = (user) => async dispatch => {
     }
 }
 
+export const signOut = () => async dispatch => {
+    const response = await axios.get("/api/sign-out.php");
+    console.log("Sign out response:", response);
+    
+    return dispatch({
+        type: types.SIGN_OUT_USER,
+        response: {
+            auth: false,
+            username: ""
+        }
+    });
+}
+
 export const signUp = (user) => async  dispatch => {
     const response = await axios.post(`/api/add-user.php`, user);
     console.log("Response from signUp:", response);

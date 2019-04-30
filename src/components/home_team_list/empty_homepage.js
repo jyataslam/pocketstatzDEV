@@ -3,10 +3,13 @@ import React, { Fragment } from 'react';
 export default ({ goToBrowse }) => {
     return (
         <Fragment>
-        <div className="link-container">
-            <i id="symbol" onClick={goToBrowse} className="material-icons valign-wrapper">add_circle</i>
+        <div className="link-container valign-wrapper">
+        <div className="row">
+            <i id="symbol" onClick={goToBrowse} className="material-icons center col s12">add_circle</i>
+        
+        <p className="content-text main-text col s12" onClick={goToBrowse}>Click Here To Add Teams To Your Home Page</p>
         </div>
-        <p className="content-text main-text" onClick={goToBrowse}>Click Here To Add Teams To Your Home Page</p>
+        </div>
         </Fragment>
     )
 }

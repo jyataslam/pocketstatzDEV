@@ -149,7 +149,6 @@ class HomeTeamList extends Component {
     }
 
     render() {
-        console.log('mobile?', this.state.isMobile);
         const { isLoaded, userTeams, isMobile } = this.state;
 
         if (isLoaded && userTeams) {

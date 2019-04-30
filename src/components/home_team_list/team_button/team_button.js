@@ -2,7 +2,6 @@ import React from 'react';
 import './team_button.scss';
 
 export default (props) => {
-    console.log('button props: ', props);
     const { colors, team_full_name, team_id, id ,chooseTeam, league_name, isMobile, deleteTeam } = props;
     const backgroundColor = {'backgroundColor': `${colors}`};
 

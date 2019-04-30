@@ -157,7 +157,7 @@ class HomeTeamList extends Component {
             );
         } 
         return <EmptyHomepage goToBrowse={this.goToBrowse} />
-        
+
     }
 }
 

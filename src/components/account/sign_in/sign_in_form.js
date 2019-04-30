@@ -1,12 +1,10 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import {reduxForm, Field} from "redux-form";
+import { Link } from 'react-router-dom';
+import { reduxForm, Field } from "redux-form";
 import Input from "../../general/input";
 import "./sign_in_form.scss";
 
-
 const SignInForm = props => {
-    // console.log("Sign in form props:", props);
     const {handleSubmit, signIn} = props;
     return(
         <form onSubmit={handleSubmit(signIn)}>
@@ -31,8 +29,23 @@ const SignInForm = props => {
     );
 }
 
+function validate({ username, password }) {
+    const errors = {};
+
+    if (!username) {
+        errors.username = 'Please enter your email';
+    }
+
+    if (!password) {
+        errors.password = 'Please enter your password';
+    }
+
+    return errors;
+}
+
 export default reduxForm({
-    form: "sign-in-form"
+    form: "sign-in-form",
+    validate: validate
 })(SignInForm);
 
 

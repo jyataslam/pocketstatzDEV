@@ -1,7 +1,7 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import {reduxForm, Field} from "redux-form";
 import Input from "../../general/input";
+import './sign_up.scss';
 
 const SignUpForm = props => {
 
@@ -19,7 +19,7 @@ const SignUpForm = props => {
                 </div>
 
                 <div className="input-field col s12 m6 offset-m3">
-                    <Field id="confirm-password" name="confirm-password" type="password" label ="Confirm Password" component={Input}/>
+                    <Field id="passwordconfirm" name="passwordconfirm" type="password" label ="Confirm Password" component={Input}/>
                 </div>
 
             </div>
@@ -31,6 +31,27 @@ const SignUpForm = props => {
     );
 }
 
+function validate({ username, password, passwordconfirm }) {
+    const errors = {};
+
+    if (!username) {
+        errors.username = 'Please enter your email';
+    }
+
+    if (!password) {
+        errors.password = 'Please enter your password';
+    }
+
+    if (!passwordconfirm) {
+        errors.passwordconfirm = 'Required';
+    } else if (passwordconfirm !== password) {
+        errors.passwordconfirm = 'Error: Password did not match';
+    }
+
+    return errors;
+}
+
 export default reduxForm({
-    form: "sign-up-form"
+    form: "sign-up-form",
+    validate: validate
 })(SignUpForm);

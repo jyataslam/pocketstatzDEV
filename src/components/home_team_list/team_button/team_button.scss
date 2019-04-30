@@ -3,6 +3,9 @@ $break-small: 480px;
 .row {
     button {
         color: whitesmoke;
+        text-align: left;
+        text-indent: 10%;
+
         @media screen and (min-width: 480px) {
         transition: font-size 0.5s ease-out;
             &:hover {
@@ -14,5 +17,9 @@ $break-small: 480px;
     .btn-large {
         height: 89px;
         font-size: 18px;
+    }
+
+    .overlay {
+        background-image: linear-gradient(to right,#f00,#00f);
     }
 }

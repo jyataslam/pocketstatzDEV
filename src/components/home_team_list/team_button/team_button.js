@@ -4,8 +4,9 @@ import './team_button.scss';
 export default (props) => {
     const { colors, team_full_name, team_id, id ,chooseTeam, league_name } = props;
     
-    const backgroundColor = {'backgroundColor': `${colors}`};
-    const borderColor = {'borderBottom': 'black'};
+    const backgroundColor = {
+        'background': `${colors} url('dist/assets/images/atlanta-hawks-small.png') no-repeat right`,
+    };
 
         return(
             <div className="container">

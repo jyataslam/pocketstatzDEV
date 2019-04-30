@@ -155,9 +155,9 @@ class HomeTeamList extends Component {
                     {isLoaded && homepageTeamList}
                 </ul>
             );
-        } else if (!isLoaded) {
-            return <EmptyHomepage goToBrowse={this.goToBrowse} />
         } 
+        return <EmptyHomepage goToBrowse={this.goToBrowse} />
+        
     }
 }
 

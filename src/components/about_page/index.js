@@ -6,17 +6,7 @@ class About extends Component {
         return (
             <div className="row center">
                 <div className="col s12 m6 l3 team-card">
-                    <div className="container">
-                        <div className="content">
-                            <div class="content-overlay"></div>
-                            <img src="https://via.placeholder.com/300" className="content-image"></img>
-                            <div class="content-details fadeIn-top">
-                                <h3>This is a title</h3>
-                                <p>This is a short description</p>
-                            </div>
-                        </div>
-                    </div>
-                    <br></br>
+                    <img src="https://via.placeholder.com/300"></img><br></br>
                     <h3>Jason</h3>
                     <div>
                         <a href="https://github.com/jyataslam" target="_blank">

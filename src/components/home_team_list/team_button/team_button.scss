@@ -1,14 +1,6 @@
-$break-small: 480px;
-
 .row {
     button {
         color: whitesmoke;
-        @media screen and (min-width: 480px) {
-        transition: font-size 0.5s ease-out;
-            &:hover {
-                font-size: 1.8em;
-            }
-        }
     }
 
     .btn-large {

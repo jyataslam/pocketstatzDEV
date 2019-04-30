@@ -6,7 +6,7 @@ class DropDown extends Component {
         const { checkUserLoggedIn } = this.props;
         const margin = {"marginTop": "15px"};
         return (
-            <button onClick={() => {checkUserLoggedIn()}} style={margin} className="btn btn-small pulse red col s12">Go To My Teams</button>
+            <button onClick={() => {checkUserLoggedIn()}} style={margin} className="btn btn-small pulse green accent-4 col s12">Go To My Teams</button>
         )
     }
 }

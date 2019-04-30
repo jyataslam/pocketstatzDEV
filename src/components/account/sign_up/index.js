@@ -1,12 +1,14 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import SignUpForm from './sign_up_form';
-import {signUp} from "../../../actions";
-import {connect} from "react-redux";
+import { signUp } from "../../../actions";
+import { connect } from "react-redux";
 
 class SignUp extends Component {
 
     handleSignUp = values => {
-        this.props.signUp(values);
+        if(this.props.signUp(values)){
+            this.props.history.push(`/browse`);
+        };
     }
 
     render() {

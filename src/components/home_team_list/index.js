@@ -22,10 +22,19 @@ class HomeTeamList extends Component {
 
     componentDidMount() {
         this.checkUserLoggedIn();
+        this.onLoadCheckScreenWidth();
     }
 
     checkScreenWidth = (event) => {
         const { outerWidth } = event.target;
+        let mobile = outerWidth < 601 ? true : false;
+    
+        this.setState({
+            isMobile: mobile
+        })
+    }
+
+    onLoadCheckScreenWidth(){
         let mobile = outerWidth < 601 ? true : false;
     
         this.setState({
@@ -140,6 +149,7 @@ class HomeTeamList extends Component {
     }
 
     render() {
+        console.log('mobile?', this.state.isMobile);
         const { isLoaded, userTeams, isMobile } = this.state;
 
         if (isLoaded && userTeams) {

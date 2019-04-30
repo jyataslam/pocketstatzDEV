@@ -116,7 +116,6 @@ class TeamList extends Component {
             return <LoadingScreen />
         }
         else {
-            console.log(this.state.selectedTeams);
             const teamsList = this.props.teams.map((team) => {
                 if (this.state.selectedTeams.includes(team.id)) {
                     return <Team key={team.id} {...team} chooseTeam={this.chooseTeam} checkStats={this.checkStats} selected={true} />

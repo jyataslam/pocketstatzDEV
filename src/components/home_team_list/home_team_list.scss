@@ -21,11 +21,11 @@
 
 .rc-swipeout {
     position: relative;
-  }
+}
 
 .rc-swipeout-content {
     position: relative;
-  }
+}
 
 .rc-swipeout-cover {
     position: absolute;
@@ -35,33 +35,33 @@
     width: 100%;
     top: 0;
     display: none;
-  }
+}
 
 .rc-swipeout .rc-swipeout-content,
 .rc-swipeout .rc-swipeout-actions {
     transition: all 250ms;
-  }
+}
 
 .rc-swipeout-swiping .rc-swipeout-content {
     transition: none;
-  }
+}
 
 .rc-swipeout-actions {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      display: flex;
-      overflow: hidden;
-      white-space: nowrap;
-  }
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+}
 
 .rc-swipeout-actions-left {
     left: 0;
-  }
+}
 
 .rc-swipeout-actions-right {
-    right: 19px;
-  }
+    right: calc(15px + 10vh);
+}
 
 .rc-swipeout-btn {
     display: flex;
@@ -69,9 +69,14 @@
     justify-content: center;
     position: relative;
     overflow: hidden;
-  }
+}
 
 .rc-swipeout-btn-text {
     padding: 0 12px;
-  }
+}
+
+.custom-class-2 {
+    color: red;
+    background-color: whitesmoke;
+}
   

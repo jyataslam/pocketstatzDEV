@@ -4,18 +4,28 @@ import TeamButton from './team_button/team_button';
 import EmptyHomepage from './empty_homepage';
 import axios from 'axios';
 import Swipeout from 'rc-swipeout';
-
 import './home_team_list.scss';
 
 class HomeTeamList extends Component {
-    state = {
-        userTeams: [],
-        isLoaded: false,
+    constructor(props) {
+        super(props);
+        this.state = {
+            userTeams: [],
+            isLoaded: false,
+            isMobile: true
+        }
+
+        // window.addEventListener('resize', this.checkDeviceWidth.bind(this));
     }
 
     componentDidMount() {
         this.checkUserLoggedIn();
+        // this.checkDeviceWidth();
     }
+
+    // checkDeviceWidth() {
+    //     console.log(window.screen.width);
+    // }
 
     async getGuestUserTeams() {
         let localData = localStorage.homeTeamIds;
@@ -27,7 +37,7 @@ class HomeTeamList extends Component {
                 team_ids: localData
             }
         });
-        console.log("response from local storage", response);
+
         this.setState({
             userTeams: response.data.user_teams,
             isLoaded: true
@@ -36,7 +46,7 @@ class HomeTeamList extends Component {
 
     async getUserTeamsFromDb(userId){
         const resp = await axios.get(`/api/gethomepageteams.php?user_id=${userId}`);
-        console.log("respone from db is:", resp);
+
         this.setState({
             userTeams: resp.data.homepage_items,
             isLoaded: true
@@ -45,9 +55,8 @@ class HomeTeamList extends Component {
 
     async checkUserLoggedIn(){
         const resp = await axios.get(`api/login-status.php`);
-        console.log("user logged in? resp:", resp);
-        
         const {success, user_id} = resp.data; 
+
         if(success)
         {
             this.getUserTeamsFromDb(user_id)
@@ -70,6 +79,7 @@ class HomeTeamList extends Component {
                 })
                 return
             }
+
             localStorage.setItem('homeTeamIds', localStorageArr);
             let newTeamsStr = localStorageArr.toString();
             const response = await axios.get("/api/list-user-teams.php", {
@@ -77,6 +87,7 @@ class HomeTeamList extends Component {
                     team_ids: newTeamsStr
                 }
             });
+
             this.setState({
                 userTeams: response.data.user_teams,
                 isLoaded: true
@@ -97,22 +108,26 @@ class HomeTeamList extends Component {
 
         if (isLoaded && userTeams) {
             const homepageTeamList = userTeams.map((team) => {
+
+                if (this.state.isMobile) {
+                    return (
+                        <Swipeout
+                            right={[
+                                {
+                                    text: 'delete',
+                                    onPress: () => this.deleteUserTeam(team.id),
+                                    style: { backgroundColor: 'red', color: 'white' },
+                                    className: 'custom-class-2'
+                                }
+                            ]}
+                            autoClose = 'true'
+                        >
+                            <TeamButton key={team.id} {...team} chooseTeam={this.goToTeamStats} />
+                        </Swipeout>
+                    )
+                }
                 return (
-                    <Swipeout
-                        right={[
-                            {
-                                text: 'delete',
-                                onPress: () => this.deleteUserTeam(team.id),
-                                style: { backgroundColor: 'red', color: 'white' },
-                                className: 'custom-class-2'
-                            }
-                        ]}
-                        onOpen={() => console.log('open')}
-                        onClose={() => console.log('closed')}
-                        autoClose = 'true'
-                    >
-                        <TeamButton key={team.id} {...team} chooseTeam={this.goToTeamStats} />
-                    </Swipeout>
+                    <TeamButton key={team.id} {...team} chooseTeam={this.goToTeamStats} />
                 )
             });
 

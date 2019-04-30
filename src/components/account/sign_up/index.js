@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import SignUpForm from './sign_up_form';
-import { signUp } from "../../../actions";
+import { signUp, signIn } from "../../../actions";
 import { connect } from "react-redux";
 
 class SignUp extends Component {
 
     handleSignUp = values => {
         if(this.props.signUp(values)){
+            this.props.signIn(values);
             this.props.history.push(`/browse`);
         };
     }
@@ -29,7 +30,8 @@ function mapStateToProps(state){
 }
 
 export default connect(mapStateToProps, {
-    signUp: signUp
+    signUp: signUp,
+    signIn: signIn
 })(SignUp);
 
 

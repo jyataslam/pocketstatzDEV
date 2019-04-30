@@ -59,7 +59,7 @@ export const signUp = (user) => async  dispatch => {
             }
         });
     }
-    else
+        else
     {
         console.log(response.data.error);
     }

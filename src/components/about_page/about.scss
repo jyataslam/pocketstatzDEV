@@ -11,6 +11,10 @@ sans-serif;
         text-transform: uppercase;
         color: whitesmoke;
         margin-bottom: 5%;
+
+        &:hover {
+            color: darkslategray;
+        }
     }
 
     .team-link {
@@ -28,9 +32,8 @@ sans-serif;
             display: inline-block;
             margin: 0 3%;
 
-            .icon :hover {
-                fill: #ffa500;
-
+            &:hover {
+                border-bottom: 4px solid #ffa500;
             }
 
         }

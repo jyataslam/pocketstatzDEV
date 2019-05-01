@@ -3,9 +3,8 @@ import GameScore from './game_score/game_score';
 import TeamsTab from './teams_tab/teams_tab';
 import PlayerStats from './players_stats/players_stats';
 import { connect } from "react-redux";
-import { nhlGameInfo, loadStart, loadEnd } from "../../actions";
+import { nhlGameInfo } from "../../actions";
 import LoadingScreen from "../loading_screen";
-
 
 class GameInfo extends Component {
 
@@ -18,13 +17,7 @@ class GameInfo extends Component {
     }
 
     async componentDidMount() {
-        this.props.loadStart();
         await this.props.nhlGameInfo(this.props);
-        this.props.loadEnd();
-    }
-
-    componentWillUnmount() {
-        this.props.loadStart();
     }
 
     showLeft = () => {
@@ -44,7 +37,7 @@ class GameInfo extends Component {
         const { view } = this.state;
         const {showLeft, showRight} = this;
 
-        if (!this.props.isLoaded) {
+        if (!gameDetails) {
             return <LoadingScreen />
         }
 
@@ -60,9 +53,8 @@ class GameInfo extends Component {
 
 function mapStateToProps(state) {
     return {
-        isLoaded: state.loading.isLoaded,
         gameStats: state.stats
     }
 }
 
-export default connect(mapStateToProps, { nhlGameInfo, loadStart, loadEnd })(GameInfo);
+export default connect(mapStateToProps, { nhlGameInfo })(GameInfo);

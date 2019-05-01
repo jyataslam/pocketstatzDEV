@@ -24,9 +24,9 @@ class Team extends Component {
             return (
                 <Fragment>
                     <div className="team-container col s6 m3" >
-                        <button className="team-item-clicked z-depth-3" onClick={() => { chooseTeam(id) }}>
-                            <img src={`/dist/assets/${image_url}`} />
-                        </button>
+                        <a className="team-item-clicked z-depth-3" onClick={() => { chooseTeam(id) }}>
+                            <img className="team-image" src={`/dist/assets/${image_url}`} />
+                        </a>
                     </div>
                 </Fragment>
             )
@@ -34,9 +34,9 @@ class Team extends Component {
         return (
             <Fragment>
                 <div className="team-container col s6 m3" >
-                    <button className="team-item z-depth-3" onClick={() => { chooseTeam(id) }}>
-                        <img src={`/dist/assets/${image_url}`} />
-                    </button>
+                    <a className="team-item z-depth-3" onClick={() => { chooseTeam(id) }}>
+                        <img className="team-image" src={`/dist/assets/${image_url}`} />
+                    </a>
                 </div>
             </Fragment>
         )

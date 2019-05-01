@@ -47,6 +47,7 @@ export const signIn = (user) => async dispatch => {
     });
 
     const response = await axios.post(`/api/login.php`, user);
+    console.log('sign in error: ', response.data.error);
     if(response.data.success)
     {
         console.log(`${response.data.username} Logged in!`);
@@ -54,14 +55,19 @@ export const signIn = (user) => async dispatch => {
             type: types.SIGN_IN_USER,
             response: {
                 auth: true,
-                username: response.data.username
+                username: response.data.username,
             }
         })
     }
     else
     {
-        console.log(response.data.error);
-        notify();
+        return dispatch({
+            type: types.SIGN_IN_ERROR,
+            response: {
+                auth: false,
+                error: response.data.error
+            }
+        })
     }
 }
 

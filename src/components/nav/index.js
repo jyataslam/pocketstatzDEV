@@ -37,8 +37,8 @@ class Nav extends Component {
     }
     
     renderLinks(){
-
         const {userAuth} = this.props;
+        console.log("userAuth:", userAuth);
         const {authLinks, guestLinks} = this.state;
         let navLinks = null;
 
@@ -57,7 +57,7 @@ class Nav extends Component {
                     <i className="material-icons">close</i>
                 </button>
                 <li className="first-li sidenav-close">
-                    <Link to="/my-teams">My Teams</Link>
+                    <Link to="/user-teams">My Teams</Link>
                 </li>
                 <li><div className="divider red"></div></li>
                 <li className="sidenav-close">
@@ -102,4 +102,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps)(Nav);
+export default connect(mapStateToProps, {})(Nav);

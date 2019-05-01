@@ -1,20 +1,22 @@
 import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
-import TeamButton from './team_button/team_button';
-import EmptyHomepage from './empty_homepage';
+import { connect } from 'react-redux';
+import { checkAuth } from '../../../actions';
+import TeamButton from '../team_button/team_button';
+import EmptyHomepage from '../empty_homepage';
 import axios from 'axios';
 import Swipeout from 'rc-swipeout';
 
-import './home_team_list.scss';
+import '../my_team_lists.scss';
 
-class HomeTeamList extends Component {
+class GuestTeamList extends Component {
     state = {
         userTeams: [],
         isLoaded: false,
     }
 
-    componentDidMount() {
-        this.checkUserLoggedIn();
+    async componentDidMount() {
+        this.getGuestUserTeams();
     }
 
     async getGuestUserTeams() {
@@ -34,29 +36,6 @@ class HomeTeamList extends Component {
         });
     }
 
-    async getSignedInUserTeams(userId){
-        const resp = await axios.get(`/api/gethomepageteams.php?user_id=${userId}`);
-        console.log("respone from db is:", resp);
-        this.setState({
-            userTeams: resp.data.homepage_items,
-            isLoaded: true
-        });
-    }
-
-    async checkUserLoggedIn(){
-        const resp = await axios.get(`/api/login-status.php`);
-        console.log("user logged in? resp:", resp);
-        
-        const {success, user_id} = resp.data; 
-        if(success)
-        {
-            this.getSignedInUserTeams(user_id)
-        }
-        else{
-            this.getGuestUserTeams();
-        }
-    }
-
     deleteGuestOrSignedInTeam = async (teamId) => {
         const resp = await axios.get(`/api/login-status.php`);
         const {success} = resp.data;
@@ -68,25 +47,6 @@ class HomeTeamList extends Component {
         else
         {
             this.deleteGuestUserTeam(teamId)
-        }
-    }
-
-    deleteSignedInUserTeam = async (targetTeamId) => {
-        const resp = await axios.get(`/api/delete-user-team.php?team_id=${targetTeamId}`)
-        console.log("delete signed in user response:", resp);
-        const newTeamsArray = [...this.state.userTeams];
-
-        if(resp.data.success)
-        {
-            this.setState({
-                userTeams: newTeamsArray.filter((team) => {
-                    return team.team_id !== targetTeamId;
-                })
-            });
-        }
-        else
-        {
-            console.log(resp.error);
         }
     }
 
@@ -161,4 +121,4 @@ class HomeTeamList extends Component {
     }
 }
 
-export default HomeTeamList;
+export default GuestTeamList;

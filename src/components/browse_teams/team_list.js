@@ -6,7 +6,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import { connect } from 'react-redux';
 import { teamList, loadStart, loadEnd } from "../../actions";
 import LoadingScreen from "../loading_screen";
-
 import 'react-toastify/dist/ReactToastify.css';
 
 class TeamList extends Component {
@@ -18,7 +17,7 @@ class TeamList extends Component {
 
     notify = async () => toast.error('Please log in or sign up to add more than three teams to your list.', {
         position: "top-right",
-        autoClose: false,
+        autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -27,7 +26,7 @@ class TeamList extends Component {
 
     alert = async () => toast.warn('Warning: You already have three teams saved. Please log in or sign up to save more.', {
         position: "top-right",
-        autoClose: false,
+        autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -149,15 +148,7 @@ class TeamList extends Component {
                 <div className="team-list row">
                     <div className="container row">
                         <div>
-                            <ToastContainer
-                                position="top-right"
-                                autoClose={false}
-                                newestOnTop={false}
-                                closeOnClick
-                                rtl={false}
-                                pauseOnVisibilityChange
-                                draggable
-                            />
+                            <ToastContainer/>
                         </div>
                         <Button checkUserLoggedIn={this.checkUserLoggedIn} checkNumberOfSavedTeams={this.checkNumberOfSavedTeams} />
                         <div style={border}>

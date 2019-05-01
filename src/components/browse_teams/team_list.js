@@ -88,7 +88,7 @@ class TeamList extends Component {
         const sendTeamIds = this.state.selectedTeams.toString();
 
         await axios.get(`/api/addteam.php?user_id=${userId}&team_id=${sendTeamIds}`);
-        this.props.history.push(`/my-teams`);
+        this.props.history.push(`/user-teams`);
     }
 
     goToMyTeamsGuest = async () => {
@@ -123,7 +123,7 @@ class TeamList extends Component {
             homeTeamsIds.length = currentLength;
         } else {
             localStorage.homeTeamIds = homeTeamsIds.toString();
-            this.props.history.push(`/my-teams`);
+            this.props.history.push(`/user-teams`);
         }
     }
 

@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import TeamList from './team_list';
 import NBAGameInfo from '../nba_stats';
 import NHLGameInfo from '../nhl_stats';
+import 'react-toastify/dist/ReactToastify.css';
 import './browse.scss';
 
 export default props => {

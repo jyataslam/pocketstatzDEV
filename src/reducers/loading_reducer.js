@@ -1,15 +1,15 @@
 import types from '../actions/types';
 
 const DEFAULT_STATE = {
-    isLoaded: false
+    loading: false
 }
 
 export default (state = DEFAULT_STATE, action) => {
     switch(action.type) {
         case types.LOAD_START:
-            return { ...state, isLoaded: false }
+            return { ...state, loading: true }
         case types.LOAD_END:
-            return { ...state, isLoaded: true }
+            return { ...state, loading: false }
         default:
             return state;
         

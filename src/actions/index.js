@@ -1,5 +1,7 @@
 import axios from 'axios';
 import types from './types';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export function loadStart() {
@@ -35,6 +37,15 @@ export const checkAuth = () => async dispatch => {
 }
 
 export const signIn = (user) => async dispatch => {
+    const notify = async () => toast.error('Error: Invalid username or password', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true
+    });
+
     const response = await axios.post(`/api/login.php`, user);
     console.log('sign in error: ', response.data.error);
     if(response.data.success)
@@ -98,7 +109,6 @@ export const teamList = (props) => async dispatch => {
             return dispatch({
                 type: types.RETRIEVE_TEAMS,
                 response: {
-                    isLoaded: true,
                     teams: response.data.teams
                 }
             });

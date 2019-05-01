@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import TeamButton from '../team_button/team_button';
 import EmptyHomepage from '../empty_homepage';
 import axios from 'axios';
+import LoadingScreen from '../../loading_screen';
 import Swipeout from 'rc-swipeout';
 import '../my_team_lists.scss';
 
@@ -10,8 +11,7 @@ class GuestTeamList extends Component {
         super(props);
 
         this.state = {
-            userTeams: [],
-            isLoaded: false,
+            userTeams: null,
             isMobile: false
         }
 
@@ -19,7 +19,7 @@ class GuestTeamList extends Component {
     }
     
     async componentDidMount() {
-        this.getGuestUserTeams();
+        await this.getGuestUserTeams();
         this.onLoadCheckScreenWidth();
     }
 
@@ -42,18 +42,21 @@ class GuestTeamList extends Component {
 
     async getGuestUserTeams() {
         let localData = localStorage.homeTeamIds;
-        if (localData === undefined) {
-            return
-        }
-        const response = await axios.get("/api/list-user-teams.php", {
-            params: {
-                team_ids: localData
-            }
-        });
+        let guestUserTeams = null;
+        if (localData) {
+            const response = await axios.get("/api/list-user-teams.php", {
+                params: {
+                    team_ids: localData
+                }
+            });
 
+            guestUserTeams = response.data.user_teams;
+        } else {
+            guestUserTeams = [];
+        }
+        
         this.setState({
-            userTeams: response.data.user_teams,
-            isLoaded: true
+            userTeams: guestUserTeams,
         });
     }
 
@@ -66,7 +69,6 @@ class GuestTeamList extends Component {
                 localStorage.removeItem('homeTeamIds', index);
                 this.setState({
                     userTeams: [],
-                    isLoaded: false
                 })
                 return
             }
@@ -79,7 +81,6 @@ class GuestTeamList extends Component {
             });
             this.setState({
                 userTeams: response.data.user_teams,
-                isLoaded: true
             });
         } 
     }
@@ -93,9 +94,10 @@ class GuestTeamList extends Component {
     }
 
     render() {
-        const { isLoaded, userTeams, isMobile } = this.state;
-
-        if (isLoaded && userTeams) {
+        const { userTeams, isMobile } = this.state;
+        if (!userTeams) {
+            return <LoadingScreen />
+        } else if (userTeams.length) {
             const homepageTeamList = userTeams.map((team) => {
                 if (isMobile) {
                     return (
@@ -121,12 +123,11 @@ class GuestTeamList extends Component {
 
             return (
                 <ul>
-                    {isLoaded && homepageTeamList}
+                    {homepageTeamList}
                 </ul>
             );
         } 
         return <EmptyHomepage goToBrowse={this.goToBrowse} />
-
     }
 }
 

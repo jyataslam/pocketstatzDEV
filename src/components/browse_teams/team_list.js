@@ -6,19 +6,17 @@ import { ToastContainer, toast } from 'react-toastify';
 import { connect } from 'react-redux';
 import { teamList, loadStart, loadEnd } from "../../actions";
 import LoadingScreen from "../loading_screen";
-
 import 'react-toastify/dist/ReactToastify.css';
 
 class TeamList extends Component {
     state = {
-        isLoaded: false,
         teams: null,
         selectedTeams: []
     }
 
     notify = async () => toast.error('Please log in or sign up to add more than three teams to your list.', {
         position: "top-right",
-        autoClose: false,
+        autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -27,7 +25,7 @@ class TeamList extends Component {
 
     alert = async () => toast.warn('Warning: You already have three teams saved. Please log in or sign up to save more.', {
         position: "top-right",
-        autoClose: false,
+        autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -39,12 +37,22 @@ class TeamList extends Component {
         await this.props.teamList(this.props);
         this.props.loadEnd();
 
-        //triggers the warning toast if they already have three teams saved when they visit the page
-        if (localStorage.getItem("homeTeamIds") !== null) {
-            let currentHomeTeams = JSON.parse("[" + localStorage.getItem("homeTeamIds") + "]");
-            if (currentHomeTeams.length === 3) {
-                console.log(currentHomeTeams);
-                this.alert();
+        this.checkLocalStorageTeams();
+    }
+
+    checkLocalStorageTeams = async () => {
+        const resp = await axios.get(`/api/login-status.php`);
+        const { success, user_id } = resp.data;
+        if (success) {
+            return
+        }
+        else {
+            if (localStorage.getItem("homeTeamIds") !== null) {
+                let currentHomeTeams = JSON.parse("[" + localStorage.getItem("homeTeamIds") + "]");
+                if (currentHomeTeams.length === 3) {
+                    console.log(currentHomeTeams);
+                    this.alert();
+                }
             }
         }
     }
@@ -74,17 +82,16 @@ class TeamList extends Component {
     checkUserLoggedIn = async () => {
         const resp = await axios.get(`/api/login-status.php`);
         console.log("user logged in? resp:", resp);
-        const {success, user_id} = resp.data; 
-        if(success)
-        {
+        const { success, user_id } = resp.data;
+        if (success) {
             this.goToMyTeamsSignedInUser(user_id);
         }
-        else{
+        else {
             this.goToMyTeamsGuest();
         }
     }
 
-    goToMyTeamsSignedInUser = async (userId) => { 
+    goToMyTeamsSignedInUser = async (userId) => {
         const sendTeamIds = this.state.selectedTeams.toString();
 
         await axios.get(`/api/addteam.php?user_id=${userId}&team_id=${sendTeamIds}`);
@@ -109,7 +116,7 @@ class TeamList extends Component {
 
         for (var index = 0; index < homeTeamsResponse.data.user_teams.length; index++) {
             //prevents the user from adding duplicate teams
-            if(!homeTeamsIds.includes(homeTeamsResponse.data.user_teams[index].id)){
+            if (!homeTeamsIds.includes(homeTeamsResponse.data.user_teams[index].id)) {
                 homeTeamsIds.push(homeTeamsResponse.data.user_teams[index].id);
             }
             if (localStorage.getItem("homeTeamIds") === null) {
@@ -132,7 +139,7 @@ class TeamList extends Component {
     }
 
     render() {
-        if (!this.props.isLoaded) {
+        if (!this.props.teams) {
             return <LoadingScreen />
         }
         else {
@@ -149,17 +156,9 @@ class TeamList extends Component {
                 <div className="team-list row">
                     <div className="container row">
                         <div>
-                            <ToastContainer
-                                position="top-right"
-                                autoClose={false}
-                                newestOnTop={false}
-                                closeOnClick
-                                rtl={false}
-                                pauseOnVisibilityChange
-                                draggable
-                            />
+                            <ToastContainer />
                         </div>
-                        <Button checkUserLoggedIn={this.checkUserLoggedIn} checkNumberOfSavedTeams={this.checkNumberOfSavedTeams} />
+                        <Button checkUserLoggedIn={this.checkUserLoggedIn} />
                         <div style={border}>
                             {teamsList}
                         </div>
@@ -172,7 +171,6 @@ class TeamList extends Component {
 
 function mapStateToProps(state) {
     return {
-        isLoaded: state.loading.isLoaded,
         teams: state.listOfTeams.teams,
         clicked: state.listOfTeams.clicked
     }

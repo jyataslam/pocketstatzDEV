@@ -1,10 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import ReactDOM from 'react-dom';
 import TeamButton from '../team_button/team_button';
 import EmptyHomepage from '../empty_homepage';
 import axios from 'axios';
 import Swipeout from 'rc-swipeout';
-
 import '../my_team_lists.scss';
 
 class UserTeamList extends Component {
@@ -28,21 +26,21 @@ class UserTeamList extends Component {
     checkScreenWidth = (event) => {
         const { outerWidth } = event.target;
         let mobile = outerWidth < 601 ? true : false;
-    
+
         this.setState({
             isMobile: mobile
         })
     }
 
-    onLoadCheckScreenWidth(){
+    onLoadCheckScreenWidth() {
         let mobile = outerWidth < 601 ? true : false;
-    
+
         this.setState({
             isMobile: mobile
         })
     }
 
-    async getSignedInUserTeams(userId){
+    async getSignedInUserTeams(userId) {
         const resp = await axios.get(`/api/gethomepageteams.php?user_id=${userId}`);
         console.log("response from db is:", resp);
 
@@ -71,16 +69,14 @@ class UserTeamList extends Component {
         console.log("delete signed in user response:", resp);
         const newTeamsArray = [...this.state.userTeams];
 
-        if(resp.data.success)
-        {
+        if (resp.data.success) {
             this.setState({
                 userTeams: newTeamsArray.filter((team) => {
                     return team.team_id !== targetTeamId;
                 })
             });
         }
-        else
-        {
+        else {
             console.log(resp.error);
         }
     }
@@ -94,28 +90,30 @@ class UserTeamList extends Component {
     }
 
     render() {
-        const { isLoaded, userTeams } = this.state;
+        const { isLoaded, userTeams, isMobile } = this.state;
 
         if (isLoaded && userTeams) {
             const homepageTeamList = userTeams.map((team) => {
-
+                if (isMobile) {
+                    return (
+                        <Swipeout
+                            right={[
+                                {
+                                    text: 'delete',
+                                    onPress: () => this.deleteSignedInUserTeam(team.team_id),
+                                    style: { backgroundColor: 'red', color: 'white' },
+                                    className: 'custom-class-2'
+                                }
+                            ]}
+                            autoClose='true'
+                        >
+                            <TeamButton key={team.id} {...team} chooseTeam={this.goToTeamStats} deleteTeam={this.deleteSignedInUserTeam} isMobile={isMobile} />
+                        </Swipeout>
+                    )
+                }
                 return (
-                    <Swipeout
-                        right={[
-                            {
-                                text: 'delete',
-                                onPress: () => this.deleteSignedInUserTeam(team.team_id),
-                                style: { backgroundColor: 'red', color: 'white' },
-                                className: 'custom-class-2'
-                            }
-                        ]}
-                        onOpen={() => console.log('open')}
-                        onClose={() => console.log('closed')}
-                        autoClose = 'true'
-                    >
-                        <TeamButton key={team.id} {...team} chooseTeam={this.goToTeamStats} />
-                    </Swipeout>
-                )
+                    <TeamButton key={team.id} {...team} chooseTeam={this.goToTeamStats} isMobile={isMobile} deleteTeam={this.deleteSignedInUserTeam} />
+                );
             });
 
             return (
@@ -123,7 +121,7 @@ class UserTeamList extends Component {
                     {isLoaded && homepageTeamList}
                 </ul>
             );
-        } 
+        }
         return <EmptyHomepage goToBrowse={this.goToBrowse} />
 
     }

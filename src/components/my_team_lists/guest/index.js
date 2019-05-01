@@ -1,14 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import ReactDOM from 'react-dom';
-import { connect } from 'react-redux';
-import { checkAuth } from '../../../actions';
 import TeamButton from '../team_button/team_button';
 import EmptyHomepage from '../empty_homepage';
 import axios from 'axios';
 import Swipeout from 'rc-swipeout';
-
 import '../my_team_lists.scss';
-
 
 class GuestTeamList extends Component {
     constructor(props) {
@@ -23,7 +18,6 @@ class GuestTeamList extends Component {
         window.addEventListener('resize', this.checkScreenWidth);
     }
     
-
     async componentDidMount() {
         this.getGuestUserTeams();
         this.onLoadCheckScreenWidth();
@@ -114,8 +108,6 @@ class GuestTeamList extends Component {
                                     className: 'custom-class-2'
                                 }
                             ]}
-                            onOpen={() => console.log('open')}
-                            onClose={() => console.log('closed')}
                             autoClose = 'true'
                         >
                             <TeamButton key={team.id} {...team} chooseTeam={this.goToTeamStats} isMobile={isMobile}/>
@@ -123,7 +115,7 @@ class GuestTeamList extends Component {
                     )
                 }
                 return (
-                    <TeamButton key={team.id} {...team} chooseTeam={this.goToTeamStats} isMobile={isMobile} deleteTeam={this.deleteGuestOrSignedInTeam}/>
+                    <TeamButton key={team.id} {...team} chooseTeam={this.goToTeamStats} isMobile={isMobile} deleteTeam={this.deleteGuestUserTeam}/>
                 );
             });
 

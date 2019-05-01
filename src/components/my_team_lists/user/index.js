@@ -12,7 +12,7 @@ class UserTeamList extends Component {
 
         this.state = {
             userTeams: null,
-            isMobile: false,
+            isMobile: false
         }
 
         window.addEventListener('resize', this.checkScreenWidth);
@@ -50,8 +50,7 @@ class UserTeamList extends Component {
     }
 
     deleteSignedInUserTeam = async (targetTeamId) => {
-        const resp = await axios.get(`/api/delete-user-team.php?team_id=${targetTeamId}`)
-        console.log("delete signed in user response:", resp);
+        const resp = await axios.get(`/api/delete-user-team.php?team_id=${targetTeamId}`);
         const newTeamsArray = [...this.state.userTeams];
 
         if (resp.data.success) {
@@ -93,7 +92,7 @@ class UserTeamList extends Component {
                             ]}
                             autoClose='true'
                         >
-                            <TeamButton key={team.id} {...team} chooseTeam={this.goToTeamStats} deleteTeam={this.deleteSignedInUserTeam} isMobile={isMobile} />
+                            <TeamButton key={team.id} {...team} chooseTeam={this.goToTeamStats} isMobile={isMobile} />
                         </Swipeout>
                     )
                 }

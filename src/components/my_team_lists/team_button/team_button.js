@@ -8,9 +8,9 @@ export default (props) => {
         return(
             <div className="container">
                 <div className="row">
-                    <button onClick={() => {chooseTeam(team_id || id, league_name)}} style={backgroundColor} className="btn btn-large home-team-button col s12 m9 offset-m1">{team_full_name}</button>
+                    <button onClick={() => {chooseTeam(id, league_name)}} style={backgroundColor} className="btn btn-large home-team-button col s12 m9 offset-m1">{team_full_name}</button>
                     {!isMobile && (
-                        <button onClick={() => {deleteTeam(team_id || id, league_name)}} className="btn btn-large red col m1 offset-m1">X</button>
+                        <button onClick={() => {deleteTeam(id)}} className="btn btn-large red col m1 offset-m1">X</button>
                     )}
                 </div>
             </div>

@@ -11,7 +11,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 class TeamList extends Component {
     state = {
-        isLoaded: false,
         teams: null,
         selectedTeams: []
     }
@@ -132,47 +131,44 @@ class TeamList extends Component {
     }
 
     render() {
-        if (!this.props.isLoaded) {
+        if (!this.props.teams) {
             return <LoadingScreen />
         }
-        else {
-            console.log(this.state.selectedTeams);
-            const teamsList = this.props.teams.map((team) => {
-                if (this.state.selectedTeams.includes(team.id)) {
-                    return <Team key={team.id} {...team} chooseTeam={this.chooseTeam} checkStats={this.checkStats} selected={true} />
-                }
-                return <Team key={team.id} {...team} chooseTeam={this.chooseTeam} checkStats={this.checkStats} />
-            });
-            const border = { "border": "none" };
+        console.log(this.state.selectedTeams);
+        const teamsList = this.props.teams.map((team) => {
+            if (this.state.selectedTeams.includes(team.id)) {
+                return <Team key={team.id} {...team} chooseTeam={this.chooseTeam} checkStats={this.checkStats} selected={true} />
+            }
+            return <Team key={team.id} {...team} chooseTeam={this.chooseTeam} checkStats={this.checkStats} />
+        });
+        const border = { "border": "none" };
 
-            return (
-                <div className="team-list row">
-                    <div className="container row">
-                        <div>
-                            <ToastContainer
-                                position="top-right"
-                                autoClose={false}
-                                newestOnTop={false}
-                                closeOnClick
-                                rtl={false}
-                                pauseOnVisibilityChange
-                                draggable
-                            />
-                        </div>
-                        <Button checkUserLoggedIn={this.checkUserLoggedIn} checkNumberOfSavedTeams={this.checkNumberOfSavedTeams} />
-                        <div style={border}>
-                            {teamsList}
-                        </div>
+        return (
+            <div className="team-list row">
+                <div className="container row">
+                    <div>
+                        <ToastContainer
+                            position="top-right"
+                            autoClose={false}
+                            newestOnTop={false}
+                            closeOnClick
+                            rtl={false}
+                            pauseOnVisibilityChange
+                            draggable
+                        />
+                    </div>
+                    <Button checkUserLoggedIn={this.checkUserLoggedIn} checkNumberOfSavedTeams={this.checkNumberOfSavedTeams} />
+                    <div style={border}>
+                        {teamsList}
                     </div>
                 </div>
-            )
-        }
+            </div>
+        )
     }
 }
 
 function mapStateToProps(state) {
     return {
-        isLoaded: state.loading.isLoaded,
         teams: state.listOfTeams.teams,
         clicked: state.listOfTeams.clicked
     }

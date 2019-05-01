@@ -8,7 +8,6 @@ import UserTeamList from './my_team_lists/user';
 import GuestTeamList from './my_team_lists/guest';
 import NavFooter from './nav/nav_footer';
 import LandingPage from "./landing_page";
-import LoadingScreen from "./loading_screen";
 import About from './about_page';
 import AccountRoutes from "./account";
 

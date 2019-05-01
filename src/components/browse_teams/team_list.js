@@ -10,7 +10,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 class TeamList extends Component {
     state = {
-        isLoaded: false,
         teams: null,
         selectedTeams: []
     }
@@ -131,7 +130,7 @@ class TeamList extends Component {
     }
 
     render() {
-        if (!this.props.isLoaded) {
+        if (!this.props.teams) {
             return <LoadingScreen />
         }
         else {
@@ -156,14 +155,13 @@ class TeamList extends Component {
                         </div>
                     </div>
                 </div>
-            )
-        }
+        )
     }
+}
 }
 
 function mapStateToProps(state) {
     return {
-        isLoaded: state.loading.isLoaded,
         teams: state.listOfTeams.teams,
         clicked: state.listOfTeams.clicked
     }

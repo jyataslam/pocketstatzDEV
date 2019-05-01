@@ -103,7 +103,6 @@ export const teamList = (props) => async dispatch => {
             return dispatch({
                 type: types.RETRIEVE_TEAMS,
                 response: {
-                    isLoaded: true,
                     teams: response.data.teams
                 }
             });

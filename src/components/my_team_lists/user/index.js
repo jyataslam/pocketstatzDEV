@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import LoadingScreen from '../../loading_screen';
 import TeamButton from '../team_button/team_button';
 import EmptyHomepage from '../empty_homepage';
 import axios from 'axios';
@@ -10,16 +11,15 @@ class UserTeamList extends Component {
         super(props);
 
         this.state = {
-            userTeams: [],
-            isLoaded: false,
-            isMobile: false
+            userTeams: null,
+            isMobile: false,
         }
 
         window.addEventListener('resize', this.checkScreenWidth);
     }
 
     async componentDidMount() {
-        this.getSignedInUserTeams();
+        await this.getSignedInUserTeams();
         this.onLoadCheckScreenWidth();
     }
 
@@ -45,24 +45,9 @@ class UserTeamList extends Component {
         console.log("response from db is:", resp);
 
         this.setState({
-            userTeams: resp.data.homepage_items,
-            isLoaded: true
+            userTeams: resp.data.homepage_items
         });
     }
-
-    // deleteGuestOrSignedInTeam = async (teamId) => {
-    //     const resp = await axios.get(`/api/login-status.php`);
-    //     const {success} = resp.data;
-
-    //     if(success)
-    //     {
-    //         this.deleteSignedInUserTeam(teamId);
-    //     }
-    //     else
-    //     {
-    //         this.deleteGuestUserTeam(teamId)
-    //     }
-    // }
 
     deleteSignedInUserTeam = async (targetTeamId) => {
         const resp = await axios.get(`/api/delete-user-team.php?team_id=${targetTeamId}`)
@@ -90,9 +75,10 @@ class UserTeamList extends Component {
     }
 
     render() {
-        const { isLoaded, userTeams, isMobile } = this.state;
-
-        if (isLoaded && userTeams) {
+        const { userTeams, isMobile } = this.state;
+        if (!userTeams) {
+            return <LoadingScreen />
+        } else if (userTeams.length) {
             const homepageTeamList = userTeams.map((team) => {
                 if (isMobile) {
                     return (
@@ -118,12 +104,11 @@ class UserTeamList extends Component {
 
             return (
                 <ul>
-                    {isLoaded && homepageTeamList}
+                    {homepageTeamList}
                 </ul>
             );
         }
         return <EmptyHomepage goToBrowse={this.goToBrowse} />
-
     }
 }
 

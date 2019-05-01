@@ -33,15 +33,6 @@ const SignInForm = props => {
     );
 }
 
-const notify = () => toast.error('Error: Invalid username or password', {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true
-});
-
 function validate({ username, password }) {
     const errors = {};
 

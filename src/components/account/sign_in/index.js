@@ -7,9 +7,7 @@ import {connect} from "react-redux";
 class SignIn extends Component {
 
     handleSignIn = (values) => {
-        if(this.props.signIn(values)){
-            this.props.history.push(`/my-teams`);
-        }
+        this.props.signIn(values);
     }
     
     render() {

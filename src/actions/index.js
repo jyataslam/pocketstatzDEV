@@ -14,6 +14,26 @@ export function loadEnd() {
     }
 }
 
+export const checkAuth = () => async dispatch => {
+    const resp = await axios.get('/api/login-status.php');
+
+    if(resp.data.success)
+    {
+        return dispatch({
+            type: types.SIGN_IN_USER,
+            response: {
+                auth: true
+            }
+        });
+    }
+    else
+    {
+        return dispatch({
+            type: types.SIGN_OUT_USER
+        });
+    }
+}
+
 export const signIn = (user) => async dispatch => {
     const response = await axios.post(`/api/login.php`, user);
     if(response.data.success)

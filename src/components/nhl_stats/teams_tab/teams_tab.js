@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 
 class TeamsTab extends Component {
     render(){
-        const margin = {"margin": "10px 0 10px 0"};
+        const margin = {"margin": "10px 0"};
         const height = {"height": "20px", "lineHeight": "inherit"};
 
         return(

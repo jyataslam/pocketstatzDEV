@@ -16,18 +16,9 @@ html {
     justify-content: space-between;
     align-items: center;
     margin: 2% 0;
-
-    
-
-    // button {
-    //     width: 40%;
-
-    //     @media screen and (max-width: $break-small) {
-    //         width: 45%;
-    //     }
-    // }
 }
-img{
+
+img {
     max-width: 100%;
     max-height: 100%;
 }
@@ -47,11 +38,17 @@ img{
         letter-spacing: .5px;
         line-height: 15px;
         border-radius: 10px;
-        padding: 0 16px;
+        padding: 0 10px;
+        background-color: white;
+        display: flex;
         
         @media screen and (min-width: $break-large) {
             width: 150px;
             height: 150px;
+        }
+
+        .team-image {
+            margin: auto;
         }
     }
 
@@ -65,8 +62,19 @@ img{
         letter-spacing: .5px;
         line-height: 15px;
         border-radius: 10px;
-        padding: 0 16px;
+        padding: 0 10px;
         opacity: 0.3;
+        background-color: white;
+        display: flex;
+
+        @media screen and (min-width: $break-large) {
+            width: 150px;
+            height: 150px;
+        }
+
+        .team-image {
+            margin: auto;
+        }
     }
 }
 

@@ -23,7 +23,7 @@ const SignInForm = props => {
                 <Link to="/account/sign-up">No account? Create one here!</Link>
             </div>
             <div className="row">
-                <button type ="submit" className="btn green col s12 m4 offset-m4">Log In</button>
+                <button type ="submit" name="submit" className="btn green col s12 m4 offset-m4">Log In</button>
             </div>
         </form>
     );

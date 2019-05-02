@@ -139,11 +139,13 @@ class TeamList extends Component {
     }
 
     render() {
-        if (!this.props.teams) {
+        const leagueName = this.props.match.path.slice(-3);
+
+        if (!this.props.teams[leagueName]) {
             return <LoadingScreen />
         }
         else {
-            const teamsList = this.props.teams.map((team) => {
+            const teamsList = this.props.teams[leagueName].map((team) => {
                 if (this.state.selectedTeams.includes(team.id)) {
                     return <Team key={team.id} {...team} chooseTeam={this.chooseTeam} checkStats={this.checkStats} selected={true} />
                 }

@@ -5,11 +5,11 @@ import { connect } from "react-redux";
 
 class SignUp extends Component {
     handleSignUp = values => {
-        if(this.props.signUp(values)){
+        if (this.props.signUp(values)) {
             this.props.signIn(values);
         };
     }
-    
+
     componentWillUnmount() {
         this.props.clearErrors();
     }
@@ -17,18 +17,20 @@ class SignUp extends Component {
     render() {
         const { error } = this.props;
         return (
-            <div>
-                <img src="/dist/assets/images/logos/pocketstatzicon.png" alt="LOGO"/>
-                <h4 className="center">Create an account</h4>
-                <SignUpForm signUp={this.handleSignUp}/>
-                <p className="center">{(error) ? "Username is taken" : ""}</p>
+            <div className="signin-container">
+                <div className="container">
+                    <img className="signin-icon col s12 m8 offset-m2" src="/dist/assets/images/logos/pocketstatzicon.png" alt="LOGO" />
+                    <p className="center signin-text">Create Your Account</p>
+                    <SignUpForm signUp={this.handleSignUp} />
+                    <p className="center">{(error) ? "Username is taken" : ""}</p>
+                </div>
             </div>
         );
     }
 }
 
-function mapStateToProps(state){
-    return{
+function mapStateToProps(state) {
+    return {
         error: state.user.error
     }
 }

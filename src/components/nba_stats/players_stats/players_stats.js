@@ -26,7 +26,7 @@ class PlayerStats extends Component {
                 <table className="striped">
                     <thead id="stats-title">
                         <tr>
-                            <th className="player-head-width">Player</th>
+                            <th className="player-head-width">PLAYER</th>
                             <th>POS</th>
                             <th>PTS</th>
                             <th>3PTS</th>

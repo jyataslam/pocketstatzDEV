@@ -3,11 +3,18 @@ import React, { Component } from 'react';
 class DropDown extends Component {
 
     render() {
-        const { checkUserLoggedIn } = this.props;
+        const { checkUserLoggedIn, selectedTeams } = this.props;
         const margin = {"marginTop": "15px"};
-        return (
-            <button onClick={() => {checkUserLoggedIn()}} style={margin} className="btn btn-small pulse green accent-4 col s12">Go To My Teams</button>
-        )
+
+        if (selectedTeams.length !== 0){
+            return (
+                <button onClick={() => {checkUserLoggedIn()}} style={margin} className="btn btn-small pulse green accent-4 col s12">Go To My Teams</button>
+            )
+        } else {
+            return (
+                <button onClick={() => {checkUserLoggedIn()}} style={margin} className="btn btn-small red lighten-3 accent-4 col s12">Select Your Teams</button>
+            )
+        }
     }
 }
 

@@ -18,7 +18,7 @@ class SignUp extends Component {
         const { error } = this.props;
         return (
             <div>
-                <h3 className="center">Logo goes here</h3>
+                <img src="/dist/assets/images/logos/pocketstatzicon.png" alt="LOGO"/>
                 <h4 className="center">Create an account</h4>
                 <SignUpForm signUp={this.handleSignUp}/>
                 <p className="center">{(error) ? "Username is taken" : ""}</p>

@@ -2,13 +2,20 @@
     margin: 0;
     width: 100%;
 
-    .sport-name{
+    .sport-name {
         display: flex;
         justify-content: center;
         align-items: center;
     }
 }
 
-.header-text {
-    
+#orange-btn {
+    color: white;
+    border-radius: 200px;
+    background-color: #ef6c00;
+    margin: 2%;
+
+    &:hover {
+        background-color: #0de3fff1;
+    }
 }

@@ -53,9 +53,9 @@ class Nav extends Component {
 
         return (
             <Fragment>
-                <button className="sidenav-close right hide-on-med-and-up">
+                {/* <button className="sidenav-close right hide-on-med-and-up">
                     <i className="material-icons">close</i>
-                </button>
+                </button> */}
                 <li className="first-li sidenav-close">
                     <Link to="/user-teams">My Teams</Link>
                 </li>

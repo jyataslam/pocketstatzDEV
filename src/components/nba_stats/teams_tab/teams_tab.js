@@ -3,10 +3,6 @@ import "./teams_tab.scss";
 
 class TeamsTab extends Component {
     render(){
-        console.log("teams tab props:", this.props);
-        const margin = {"margin": "10px 0"};
-        const height = {"height": "20px", "lineHeight": "inherit"};
-
         return(
             <div id="buttons-container">
                 <div className="row" id="row">

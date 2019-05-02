@@ -122,7 +122,7 @@ export const teamList = (props) => async dispatch => {
             return dispatch({
                 type: types.RETRIEVE_TEAMS,
                 response: {
-                    teams: response.data.teams
+                    [props.leagueName]: response.data.teams
                 }
             });
         }

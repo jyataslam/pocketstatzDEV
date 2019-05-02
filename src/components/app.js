@@ -29,7 +29,7 @@ class App extends Component {
         return (
             <div>
                 <Nav />
-                <div className="container" id="landing-container">
+                <div id="landing-container">
                     <Switch>
                         <Route path="/" exact component={LandingPage} />
                         <Route path="/browse" render={(routingProps) => {

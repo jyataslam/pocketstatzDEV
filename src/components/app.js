@@ -54,3 +54,11 @@ class App extends Component {
 export default connect(null, {
     checkAuth
 })(App);
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('SW registered', reg))
+            .catch(err => console.log('Boo!', err));
+    });
+}

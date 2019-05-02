@@ -163,3 +163,45 @@ export const nhlGameInfo = (props) => async dispatch => {
         });
     }
 }
+
+export const getUserTeams = (props) => async dispatch => {
+    const resp = await axios.get(`/api/gethomepageteams.php`);
+    console.log("response from db is:", resp);
+
+    return dispatch({
+        type: types.RETRIEVE_USER_TEAMS,
+        response: {
+            userTeams: resp.data.homepage_items
+        }
+    });
+}
+
+export const deleteUserTeam = (id) => async dispatch => {
+    const resp = await axios.get(`/api/delete-user-team.php?team_id=${id}`)
+
+    return dispatch({
+        type: types.DELETE_USER_TEAM
+        // response: {
+        //     userTeams: newTeamsArray.filter((team) => {
+        //         return team.team_id !== targetTeamId;
+        //     })
+        // }
+    });
+}
+
+// deleteSignedInUserTeam = async (targetTeamId) => {
+//     const resp = await axios.get(`/api/delete-user-team.php?team_id=${targetTeamId}`)
+//     console.log("delete signed in user response:", resp);
+//     const newTeamsArray = [...this.state.userTeams];
+
+//     if (resp.data.success) {
+//         this.setState({
+//             userTeams: newTeamsArray.filter((team) => {
+//                 return team.team_id !== targetTeamId;
+//             })
+//         });
+//     }
+//     else {
+//         console.log(resp.error);
+//     }
+// }

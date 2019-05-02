@@ -5,21 +5,23 @@ import EmptyHomepage from '../empty_homepage';
 import axios from 'axios';
 import Swipeout from 'rc-swipeout';
 import '../my_team_lists.scss';
+import { connect } from 'react-redux';
+import { getUserTeams, deleteUserTeam } from '../../../actions';
 
 class UserTeamList extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            userTeams: null,
-            isMobile: false
+            isMobile: false,
+            userTeams: null
         }
 
         window.addEventListener('resize', this.checkScreenWidth);
     }
 
     async componentDidMount() {
-        await this.getSignedInUserTeams();
+        await this.props.getUserTeams();
         this.onLoadCheckScreenWidth();
     }
 
@@ -32,38 +34,17 @@ class UserTeamList extends Component {
         })
     }
 
+    handleDeleteTeam = async (id) => {
+        await this.props.deleteUserTeam(id)
+        this.props.getUserTeams();
+    }
+
     onLoadCheckScreenWidth() {
         let mobile = outerWidth < 601 ? true : false;
 
         this.setState({
             isMobile: mobile
         })
-    }
-
-    async getSignedInUserTeams(userId) {
-        const resp = await axios.get(`/api/gethomepageteams.php?user_id=${userId}`);
-        console.log("response from db is:", resp);
-
-        this.setState({
-            userTeams: resp.data.homepage_items
-        });
-    }
-
-    deleteSignedInUserTeam = async (targetTeamId) => {
-        console.log('delete id', targetTeamId)
-        const resp = await axios.get(`/api/delete-user-team.php?team_id=${targetTeamId}`);
-        const newTeamsArray = [...this.state.userTeams];
-
-        if (resp.data.success) {
-            this.setState({
-                userTeams: newTeamsArray.filter((team) => {
-                    return team.team_id !== targetTeamId;
-                })
-            });
-        }
-        else {
-            console.log(resp.error);
-        }
     }
 
     goToTeamStats = (teamID, leagueName) => {
@@ -75,7 +56,7 @@ class UserTeamList extends Component {
     }
 
     render() {
-        const { userTeams, isMobile } = this.state;
+        const { userTeams, isMobile } = this.props;
         if (!userTeams) {
             return <LoadingScreen />
         } else if (userTeams.length) {
@@ -86,19 +67,21 @@ class UserTeamList extends Component {
                             right={[
                                 {
                                     text: 'delete',
-                                    onPress: () => this.deleteSignedInUserTeam(team.team_id),
+                                    onPress: () => {
+                                        this.handleDeleteTeam(team.team_id)
+                                    },
                                     style: { backgroundColor: 'red', color: 'white' },
                                     className: 'custom-class-2'
                                 }
                             ]}
                             autoClose='true'
                         >
-                            <TeamButton key={team.id} {...team} chooseTeam={this.goToTeamStats} isMobile={isMobile} />
+                            <TeamButton key={team.id} {...team} chooseTeam={this.goToTeamStats} deleteTeam={this.props.deleteUserTeam} isMobile={isMobile} />
                         </Swipeout>
                     )
                 }
                 return (
-                    <TeamButton key={team.id} {...team} chooseTeam={this.goToTeamStats} isMobile={isMobile} deleteTeam={this.deleteSignedInUserTeam} />
+                    <TeamButton key={team.id} {...team} chooseTeam={this.goToTeamStats} isMobile={isMobile} deleteTeam={this.handleDeleteTeam} />
                 );
             });
 
@@ -112,4 +95,12 @@ class UserTeamList extends Component {
     }
 }
 
-export default UserTeamList;
+function mapStateToProps(state){
+    return{
+        userTeams: state.userTeams.userTeams
+    }
+}
+
+export default connect(mapStateToProps, {
+    getUserTeams, deleteUserTeam
+})(UserTeamList);

@@ -24,10 +24,6 @@ if(!$homepage_data){
     throw new Exception(mysqli_error($conn));
 }
 
-if(mysqli_num_rows($homepage_data) === 0) {
-    throw new Exception('Unable to retrieve homepage data');
-}
-
 $output['homepage_items'] = [];
 
 while($row = mysqli_fetch_assoc($homepage_data)){

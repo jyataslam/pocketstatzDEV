@@ -13,3 +13,12 @@ div > img {
     position: relative;
     top: 10px;
 }
+
+.signin-container {
+    height: 100%;
+
+    .signin-icon {
+        height: 150px;
+        padding-top: 30px;
+    }
+}

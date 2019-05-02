@@ -14,6 +14,7 @@ class UserTeamList extends Component {
 
         this.state = {
             isMobile: false,
+            checkingScreenWidth: true,
             userTeams: null
         }
 
@@ -43,7 +44,8 @@ class UserTeamList extends Component {
         let mobile = outerWidth < 601 ? true : false;
 
         this.setState({
-            isMobile: mobile
+            isMobile: mobile,
+            checkingScreenWidth: false
         })
     }
 
@@ -56,8 +58,9 @@ class UserTeamList extends Component {
     }
 
     render() {
-        const { userTeams, isMobile } = this.props;
-        if (!userTeams) {
+        const { userTeams } = this.props;
+        const { isMobile, checkingScreenWidth } = this.state;
+        if (!userTeams || checkingScreenWidth) {
             return <LoadingScreen />
         } else if (userTeams.length) {
             const homepageTeamList = userTeams.map((team) => {

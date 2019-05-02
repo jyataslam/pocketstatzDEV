@@ -18,7 +18,7 @@ const SignUpForm = props => {
                     <Field id="password" name="password" type="password" label ="Password" component={Input}/>
                 </div>
 
-                <div className="input-field col s12 m6 offset-m3">
+                <div className="col s12 m6 offset-m3">
                     <Field id="passwordconfirm" name="passwordconfirm" type="password" label ="Confirm Password" component={Input}/>
                 </div>
 

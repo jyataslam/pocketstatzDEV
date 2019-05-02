@@ -8,7 +8,7 @@ import './browse_sports.scss';
 
 export default props => {
     return (
-        <div className="landing-choose">
+        <div className="container">
             <Route path="/browse" exact component={LandingChoose} />
 
             <Route path="/browse/nba" render={routingProps => {

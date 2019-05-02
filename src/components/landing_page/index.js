@@ -4,10 +4,11 @@ import "./landing_page.scss";
 
 export default props => {
     return(
-        <div>
-            <div className=" welcome-header center">Welcome to Pocket Statz!</div>
-            <div className="divider"></div>
-            <p className="center">Get the latest stats from your favorite sport teams</p>
+        <div className="landing-container">
+            <div className=" welcome-header center">
+            <img className="welcome-logo col s12 m8 offset-m2" src="/dist/assets/images/logos/pocketstatzlogo.png" alt="LOGO"/>
+            </div>
+            <p className="center welcome-text">The Latest Stats From Your Favorite Teams</p>
             <div className="row">
                 <Link to="/account/sign-in" id="landing-btn" className="center btn  col s4 offset-s1 hide-on-med-and-up orange darken-3">Sign In</Link>                
                 <Link to="/account/sign-up" id="landing-btn" className="center btn col s4 offset-s2 hide-on-med-and-up orange darken-3">Sign Up</Link>               

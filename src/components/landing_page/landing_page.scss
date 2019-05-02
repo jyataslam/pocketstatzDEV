@@ -2,17 +2,20 @@
 
 div{
     color: white;
+
     h3{
         margin-bottom: 10%;
     }
 
     .welcome-header{
-        font-size: 80px;
+        padding-top: 20%;
+        height: 200px;
     }
+
     @include mobile{
         .welcome-header{
-            padding-top: 20vh;
-            font-size: 50px;   
+            padding-top: 15%;  
+            height: 200px;
         }
 
         p{
@@ -59,6 +62,24 @@ div{
     font-size: 18px;
     line-height: 85px;
 }
+
+
+.landing-container {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(../../assets/images/kobe.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position-x: 50%;
+    height: 100%;
+
+    .welcome-logo {
+        max-width: 80%;
+        height: 70%;
+    }
+
+    .welcome-text {
+        padding: 60px 0 30px;
+    }
+
 #landing-btn{
     color: white;
     border-radius: 200px;

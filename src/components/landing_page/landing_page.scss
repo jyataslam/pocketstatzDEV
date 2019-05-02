@@ -5,9 +5,6 @@ div{
     h3{
         margin-bottom: 10%;
     }
-    .btn{
-        background-color: orange;
-    }
 
     .welcome-header{
         font-size: 80px;
@@ -61,4 +58,25 @@ div{
     height: 89px;
     font-size: 18px;
     line-height: 85px;
+}
+#landing-btn{
+    color: white;
+    border-radius: 200px;
+    background-color: rgb(207, 109, 24);
+
+}
+
+#landing-btn{
+    color: white;
+    border-radius: 200px;
+    background-color: rgb(207, 109, 24);
+
+}
+#landing-btn-guest{
+    color: #ef6c00;
+    border-radius: 200px;
+    // background-color: rgb(207, 109, 24);
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid #ef6c00;
+
 }

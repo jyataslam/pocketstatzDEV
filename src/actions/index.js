@@ -36,6 +36,12 @@ export const checkAuth = () => async dispatch => {
     }
 }
 
+export function clearErrors() {
+    return {
+        type: types.CLEAR_ERRORS
+    }
+}
+
 export const signIn = (user) => async dispatch => {
     const notify = async () => toast.error('Error: Invalid username or password', {
         position: "top-right",
@@ -47,6 +53,7 @@ export const signIn = (user) => async dispatch => {
     });
 
     const response = await axios.post(`/api/login.php`, user);
+    console.log('sign in error: ', response.data.error);
     if(response.data.success)
     {
         console.log(`${response.data.username} Logged in!`);
@@ -54,14 +61,19 @@ export const signIn = (user) => async dispatch => {
             type: types.SIGN_IN_USER,
             response: {
                 auth: true,
-                username: response.data.username
+                username: response.data.username,
             }
         })
     }
     else
     {
-        console.log(response.data.error);
-        notify();
+        return dispatch({
+            type: types.SIGN_IN_ERROR,
+            response: {
+                auth: false,
+                error: response.data.error
+            }
+        })
     }
 }
 
@@ -91,9 +103,16 @@ export const signUp = (user) => async  dispatch => {
             }
         });
     }
-        else
+    else
     {
         console.log(response.data.error);
+        return dispatch({
+            type: types.SIGN_UP_ERROR,
+            response: {
+                auth: false,
+                error: response.data.error
+            }
+        })
     }
 }
 

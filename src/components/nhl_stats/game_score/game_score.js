@@ -1,10 +1,19 @@
 import React from 'react';
 import "./team_score.scss";
 
+function checkTeamAcronym(teamName) {
+    switch (teamName) {
+        case "FLO":
+            return "FLA";
+        case "WPJ":
+            return "WPG";
+        default:
+            return teamName;
+    }
+}
+
 export default ({ team1, team2, gameDetails }) => {
     // use props from rest of score stats when available
-    // may need condition for just after a game ends:
-      // if status="COMPLETED_PENDING_REVIEW", display FINAL (same for nba)
     
     var currentPeriod = "FINAL";
 
@@ -37,12 +46,8 @@ export default ({ team1, team2, gameDetails }) => {
         <div className="container" id="team-score">
             <div className="center" id="date">{gameDetails.gameDate}</div>
             <div className="row" id="teams">
-                <div className="teamName col s6 center">
-                    {team1.teamName}
-                </div>
-                <div className="teamName col s6 center">
-                    {team2.teamName}
-                </div>
+                <div className="teamName col s6 center">{checkTeamAcronym(team1.teamName)}</div>
+                <div className="teamName col s6 center">{checkTeamAcronym(team2.teamName)}</div>
             </div>
             <div className="row" id="scores">
                 <div className="teamName col s6 center">{team1.teamScore}</div>

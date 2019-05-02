@@ -62,7 +62,7 @@ class PlayerStats extends Component {
                 <table className="striped">
                     <thead id="stats-title">
                         <tr>
-                            <th className="player-head-width">Forwards</th>
+                            <th className="player-head-width">FORWARDS</th>
                             <th>POS</th>
                             <th>G</th>
                             <th>AST</th>
@@ -76,7 +76,7 @@ class PlayerStats extends Component {
                     <div className="divider nhl-divider"></div>
                     <thead id="stats-title">
                         <tr>
-                            <th className="player-head-width">Defense</th>
+                            <th className="player-head-width">DEFENSE</th>
                             <th>POS</th>
                             <th>G</th>
                             <th>AST</th>
@@ -90,7 +90,7 @@ class PlayerStats extends Component {
                     <div className="divider nhl-divider"></div>
                     <thead id="stats-title">
                         <tr>
-                            <th className="player-head-width">Goalies</th>
+                            <th className="player-head-width">GOALIES</th>
                             <th>POS</th>
                             <th>SA</th>
                             <th>GA</th>

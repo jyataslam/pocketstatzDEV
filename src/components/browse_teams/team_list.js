@@ -37,12 +37,22 @@ class TeamList extends Component {
         await this.props.teamList(this.props);
         this.props.loadEnd();
 
-        //triggers the warning toast if they already have three teams saved when they visit the page
-        if (localStorage.getItem("homeTeamIds") !== null) {
-            let currentHomeTeams = JSON.parse("[" + localStorage.getItem("homeTeamIds") + "]");
-            if (currentHomeTeams.length === 3) {
-                console.log(currentHomeTeams);
-                this.alert();
+        this.checkLocalStorageTeams();
+    }
+
+    checkLocalStorageTeams = async () => {
+        const resp = await axios.get(`/api/login-status.php`);
+        const { success, user_id } = resp.data;
+        if (success) {
+            return
+        }
+        else {
+            if (localStorage.getItem("homeTeamIds") !== null) {
+                let currentHomeTeams = JSON.parse("[" + localStorage.getItem("homeTeamIds") + "]");
+                if (currentHomeTeams.length === 3) {
+                    console.log(currentHomeTeams);
+                    this.alert();
+                }
             }
         }
     }
@@ -72,17 +82,16 @@ class TeamList extends Component {
     checkUserLoggedIn = async () => {
         const resp = await axios.get(`/api/login-status.php`);
         console.log("user logged in? resp:", resp);
-        const {success, user_id} = resp.data; 
-        if(success)
-        {
+        const { success, user_id } = resp.data;
+        if (success) {
             this.goToMyTeamsSignedInUser(user_id);
         }
-        else{
+        else {
             this.goToMyTeamsGuest();
         }
     }
 
-    goToMyTeamsSignedInUser = async (userId) => { 
+    goToMyTeamsSignedInUser = async (userId) => {
         const sendTeamIds = this.state.selectedTeams.toString();
 
         await axios.get(`/api/addteam.php?user_id=${userId}&team_id=${sendTeamIds}`);
@@ -107,7 +116,7 @@ class TeamList extends Component {
 
         for (var index = 0; index < homeTeamsResponse.data.user_teams.length; index++) {
             //prevents the user from adding duplicate teams
-            if(!homeTeamsIds.includes(homeTeamsResponse.data.user_teams[index].id)){
+            if (!homeTeamsIds.includes(homeTeamsResponse.data.user_teams[index].id)) {
                 homeTeamsIds.push(homeTeamsResponse.data.user_teams[index].id);
             }
             if (localStorage.getItem("homeTeamIds") === null) {
@@ -134,7 +143,6 @@ class TeamList extends Component {
             return <LoadingScreen />
         }
         else {
-            console.log(this.state.selectedTeams);
             const teamsList = this.props.teams.map((team) => {
                 if (this.state.selectedTeams.includes(team.id)) {
                     return <Team key={team.id} {...team} chooseTeam={this.chooseTeam} checkStats={this.checkStats} selected={true} />
@@ -147,17 +155,17 @@ class TeamList extends Component {
                 <div className="team-list row">
                     <div className="container row">
                         <div>
-                            <ToastContainer/>
+                            <ToastContainer />
                         </div>
-                        <Button checkUserLoggedIn={this.checkUserLoggedIn} checkNumberOfSavedTeams={this.checkNumberOfSavedTeams} />
+                        <Button checkUserLoggedIn={this.checkUserLoggedIn} selectedTeams={this.state.selectedTeams}/>
                         <div style={border}>
                             {teamsList}
                         </div>
                     </div>
                 </div>
-        )
+            )
+        }
     }
-}
 }
 
 function mapStateToProps(state) {

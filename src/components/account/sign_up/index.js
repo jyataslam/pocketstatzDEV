@@ -1,23 +1,27 @@
 import React, { Component } from 'react';
 import SignUpForm from './sign_up_form';
-import { signUp, signIn } from "../../../actions";
+import { clearErrors, signUp, signIn } from "../../../actions";
 import { connect } from "react-redux";
 
 class SignUp extends Component {
-
     handleSignUp = values => {
         if(this.props.signUp(values)){
             this.props.signIn(values);
-            this.props.history.push(`/browse`);
         };
+    }
+    
+    componentWillUnmount() {
+        this.props.clearErrors();
     }
 
     render() {
+        const { error } = this.props;
         return (
             <div>
                 <h3 className="center">Logo goes here</h3>
                 <h4 className="center">Create an account</h4>
                 <SignUpForm signUp={this.handleSignUp}/>
+                <p className="center">{(error) ? "Username is taken" : ""}</p>
             </div>
         );
     }
@@ -25,13 +29,12 @@ class SignUp extends Component {
 
 function mapStateToProps(state){
     return{
-        signIn: state.user
+        error: state.user.error
     }
 }
 
 export default connect(mapStateToProps, {
-    signUp: signUp,
-    signIn: signIn
+    signUp,
+    signIn,
+    clearErrors
 })(SignUp);
-
-

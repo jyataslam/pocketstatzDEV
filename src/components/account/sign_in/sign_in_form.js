@@ -9,7 +9,7 @@ const SignInForm = props => {
     const { handleSubmit, signIn } = props;
 
     return (
-        <form onSubmit={handleSubmit(signIn)}>
+        <form className="signin-form" onSubmit={handleSubmit(signIn)}>
             <div className="row">
                 <div className="col s12 m6 offset-m3">
                     <Field id="username" name="username" label="username" component={Input} />
@@ -27,7 +27,7 @@ const SignInForm = props => {
                 </div>
             </div>
             <div className="row">
-                <button type="submit" className="btn green col s12 m4 offset-m4">Log In</button>
+                <button type="submit" className="login-button btn col s12 m4 offset-m4">Log In</button>
             </div>
         </form>
     );

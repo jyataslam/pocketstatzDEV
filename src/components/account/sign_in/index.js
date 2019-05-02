@@ -16,10 +16,12 @@ class SignIn extends Component {
         const { error } = this.props;
         return (
             <div className="signin-container">
+            <div className="container">
                 <img className="signin-icon col s12 m8 offset-m2" src="/dist/assets/images/logos/pocketstatzicon.png" alt="LOGO"/>
-                <p className="center">Sign In</p>
+                <p className="center signin-text">Sign In To Your Account</p>
                 <SignInForm auth={this.props.auth} signIn={this.handleSignIn}/>
-                <p className="center">{(error) ? "Invalid Username or Password" : ""}</p>
+                <p className="center error-text">{(error) ? "Invalid Username or Password" : ""}</p>
+            </div>
             </div>
         );
     }

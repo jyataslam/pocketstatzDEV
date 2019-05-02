@@ -15,10 +15,35 @@ div > img {
 }
 
 .signin-container {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(../../../assets/images/jordan.gif);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position-x: 50%;
     height: 100%;
 
     .signin-icon {
         height: 150px;
         padding-top: 30px;
+    }
+
+    .signin-text {
+        padding: 30px 0 10px;
+        font-size: 2rem;
+    }
+
+    .error-text {
+        font-size: 1rem;
+        color: red;
+    }
+
+    .login-button {
+        color: white;
+        border-radius: 200px;
+        background-color:#ef6c00;
+
+        &:hover {
+            background-color:#ef6c00;
+            color: white;
+        }
     }
 }

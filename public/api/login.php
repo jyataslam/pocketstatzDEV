@@ -45,7 +45,6 @@ if(mysqli_num_rows($result) !== 1)
     throw new Exception('Invalid username or password');
 }
 
-// $data holds id and username
 $data = mysqli_fetch_assoc($result);
 
 $token = $username . $data['id'] . microtime();

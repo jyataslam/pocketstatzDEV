@@ -5,8 +5,6 @@ set_exception_handler('handleError');
 require_once('config.php');
 require_once('mysqlconnect.php');
 
-//needs the sport name (mid from league table) to be sent through a get axios call
-//must be 'nba' or 'overwatch' or 'lol' or 'nhl'
 if(empty($_GET['sport_name'])){
     throw new Exception('sport_name is a required value');
 }

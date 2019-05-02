@@ -5,7 +5,6 @@ set_exception_handler('handleError');
 require_once('config.php');
 require_once('mysqlconnect.php');
 
-//needs the team_id
 if(empty($_GET['team_id'])){
     throw new Exception('team_id is a required value');
 }

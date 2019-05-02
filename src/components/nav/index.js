@@ -38,7 +38,6 @@ class Nav extends Component {
     
     renderLinks(){
         const {userAuth} = this.props;
-        console.log("userAuth:", userAuth);
         const {authLinks, guestLinks} = this.state;
         let navLinks = null;
 

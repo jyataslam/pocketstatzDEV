@@ -14,8 +14,8 @@ div{
 
     @include mobile{
         .welcome-header{
-            padding-top: 15%;  
-            height: 200px;
+            padding-top: 21%;
+            height: 30%;
         }
 
         p{
@@ -65,7 +65,8 @@ div{
 
 
 .landing-container {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(../../assets/images/kobe.jpg);
+    // background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(../../assets/images/kobe.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(../../assets/images/jordan.gif);
     background-attachment: fixed;
     background-size: cover;
     background-position-x: 50%;
@@ -77,8 +78,9 @@ div{
     }
 
     .welcome-text {
-        padding: 60px 0 30px;
+        padding: 50px 0 30px;
     }
+}
 
 #landing-btn{
     color: white;

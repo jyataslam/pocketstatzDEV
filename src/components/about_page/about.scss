@@ -3,43 +3,78 @@
 $nameFont: 'Archivo Black',
 sans-serif;
 
-.team-card {
-    margin-top: 5%;
+.about-container {
+    height: 100vh;
 
-    h3 {
-        font-family: $nameFont;
-        text-transform: uppercase;
-        color: whitesmoke;
-        margin-bottom: 5%;
+    .bar {
+        height: 22%;
+        width: 100%;
+        background-color: black;
+
+        @media screen and (max-width: 1705px) {
+            height: 20%;
+        }
+
+        @media screen and (max-width: 1505px) {
+            height: 17%;
+        }
+
+        @media screen and (max-width: 1205px) {
+            height: 14%;
+        }
+
+        @media screen and (max-width: 1005px) {
+            height: 20%;
+            background-color: red;
+        }
     }
 
-    .team-link {
-        margin: 0 3%;
-    }
+    .team-card {
+        // margin-top: 5%;
+        margin-top: -7%;
 
-    img {
-        margin-top: 2%;
-    }
+        @media screen and (min-width: 300px) {
+            margin-bottom: 5%;
+        }
 
-    a {
-        .link-icon {
-            height: 10%;
-            width: 10%;
-            display: inline-block;
+        @media screen and (max-width: 1005px) {
+            margin-top: -13%;
+        }
+
+        h3 {
+            font-family: $nameFont;
+            text-transform: uppercase;
+            color: whitesmoke;
+            margin-bottom: 2%;
+            margin-top: 1%;
+        }
+
+        .team-link {
             margin: 0 3%;
+        }
 
-            &:hover {
-                border-bottom: 4px solid #ffa500;
+        img {
+            margin-top: 1%;
+        }
+
+        a {
+            .link-icon {
+                height: 10%;
+                width: 10%;
+                display: inline-block;
+                margin: 0 3%;
+
+                &:hover {
+                    border-bottom: 4px solid #ffa500;
+                }
+
+                @media screen and (max-width: 1005px) {
+                    margin-bottom: 120px;
+                }
             }
         }
     }
-}
 
-@media screen and (min-width: 400px){
-    .team-card {
-        &:nth-child(4){
-            margin-bottom: 50px;
-        }
-    }
-}
 
+
+}

@@ -5,10 +5,11 @@ class About extends Component {
     render() {
         return (
             <div className="about-container">
+                <div className="bar"></div>
                 <div className="row center">
                     <div className="col s12 m6 l3 team-card">
                         <img src="https://via.placeholder.com/300"></img><br></br>
-                        <h3>Jason</h3>
+                        <div className="wrapper"><h3>Jason</h3></div>
                         <div>
                             <a href="https://github.com/jyataslam" target="_blank">
                                 <div className="link-icon">

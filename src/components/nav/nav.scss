@@ -15,9 +15,11 @@ $navHeaderFont: 'Passion One', sans-serif;
 
     .header-text {
         margin: 0;
-        font-size: 2.5rem;
+        font-size: 2rem;
+        font-weight: 700;
         color: #292A3D;
-        font-family: $navHeaderFont;
+        letter-spacing: 1px;
+        font-family: 'Helvetica';
     }
 
     .sidenav {

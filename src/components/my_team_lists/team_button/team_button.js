@@ -12,7 +12,7 @@ export default (props) => {
                     {/* <div id="background-image" style={backgroundImage}></div> */}
                     <button onClick={() => {chooseTeam(team_id || id, league_name)}} style={backgroundStyle} className="btn btn-large home-team-button col s12 m9 offset-m1">{team_full_name}</button>
                     {!isMobile && (
-                        <button onClick={() => {deleteTeam(id || team_id)}} className="btn btn-large red col m1 offset-m1">X</button>
+                        <button onClick={() => {deleteTeam(id || team_id)}} className="btn btn-large col m1 offset-m1 transparent"><i class="material-icons">delete</i></button>
                     )}
                 </div>
             </div>

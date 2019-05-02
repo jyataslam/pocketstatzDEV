@@ -107,7 +107,7 @@ class GuestTeamList extends Component {
                                 {
                                     text: deleteIcon,
                                     onPress: () => this.deleteGuestUserTeam(team.id),
-                                    style: { backgroundColor: 'red', color: 'white' },
+                                    style: { color: 'white' },
                                     className: 'custom-class-2'
                                 }
                             ]}

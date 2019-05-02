@@ -3,6 +3,8 @@ export default {
     SIGN_IN_ERROR: 'sign_in_error',
     SIGN_OUT_USER: 'sign_out_user',
     SIGN_UP_USER: 'sign_up_user',
+    SIGN_UP_ERROR: 'sign_up_error',
+    CLEAR_ERRORS: 'clear_errors',
     RETRIEVE_STATS: 'retrieve_stats',
     RETRIEVE_TEAMS: 'retrieve_teams',
     LOAD_START: 'load_start',

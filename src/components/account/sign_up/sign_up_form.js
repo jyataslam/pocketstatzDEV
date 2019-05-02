@@ -35,7 +35,7 @@ function validate({ username, password, passwordconfirm }) {
     const errors = {};
 
     if (!username) {
-        errors.username = 'Please enter your email';
+        errors.username = 'Please enter your username';
     }
 
     if (!password) {

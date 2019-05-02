@@ -36,6 +36,12 @@ export const checkAuth = () => async dispatch => {
     }
 }
 
+export function clearErrors() {
+    return {
+        type: types.CLEAR_ERRORS
+    }
+}
+
 export const signIn = (user) => async dispatch => {
     const notify = async () => toast.error('Error: Invalid username or password', {
         position: "top-right",
@@ -97,9 +103,16 @@ export const signUp = (user) => async  dispatch => {
             }
         });
     }
-        else
+    else
     {
         console.log(response.data.error);
+        return dispatch({
+            type: types.SIGN_UP_ERROR,
+            response: {
+                auth: false,
+                error: response.data.error
+            }
+        })
     }
 }
 

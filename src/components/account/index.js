@@ -12,7 +12,7 @@ export default props => {
         <Switch>
             <Route path={`${match.path}/sign-in`} component={auth(SignIn, '/user-teams', false)}/>
             <Route path={`${match.path}/sign-out`} component={SignOut}/>
-            <Route path={`${match.path}/sign-up`} component={auth(SignUp, '/user-teams', false)}/>
+            <Route path={`${match.path}/sign-up`} component={auth(SignUp, '/browse', false)}/>
         </Switch>
     );
 }

@@ -50,6 +50,7 @@ class UserTeamList extends Component {
     }
 
     deleteSignedInUserTeam = async (targetTeamId) => {
+        console.log('delete id', targetTeamId)
         const resp = await axios.get(`/api/delete-user-team.php?team_id=${targetTeamId}`);
         const newTeamsArray = [...this.state.userTeams];
 

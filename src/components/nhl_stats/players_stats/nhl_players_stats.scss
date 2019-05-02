@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 $scoreFont: 'Roboto', sans-serif;
+$break-med: 600px;
 
 #stats-container {
     margin: 0 0 10px 0;
@@ -13,7 +14,7 @@ $scoreFont: 'Roboto', sans-serif;
             font-size: 1em;
             margin-top: 0px;
             width: 100%;
-            background-color: rgba(86, 95, 104, 0.3);
+            background-color:rgba(69, 134, 199, 0.3);
         }
     
         .player-head-width {
@@ -55,6 +56,10 @@ $scoreFont: 'Roboto', sans-serif;
             display: block;
             overflow: auto;
             height: 60vh;
+
+            @media screen and (min-width: $break-med){
+                height: 70vh;
+            }
         }
     }
 }

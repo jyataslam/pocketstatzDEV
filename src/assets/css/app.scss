@@ -1,3 +1,4 @@
+$break-med: 600px;
 
 body {
     font-family: 'Quicksand';
@@ -14,3 +15,10 @@ body {
     }
 }
 
+.navbar-fixed {
+    height: 36px;
+
+    @media screen and (min-width: $break-med){
+        display: none;
+    }
+}

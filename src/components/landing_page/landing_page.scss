@@ -63,7 +63,6 @@ div{
     line-height: 85px;
 }
 
-
 .landing-container {
     background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(../../assets/images/jordan.gif);
     background-attachment: fixed;
@@ -77,7 +76,7 @@ div{
     }
 
     .welcome-text {
-        padding: 50px 0 30px;
+        padding: 50px 0 50px;
     }
 }
 
@@ -97,8 +96,8 @@ div{
 #landing-btn-guest{
     color: #ef6c00;
     border-radius: 200px;
-    // background-color: rgb(207, 109, 24);
     background-color: rgba(0, 0, 0, 0);
-    border: 2px solid #ef6c00;
-
+    border: 1px solid #ef6c00;
+    box-sizing: content-box;
+    margin: 3% 30.3%;
 }

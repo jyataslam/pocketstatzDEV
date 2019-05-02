@@ -60,6 +60,7 @@ class UserTeamList extends Component {
     render() {
         const { userTeams } = this.props;
         const { isMobile, checkingScreenWidth } = this.state;
+        const deleteIcon = <i class="material-icons">delete</i>;
         if (!userTeams || checkingScreenWidth) {
             return <LoadingScreen />
         } else if (userTeams.length) {
@@ -69,7 +70,7 @@ class UserTeamList extends Component {
                         <Swipeout
                             right={[
                                 {
-                                    text: 'delete',
+                                    text: deleteIcon,
                                     onPress: () => {
                                         this.handleDeleteTeam(team.team_id)
                                     },

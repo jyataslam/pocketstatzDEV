@@ -95,6 +95,7 @@ class GuestTeamList extends Component {
 
     render() {
         const { userTeams, isMobile } = this.state;
+        const deleteIcon = <i class="material-icons">delete</i>;
         if (!userTeams) {
             return <LoadingScreen />
         } else if (userTeams.length) {
@@ -104,7 +105,7 @@ class GuestTeamList extends Component {
                         <Swipeout
                             right={[
                                 {
-                                    text: 'delete',
+                                    text: deleteIcon,
                                     onPress: () => this.deleteGuestUserTeam(team.id),
                                     style: { backgroundColor: 'red', color: 'white' },
                                     className: 'custom-class-2'

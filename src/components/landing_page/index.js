@@ -21,6 +21,5 @@ export default props => {
                 <Link to="/browse" id="landing-btn-guest" className="center btn btn-large col m4 offset-m4 hide-on-small-only">Guest</Link>
             </div>
         </div>
-        
     );
 }

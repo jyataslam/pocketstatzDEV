@@ -15,9 +15,9 @@ class SignIn extends Component {
     render() {
         const { error } = this.props;
         return (
-            <div>
-                <img src="/dist/assets/images/logos/pocketstatzicon.png" alt="LOGO"/>
-                <h4 className="center">Sign in to your account</h4>
+            <div className="signin-container">
+                <img className="signin-icon col s12 m8 offset-m2" src="/dist/assets/images/logos/pocketstatzicon.png" alt="LOGO"/>
+                <p className="center">Sign In</p>
                 <SignInForm auth={this.props.auth} signIn={this.handleSignIn}/>
                 <p className="center">{(error) ? "Invalid Username or Password" : ""}</p>
             </div>

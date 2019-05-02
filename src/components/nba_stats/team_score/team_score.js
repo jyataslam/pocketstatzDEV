@@ -13,8 +13,6 @@ function checkTeamAcronym(teamName) {
 }
 
 export default ({ team1, team2, gameDetails }) => {
-    // use props from rest of score stats when available
-
     var currentQuarter = "FINAL";
 
     if (gameDetails.currentQuarter) {
@@ -58,4 +56,3 @@ export default ({ team1, team2, gameDetails }) => {
         </div>
     );
 }
-

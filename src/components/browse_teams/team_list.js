@@ -50,7 +50,6 @@ class TeamList extends Component {
             if (localStorage.getItem("homeTeamIds") !== null) {
                 let currentHomeTeams = JSON.parse("[" + localStorage.getItem("homeTeamIds") + "]");
                 if (currentHomeTeams.length === 3) {
-                    console.log(currentHomeTeams);
                     this.alert();
                 }
             }
@@ -81,7 +80,6 @@ class TeamList extends Component {
 
     checkUserLoggedIn = async () => {
         const resp = await axios.get(`/api/login-status.php`);
-        console.log("user logged in? resp:", resp);
         const { success, user_id } = resp.data;
         if (success) {
             this.goToMyTeamsSignedInUser(user_id);
@@ -124,7 +122,6 @@ class TeamList extends Component {
             }
         }
 
-        //if their array is longer than three teams and they're not signed in, it'll cut them off at three and trigger the toast
         if (homeTeamsIds.length > 3) {
             this.notify();
             homeTeamsIds.length = currentLength;

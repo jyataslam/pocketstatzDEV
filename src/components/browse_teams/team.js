@@ -52,4 +52,3 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps, {
     teamList
 })(Team);
-

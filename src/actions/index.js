@@ -53,10 +53,8 @@ export const signIn = (user) => async dispatch => {
     });
 
     const response = await axios.post(`/api/login.php`, user);
-    console.log('sign in error: ', response.data.error);
     if(response.data.success)
     {
-        console.log(`${response.data.username} Logged in!`);
         return dispatch({
             type: types.SIGN_IN_USER,
             response: {
@@ -79,7 +77,6 @@ export const signIn = (user) => async dispatch => {
 
 export const signOut = () => async dispatch => {
     const response = await axios.get("/api/sign-out.php");
-    console.log("Sign out response:", response);
     
     return dispatch({
         type: types.SIGN_OUT_USER,
@@ -92,10 +89,9 @@ export const signOut = () => async dispatch => {
 
 export const signUp = (user) => async  dispatch => {
     const response = await axios.post(`/api/add-user.php`, user);
-    console.log("Response from signUp:", response);
+
     if(response.data.success)
     {
-        console.log(`Created account for ${response.data.username}`);
         return dispatch({
             type: types.SIGN_UP_USER,
             response: {
@@ -105,7 +101,6 @@ export const signUp = (user) => async  dispatch => {
     }
     else
     {
-        console.log(response.data.error);
         return dispatch({
             type: types.SIGN_UP_ERROR,
             response: {
@@ -166,7 +161,6 @@ export const nhlGameInfo = (props) => async dispatch => {
 
 export const getUserTeams = (props) => async dispatch => {
     const resp = await axios.get(`/api/gethomepageteams.php`);
-    console.log("response from db is:", resp);
 
     return dispatch({
         type: types.RETRIEVE_USER_TEAMS,

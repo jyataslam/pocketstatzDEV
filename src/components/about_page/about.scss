@@ -28,13 +28,18 @@ sans-serif;
             display: inline-block;
             margin: 0 3%;
 
-            .icon :hover {
-                fill: #ffa500;
+            &:hover {
+                border-bottom: 4px solid #ffa500;
             }
-
-            // &:nth-child(4){
-            //     margin-bottom: 20px;
-            // }
         }
     }
 }
+
+@media screen and (min-width: 400px){
+    .team-card {
+        &:nth-child(4){
+            margin-bottom: 50px;
+        }
+    }
+}
+

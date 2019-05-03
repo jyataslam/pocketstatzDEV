@@ -20,6 +20,14 @@ $navHeaderFont: 'Passion One', sans-serif;
         color: #292A3D;
         letter-spacing: 2px;
         font-family: $navHeaderFont;
+
+        @media screen and (max-width: 414px) {
+            font-size: 2rem;
+        }
+
+        @media screen and (max-width: 330px) {
+            font-size: 1.8rem;
+        }
     }
 
     .sidenav {

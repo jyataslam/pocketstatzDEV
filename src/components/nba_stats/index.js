@@ -16,8 +16,7 @@ class GameInfo extends Component {
     }   
 
     async componentDidMount(){
-        console.log("gameinfo props:", this.state.props);
-       this.retrieveNBAGameInfo();
+        this.retrieveNBAGameInfo();
     }
 
     async retrieveNBAGameInfo() {

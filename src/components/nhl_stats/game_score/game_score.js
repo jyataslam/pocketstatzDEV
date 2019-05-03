@@ -12,9 +12,7 @@ function checkTeamAcronym(teamName) {
     }
 }
 
-export default ({ team1, team2, gameDetails }) => {
-    // use props from rest of score stats when available
-    
+export default ({ team1, team2, gameDetails }) => {    
     var currentPeriod = "FINAL";
 
     if (gameDetails.currentPeriod) {

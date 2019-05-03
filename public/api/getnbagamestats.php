@@ -1,35 +1,26 @@
 <?php
 
-// Get cURL resource
 $ch = curl_init();
 
-// Set url
 curl_setopt($ch, CURLOPT_URL, "https://api.mysportsfeeds.com/v2.1/pull/nba/current/games/".$_GET['latestGameId']."/boxscore.json");
 
-// Set method
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
 
-// Set options
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-// Set compression
 curl_setopt($ch, CURLOPT_ENCODING, "gzip");
 
-// Set headers
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
 	"Authorization: Basic " . base64_encode("3e6e4d51-a167-4f95-bd66-1e0b36" . ":" . "MYSPORTSFEEDS")
 ]);
 
-// Send the request & save response to $resp
 $resp = curl_exec($ch);
 
 if (!$resp && curl_errno($ch) === 0) {
-    //latestGameId is a game that has not started yet, try again with backupGameId
     unset($resp);
     curl_setopt($ch, CURLOPT_URL, "https://api.mysportsfeeds.com/v2.1/pull/nba/current/games/".$_GET['backupGameId']."/boxscore.json");
     $resp = curl_exec($ch);
 } elseif (!$resp) {
-    //some other error
     die('Error: "' . curl_error($ch) . '" - Code: ' . curl_errno($ch));
 }
 
@@ -108,7 +99,6 @@ foreach($awayPlayers as $player) {
 $jsonOutput = json_encode($output);
 print($jsonOutput);
 
-// Close request to clear up some resources
 curl_close($ch);
 
 ?>

@@ -26,7 +26,6 @@ export default function(WrappedComponent, to = "/account/sign-in", requireAuth =
     }
     function mapStateToProps(state)
     {
-        //whatever is returned gets passed as props to this component
         return {
             auth: state.user.auth
         }

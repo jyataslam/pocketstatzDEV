@@ -10,6 +10,7 @@ sans-serif;
         height: 22%;
         width: 100%;
         background-color: black;
+        z-index: -1;
 
         @media screen and (max-width: 1705px) {
             height: 20%;
@@ -25,8 +26,19 @@ sans-serif;
 
         @media screen and (max-width: 1005px) {
             height: 20%;
-            background-color: red;
         }
+
+        @media screen and (max-width: 705px) {
+            height: 17%;
+        }
+
+        @media screen and (max-width: 580px) {
+            display: none;
+        }
+
+        // @media screen and (max-width: 505px) {
+        //     height: 20%;
+        // }
     }
 
     .team-card {
@@ -40,6 +52,14 @@ sans-serif;
         @media screen and (max-width: 1005px) {
             margin-top: -13%;
         }
+
+        @media screen and (max-width: 580px) {
+            margin-top: 5%;
+        }
+
+        // @media screen and (max-width: 505px) {
+        //     margin-top: -23%;
+        // }
 
         h3 {
             font-family: $nameFont;
@@ -69,7 +89,7 @@ sans-serif;
                 }
 
                 @media screen and (max-width: 1005px) {
-                    margin-bottom: 120px;
+                    margin-bottom: 50px;
                 }
             }
         }

@@ -22,7 +22,7 @@ class SignUp extends Component {
                     <img className="signin-icon col s12 m8 offset-m2" src="/dist/assets/images/logos/pocketstatzicon.png" alt="LOGO" />
                     <p className="center signin-text">Create Your Account</p>
                     <SignUpForm signUp={this.handleSignUp} />
-                    <p className="center">{(error) ? "Username is taken" : ""}</p>
+                    <p className="center error-text">{(error) ? "Username is taken" : ""}</p>
                 </div>
             </div>
         );

@@ -65,9 +65,9 @@ class Nav extends Component {
                 <li><div className="divider red"></div></li>
                 {navLinks}
 
-                {/* <li className="sidenav-close">
-                    <Link to="/about">Meet The Creators</Link>
-                </li> */}
+                <li className="sidenav-close">
+                    <Link to="/">Meet The Creators</Link>
+                </li>
             </Fragment>
         )
     }

@@ -34,7 +34,7 @@ class About extends Component {
                         </div>
                     </div>
                     <div className="col s12 m6 l3 team-card">
-                        <img src="https://via.placeholder.com/300"></img><br></br>
+                        <img src="/dist/assets/images/about_joe.jpg"></img><br></br>
                         <h3>Joe</h3>
                         <div>
                             <a href="https://github.com/JoeDeiRossi" target="_blank">

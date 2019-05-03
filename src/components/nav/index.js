@@ -67,7 +67,7 @@ class Nav extends Component {
                 {navLinks}
 
                 <li className="sidenav-close">
-                    <Link to="/about">About Us</Link>
+                    <Link to="/about">Meet The Creators</Link>
                 </li>
             </Fragment>
         )

@@ -6,7 +6,7 @@ class About extends Component {
         return (
             <div className="row center">
                 <div className="col s12 m6 l3 team-card">
-                    <img src="https://via.placeholder.com/300"></img><br></br>
+                    <img src="/dist/assets/images/about_jason.jpg"></img><br></br>
                     <h3>Jason</h3>
                     <div>
                         <a href="https://github.com/jyataslam" target="_blank">

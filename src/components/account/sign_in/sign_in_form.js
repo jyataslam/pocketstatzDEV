@@ -12,11 +12,11 @@ const SignInForm = props => {
         <form className="signin-form" onSubmit={handleSubmit(signIn)}>
             <div className="row">
                 <div className="col s12 m6 offset-m3">
-                    <Field id="username" name="username" label="username" component={Input} />
+                    <Field id="username" name="username" label="Username" component={Input} />
                 </div>
 
                 <div className="col s12 m6 offset-m3">
-                    <Field id="password" name="password" type="password" label="password" component={Input} />
+                    <Field id="password" name="password" type="password" label="Password" component={Input} />
                 </div>
 
             </div>

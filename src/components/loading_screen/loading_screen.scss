@@ -1,8 +1,16 @@
-.loading-image-container {
-    display: flex;
-    height: 80vh;
+.loading-wrapper-container {
+    margin: 0 auto;
+    width: 100vw;
+    background-image: none;
+    background-color: #182027;
 
-    .loading-image {
-        margin: auto;
+    .loading-image-container {
+        display: flex;
+        height: 80vh;
+
+        .loading-image {
+            margin: auto;
+        }
     }
+
 }

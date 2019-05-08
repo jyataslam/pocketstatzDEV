@@ -17,6 +17,7 @@ export function loadEnd() {
 }
 
 export const checkAuth = () => async dispatch => {
+    // TODO: Update to send back username
     const resp = await axios.get('/api/login-status.php');
 
     if(resp.data.success)
@@ -30,6 +31,7 @@ export const checkAuth = () => async dispatch => {
     }
     else
     {
+        localStorage.removeItem('auth');
         return dispatch({
             type: types.SIGN_OUT_USER
         });
@@ -55,6 +57,8 @@ export const signIn = (user) => async dispatch => {
     const response = await axios.post(`/api/login.php`, user);
     if(response.data.success)
     {
+        localStorage.setItem('auth', 'true');
+
         return dispatch({
             type: types.SIGN_IN_USER,
             response: {
@@ -65,6 +69,7 @@ export const signIn = (user) => async dispatch => {
     }
     else
     {
+        localStorage.removeItem('auth');
         return dispatch({
             type: types.SIGN_IN_ERROR,
             response: {
@@ -77,7 +82,7 @@ export const signIn = (user) => async dispatch => {
 
 export const signOut = () => async dispatch => {
     const response = await axios.get("/api/sign-out.php");
-    
+    localStorage.removeItem('auth');
     return dispatch({
         type: types.SIGN_OUT_USER,
         response: {
@@ -92,6 +97,8 @@ export const signUp = (user) => async  dispatch => {
 
     if(response.data.success)
     {
+        localStorage.setItem('auth', 'true');
+
         return dispatch({
             type: types.SIGN_UP_USER,
             response: {
@@ -101,6 +108,7 @@ export const signUp = (user) => async  dispatch => {
     }
     else
     {
+        localStorage.removeItem('auth');
         return dispatch({
             type: types.SIGN_UP_ERROR,
             response: {
@@ -139,7 +147,6 @@ export const gameInfo = (props) => async dispatch => {
             }
         });
     }
-    
 }
 
 export const nhlGameInfo = (props) => async dispatch => {
@@ -175,27 +182,6 @@ export const deleteUserTeam = (id) => async dispatch => {
 
     return dispatch({
         type: types.DELETE_USER_TEAM
-        // response: {
-        //     userTeams: newTeamsArray.filter((team) => {
-        //         return team.team_id !== targetTeamId;
-        //     })
-        // }
     });
 }
 
-// deleteSignedInUserTeam = async (targetTeamId) => {
-//     const resp = await axios.get(`/api/delete-user-team.php?team_id=${targetTeamId}`)
-//     console.log("delete signed in user response:", resp);
-//     const newTeamsArray = [...this.state.userTeams];
-
-//     if (resp.data.success) {
-//         this.setState({
-//             userTeams: newTeamsArray.filter((team) => {
-//                 return team.team_id !== targetTeamId;
-//             })
-//         });
-//     }
-//     else {
-//         console.log(resp.error);
-//     }
-// }

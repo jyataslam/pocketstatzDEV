@@ -6,11 +6,24 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import thunk from 'redux-thunk';
 import rootReducer from "./reducers/index";
+import { checkAuth } from './actions';
+import types from './actions/types';
 
 const store = createStore(
     rootReducer,
     applyMiddleware(thunk)
 );
+
+if(localStorage.getItem('auth') === 'true'){
+    store.dispatch({
+        type: types.SIGN_IN_USER,
+        response: {
+            auth: true
+        }
+    });
+
+    checkAuth()(store.dispatch);
+}
 
 ReactDOM.render(
     <Provider store={store}>

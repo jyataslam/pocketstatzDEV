@@ -3,7 +3,6 @@ import {connect} from "react-redux";
 
 export default function(WrappedComponent, to = "/account/sign-in", requireAuth = true){
     class Auth extends Component{
-
         componentDidMount()
         {
             this.checkAuth();
@@ -15,7 +14,7 @@ export default function(WrappedComponent, to = "/account/sign-in", requireAuth =
         }
 
         checkAuth(){
-            if(this.props.auth !== requireAuth)
+            if(this.props.auth !== requireAuth /*&& localStorage.getItem("auth") !== requireAuth*/)
             {
                 this.props.history.push(to);
             }

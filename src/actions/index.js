@@ -20,8 +20,6 @@ export const checkAuth = () => async dispatch => {
     // TODO: Update to send back username
     const resp = await axios.get('/api/login-status.php');
 
-    console.log('Check Auth Resp:', resp);
-
     if(resp.data.success)
     {
         return dispatch({

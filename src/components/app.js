@@ -12,8 +12,6 @@ import About from './about_page';
 import AccountRoutes from "./account";
 
 import auth from '../hoc/auth';
-import { checkAuth } from '../actions';
-import { connect } from 'react-redux';
 
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize.min';
@@ -21,9 +19,6 @@ import '../assets/css/app.scss';
 
 
 class App extends Component {
-    async componentDidMount() {
-        this.props.checkAuth();
-    }
 
     render() {
         return (
@@ -51,6 +46,4 @@ class App extends Component {
     }
 }
 
-export default connect(null, {
-    checkAuth
-})(App);
+export default App;

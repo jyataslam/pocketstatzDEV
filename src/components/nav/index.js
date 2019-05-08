@@ -25,10 +25,10 @@ class Nav extends Component {
         ]
     };
 
-    buildLinks(link){
+    buildLinks(link, index){
         return(
-            <Fragment>
-            <li key={link.to} className="sidenav-close">
+            <Fragment key={index}>
+            <li className="sidenav-close">
                 <Link to={link.to}>{link.text}</Link>
             </li>
             <li><div className="divider red"></div></li>
@@ -58,8 +58,8 @@ class Nav extends Component {
                 <li className="first-li sidenav-close">
                     <Link to="/user-teams">My Teams</Link>
                 </li>
-                <li><div className="divider red"></div></li>
-                <li className="sidenav-close">
+                <li ><div className="divider red"></div></li>
+                <li  className="sidenav-close">
                     <Link to="/browse">Browse</Link>
                 </li>
                 <li><div className="divider red"></div></li>

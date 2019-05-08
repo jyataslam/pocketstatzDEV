@@ -60,14 +60,15 @@ class UserTeamList extends Component {
     render() {
         const { userTeams } = this.props;
         const { isMobile, checkingScreenWidth } = this.state;
-        const deleteIcon = <i class="material-icons">delete</i>;
+        const deleteIcon = <i className="material-icons">delete</i>;
         if (!userTeams || checkingScreenWidth) {
             return <LoadingScreen />
         } else if (userTeams.length) {
-            const homepageTeamList = userTeams.map((team) => {
+            const homepageTeamList = userTeams.map((team, index) => {
                 if (isMobile) {
                     return (
                         <Swipeout
+                            key={index}
                             right={[
                                 {
                                     text: deleteIcon,

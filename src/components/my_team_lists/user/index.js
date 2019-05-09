@@ -92,7 +92,9 @@ class UserTeamList extends Component {
 
             return (
                 <ul>
-                    {homepageTeamList}
+                    <div className="team-list-container">
+                        {homepageTeamList}
+                    </div>
                 </ul>
             );
         }

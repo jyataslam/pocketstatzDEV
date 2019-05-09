@@ -74,3 +74,35 @@
 .delete-button {
   float: right;
 }
+
+ul{
+  margin: 0;
+}
+.team-list-container{
+  background-color: #182027;
+  height: 93vh;
+  background-image: url('/dist/assets/images/crowd.png');
+  background-repeat:no-repeat;
+  background-size:contain;
+  background-position: bottom;
+  overflow-y:scroll;
+
+}
+
+// .crowd-image {
+//   height: 300px;
+//   width: 100%;
+//   background-color: hotpink;
+//   background-image: url('/dist/assets/images/crowd.png');
+//   background-repeat: no-repeat;
+//   background-position: center center;
+//   position: fixed;
+//   bottom: 0;
+//   left: 0;
+  // z-index: -1;
+
+  // @media screen and (min-width: 805px) {
+  //     display: none;
+  // }
+// }
+

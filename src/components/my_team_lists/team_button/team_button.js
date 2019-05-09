@@ -13,7 +13,6 @@ export default (props) => {
                         <button onClick={() => {deleteTeam(id || team_id)}} className="btn btn-large col m1  red darken-3"><i className="material-icons">delete</i></button>
                     )}
                 </div>
-                <div className="crowd-image"></div>
             </div>
         );
 }

@@ -29,11 +29,11 @@ div > img {
         height: 89vh;
     }
 
-    @include tablet {
+    @media screen and (min-width: $break-tablet) {
         height: 94vh;
     }
 
-    @include desktop {
+    @media screen and (min-width: $break-mid-desktop) {
         height: 93vh;
     }
 
@@ -56,8 +56,8 @@ div > img {
     @media screen and (min-width: $break-tablet) {
         .signin-logo-container {
             position: relative;
-            top: 6rem; 
-            height: 250px;
+            top: 5rem; 
+            height: 200px;
 
             .signin-logo {
                 max-width: 71%;

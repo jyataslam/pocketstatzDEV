@@ -1,3 +1,8 @@
+@import "../../../assets/css/media_query_mixins";
+$break-mobile: 600px;
+$break-tablet: 601px;
+$break-mid-desktop: 869px;
+
 #username{
     color: white;
 }
@@ -15,21 +20,90 @@ div > img {
 }
 
 .signin-container {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(../../../assets/images/jordan.gif);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url(../../../../public/dist/assets/images/ball-court.jpg);
     background-attachment: fixed;
     background-size: cover;
     background-position-x: 50%;
-    height: 100%;
 
-    .signin-icon {
-        height: 150px;
-        padding-top: 30px;
+    @include mobile {
+        height: 89vh;
+    }
+
+    @include tablet {
+        height: 94vh;
+    }
+
+    @include desktop {
+        height: 93vh;
+    }
+
+    @include lg-desktop {
+        height: 93vh;
+    }
+
+    @include mobile{
+        .signin-logo-container {
+            position: relative;
+            top: 4rem;
+            height: 180px;
+
+            .signin-logo {
+                max-width: 80%;
+            }
+        }
+    }
+
+    @media screen and (min-width: $break-tablet) {
+        .signin-logo-container {
+            position: relative;
+            top: 6rem; 
+            height: 250px;
+
+            .signin-logo {
+                max-width: 71%;
+            }
+        }
+    }
+
+    @media screen and (min-width: $break-mid-desktop){
+        .signin-logo-container {
+            position: relative;
+            top: 4rem; 
+
+            .signin-logo {
+                max-width: 60%;
+            }
+        }
     }
 
     .signin-text {
-        padding: 30px 0 10px;
+        position: relative;
+        top: 6rem;
         font-size: 2rem;
+
+        @media screen and (min-width: $break-tablet) {
+            top: 9rem;
+            font-size: 2.5rem;
+        }
+
+        @media screen and (min-width: $break-mid-desktop) {
+            top: 7rem;
+        }
     }
+
+    .signin-form {
+        position: relative;
+        top: 6rem;
+
+        @media screen and (min-width: $break-tablet){
+            top: 11rem;
+        }
+
+        @media screen and (min-width: $break-mid-desktop){
+            top: 7rem;
+        }
+    }
+}
 
     .error-text {
         font-size: 1rem;
@@ -51,4 +125,3 @@ div > img {
         margin: 0;
         position: absolute;
     }
-}

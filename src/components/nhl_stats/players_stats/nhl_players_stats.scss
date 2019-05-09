@@ -1,10 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+@import "../../../assets/css/media_query_mixins";
 
 $scoreFont: 'Roboto', sans-serif;
 $break-med: 600px;
 
+.browse {
+    overflow-y: auto;
+}
+
 #stats-container {
-    margin: 0 0 10px 0;
+    margin-bottom: 36px;
+    width: 100%;
+
+    @media screen and (min-width: $break-med){
+        margin-bottom: 11px;
+    }
 
     .nhl-stats {
         color: white;
@@ -31,8 +41,8 @@ $break-med: 600px;
         }
     
         tbody {
-            display: block;
-            overflow: auto;
+            // display: block;
+            // overflow: auto;
         
             tr {
                 td:first-child {
@@ -53,8 +63,8 @@ $break-med: 600px;
         
         table {
             width:100%;
-            display: block;
-            overflow: auto;
+            // display: block;
+            // overflow: auto;
             height: 60vh;
 
             @media screen and (min-width: $break-med){

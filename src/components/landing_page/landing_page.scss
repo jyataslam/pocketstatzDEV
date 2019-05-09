@@ -1,4 +1,6 @@
 @import "../../assets/css/media_query_mixins";
+$break-small: 700px;
+$break-large: 768px;
 
 div{
     color: white;
@@ -68,7 +70,22 @@ div{
     background-attachment: fixed;
     background-size: cover;
     background-position-x: 50%;
-    height: 100%;
+
+    @include mobile {
+        height: 89vh;
+    }
+
+    @include tablet {
+        height: 94vh;
+    }
+
+    @include desktop {
+        height: 93vh;
+    }
+
+    @include lg-desktop {
+        height: 93vh;
+    }
 
     .welcome-logo {
         max-width: 85%;

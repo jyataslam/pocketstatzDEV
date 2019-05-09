@@ -15,6 +15,9 @@ function checkTeamAcronym(teamName) {
 export default ({ team1, team2, gameDetails }) => {
     var currentQuarter = "FINAL";
 
+    if (gameDetails.gameStatus === "LIVE" && !gameDetails.currentQuarter) {
+        currentQuarter = "Game Starting Soon";
+    }
     if (gameDetails.currentQuarter) {
         currentQuarter = "Q" + gameDetails.currentQuarter;
     }
@@ -30,12 +33,16 @@ export default ({ team1, team2, gameDetails }) => {
 
     var minutesRemaining = Math.floor(gameDetails.quarterTimeRemaining / 60);
     var secondsRemaining = gameDetails.quarterTimeRemaining % 60;
-    var timeRemaining = minutesRemaining + ":" + secondsRemaining;
 
     if (secondsRemaining < 10) {
         secondsRemaining = "0" + secondsRemaining;
     }
+
     var timeRemaining = minutesRemaining + ":" + secondsRemaining;
+
+    if (minutesRemaining === 0 && secondsRemaining === '00') {
+        timeRemaining = "";
+    }
     if (gameDetails.gameStatus === "COMPLETED" || gameDetails.gameStatus === "COMPLETED_PENDING_REVIEW") {
         timeRemaining = "";
     }

@@ -151,7 +151,7 @@ class TeamList extends Component {
             const border = { "border": "none" };
 
             return (
-                <div className="team-list row">
+                <div id="teams" className="team-list row">
                     <div className="container row">
                         <div>
                             <ToastContainer />

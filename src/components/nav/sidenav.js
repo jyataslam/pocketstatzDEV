@@ -16,8 +16,7 @@ class Sidenav extends Component {
         const { links } = this.props;
 
         return (
-            
-                <ul ref={(element) => {this.sidenav = element}} id="sidenav" className="sidenav">
+                <ul ref={(element) => {this.sidenav = element}} id="sidenav" className="sidenav sidenav-custom">
                     {links}
                 </ul>
             

@@ -109,7 +109,7 @@ class PlayerStats extends Component {
     render() {
         const { view, team1, team2 } = this.props;
         return (
-            <div className="center" id="stats-container">
+            <div className="center container" id="stats-container">
                 {view === "left" ? this.displayPlayersStats(team1) : this.displayPlayersStats(team2)}
             </div>
         );

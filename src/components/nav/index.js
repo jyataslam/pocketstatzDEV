@@ -88,8 +88,8 @@ class Nav extends Component {
                             {links}
                         </ul>
                     </div>
-                    <Sidenav links={links} />
                 </nav>
+                    <Sidenav links={links} />
             </Fragment>
         )
     }

@@ -1,3 +1,7 @@
+@import "../../../assets/css/media_query_mixins";
+
+
+
 .row {
     button {
         color: whitesmoke;
@@ -16,18 +20,18 @@
     }
 }
 
-.crowd-image {
-    height: 300px;
-    width: 100%;
-    background-image: url('/dist/assets/images/crowd.png');
-    background-repeat: no-repeat;
-    background-position: center center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
+// .crowd-image {
+//     height: 300px;
+//     width: 100%;
+//     background-image: url('/dist/assets/images/crowd.png');
+//     background-repeat: no-repeat;
+//     background-position: center center;
+//     position: fixed;
+//     bottom: 0;
+//     left: 0;
+//     z-index: -1;
 
-    @media screen and (min-width: 805px) {
-        display: none;
-    }
-}
+//     // @media screen and (min-width: 805px) {
+//     //     display: none;
+//     // }
+// }

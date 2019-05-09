@@ -1,3 +1,5 @@
+@import "../../../assets/css/media_query_mixins";
+
 .row {
     button {
         color: whitesmoke;
@@ -10,6 +12,20 @@
         height: 89px;
         font-size: 18px;
     }
+
+    @include desktop{
+        button {
+            color: pink;
+        }
+    }
+
+    @include lg-desktop{
+        .remove-button {
+            color: blue;
+            width: 500px;
+        }
+    }
+
 
     .delete-btn-desktop {
         background-color: transparent;
@@ -27,7 +43,7 @@
     left: 0;
     z-index: -1;
 
-    @media screen and (min-width: 805px) {
-        display: none;
-    }
+    // @media screen and (min-width: 805px) {
+    //     display: none;
+    // }
 }

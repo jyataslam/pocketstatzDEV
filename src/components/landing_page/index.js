@@ -5,7 +5,7 @@ import "./landing_page.scss";
 export default props => {
     return (
         <div className="landing-container">
-            <div className=" welcome-header center">
+            <div className="welcome-header center">
                 <img className="welcome-logo col s12 m8 offset-m2" src="/dist/assets/images/logos/pocketstatzlogo.png" alt="LOGO" />
             </div>
             <p className="center welcome-text">The Latest Stats From Your Favorite Teams</p>

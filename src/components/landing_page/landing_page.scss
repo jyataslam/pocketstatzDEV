@@ -1,4 +1,5 @@
 @import "../../assets/css/media_query_mixins";
+$break-mobile: 600px;
 $break-tablet: 601px;
 $break-mid-desktop: 869px;
 
@@ -44,13 +45,6 @@ div{
             .welcome-logo {
                 max-width: 60%;
             }
-        }
-    }
-
-    @include lg-desktop{
-        .welcome-header{
-            // padding-top: 20vh;
-            // font-size: 6.1em;   
         }
     }
 }

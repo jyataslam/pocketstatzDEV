@@ -11,6 +11,7 @@ $break-med: 600px;
 #stats-container {
     margin-bottom: 36px;
     width: 100%;
+    background-color: #182027;
 
     @media screen and (min-width: $break-med){
         margin-bottom: 11px;
@@ -19,6 +20,7 @@ $break-med: 600px;
     .nba-stats {
         color: white;
         font-family: $scoreFont;
+        
     
         #stats-title {
             font-size: 1em;

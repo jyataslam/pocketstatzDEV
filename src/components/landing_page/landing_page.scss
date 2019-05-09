@@ -1,6 +1,6 @@
 @import "../../assets/css/media_query_mixins";
-$break-small: 700px;
-$break-large: 768px;
+$break-tablet: 601px;
+$break-mid-desktop: 869px;
 
 div{
     color: white;
@@ -9,52 +9,48 @@ div{
         margin-bottom: 10%;
     }
 
-    .welcome-header{
-        padding-top: 20%;
-        height: 200px;
-    }
+    // .welcome-header{
+    //     padding-top: 20%;
+    //     height: 200px;
+    // }
 
     @include mobile{
         .welcome-header{
-            padding-top: 21%;
-            height: 30%;
-        }
+            position: relative;
+            top: 7rem;
 
-        p{
-            font-size: 20px;
-        }
-    }
-
-    @include tablet{
-        .welcome-header{
-            padding-top: 20vh;
-            font-size: 5em;   
-        }
-
-        p{
-            font-size: 2em;
+            .welcome-logo {
+                max-width: 80%;
+            }
         }
     }
 
-    @include desktop{
+    @media screen and (min-width: $break-tablet) {
         .welcome-header{
-            padding-top: 20vh;
-            font-size: 5em;   
-        }
+            position: relative;
+            top: 7rem; 
 
-        p{
-            font-size: 2em;
+            .welcome-logo {
+                max-width: 71%;
+            }
+        }
+    }
+
+    @media screen and (min-width: $break-mid-desktop){
+        .welcome-header{
+            position: relative;
+            top: 7rem; 
+
+            .welcome-logo {
+                max-width: 60%;
+            }
         }
     }
 
     @include lg-desktop{
         .welcome-header{
-            padding-top: 20vh;
-            font-size: 6.1em;   
-        }
-
-        p{
-            font-size: 3em;
+            // padding-top: 20vh;
+            // font-size: 6.1em;   
         }
     }
 }
@@ -66,7 +62,7 @@ div{
 }
 
 .landing-container {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(../../assets/images/jordan.gif);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url(../../../public/dist/assets/images/ball-court.jpg);
     background-attachment: fixed;
     background-size: cover;
     background-position-x: 50%;
@@ -76,7 +72,7 @@ div{
     }
 
     @include tablet {
-        height: 94vh;
+        height: 93vh;
     }
 
     @include desktop {
@@ -87,13 +83,46 @@ div{
         height: 93vh;
     }
 
-    .welcome-logo {
-        max-width: 85%;
-        height: 83%;
+    .welcome-text {
+        position: relative;
+        top: 8rem;
+        font-size: 3rem;
+
+        @include mobile {
+            top: 13rem;
+            font-size: 2rem;
+        }
+
+        @media screen and (min-width: $break-tablet) {
+            top: 13rem;
+            font-size: 2rem;
+        }
+
+        @media screen and (min-width: $break-mid-desktop) {
+            top: 13rem;
+            font-size: 2.5rem;
+        }
     }
 
-    .welcome-text {
-        padding: 50px 0 50px;
+    .landing-buttons {
+        position: relative;
+        top: 12rem;
+
+        @include mobile {
+            top: 17rem;
+        }
+
+        @media screen and (min-width: $break-tablet) {
+            top: 18rem;
+        }
+
+        .signup-buttons {
+            margin-bottom: 3rem;
+        }
+
+        .guest-container {
+            margin-bottom: 0;
+        }
     }
 }
 

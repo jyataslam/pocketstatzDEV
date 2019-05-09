@@ -4,6 +4,7 @@ import TeamScore from './team_score/team_score';
 import TeamsTab from './teams_tab/teams_tab';
 import PlayerStats from './players_stats/players_stats';
 import LoadingScreen from "../loading_screen";
+import "./gameinfo.scss";
 
 class GameInfo extends Component {
 
@@ -56,11 +57,11 @@ class GameInfo extends Component {
 
         return(
             
-            <Fragment>
+            <div className="stats-wrapper">
                 <TeamScore team1={team1} team2={team2} gameDetails={gameDetails}/>
                 <TeamsTab team1={team1} team2={team2} showLeft={showLeft} showRight={showRight}/>
                 <PlayerStats view={view} team1={team1} team2={team2}/>
-            </Fragment> 
+            </div> 
             
         );
     }

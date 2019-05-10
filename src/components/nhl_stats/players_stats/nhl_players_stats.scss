@@ -9,11 +9,11 @@ $break-med: 600px;
 }
 
 #stats-container {
-    margin-bottom: 36px;
+    // margin-bottom: 36px;
     width: 100%;
 
     @media screen and (min-width: $break-med){
-        margin-bottom: 11px;
+        // margin-bottom: 11px;
     }
 
     .nhl-stats {

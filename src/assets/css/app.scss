@@ -19,14 +19,25 @@ body {
     }
 }
 
+.app-wrapper{
+    height: calc(100% - 64px);
+
+    @media screen and (max-width: $break-med){
+        height: calc(100% - 56px);
+    }
+
+    @media screen and (min-width: $break-med){
+        height: 100%
+    }
+}
+
 #landing-container{
     width: 100%;
     margin: 0 auto;
     max-width: 1000px;
+    height: calc(100% - 63px);
 
-    @media screen and (min-width: $break-med){
-        height: 93vh;
-    }
+    
 
     .navbar-fixed {
         height: 36px;

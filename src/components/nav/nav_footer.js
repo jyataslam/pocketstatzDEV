@@ -7,7 +7,7 @@ class NavFooter extends Component {
        const margin = {"marginBottom":"0px"};
        const padding = {"paddingLeft": "0px", "paddingRight": "0px"};
         return (
-            <footer className="page-footer hide-on-med-and-up" id="foot">
+            <footer className="page-footer " id="foot">
                 <div className="row" id="frow" style={margin}>
                     <div className="col s12" style={padding}>
                         <ul className="tabs tabs-fixed-width transparent white-text">

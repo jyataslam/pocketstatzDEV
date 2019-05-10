@@ -22,7 +22,7 @@ class App extends Component {
 
     render() {
         return (
-            <div>
+            <div className="app-wrapper">
                 <Nav />
                 <div id="landing-container">
                     <Switch>
@@ -38,7 +38,7 @@ class App extends Component {
                         <Route path="/account" component={AccountRoutes} />
                     </Switch>
                 </div>
-                <div className="navbar-fixed">
+                <div className="navbar-fixed hide-on-med-and-up">
                     <NavFooter />
                 </div>
             </div>

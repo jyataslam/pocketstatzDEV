@@ -26,6 +26,10 @@ $break-med: 600px;
         margin-bottom: 0;
     }
 
+    @include lg-desktop {
+        height: 71vh;
+    }
+
     .nba-stats {
         color: white;
         font-family: $scoreFont;

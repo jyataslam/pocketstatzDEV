@@ -22,7 +22,7 @@ export default props => {
             <Route path="/nhl/:team_id" render={(routingProps) => {
                 return <NHLGameInfo {...routingProps} />
             }} />
-        </div>
+            </div>
         </div>
     )
 }

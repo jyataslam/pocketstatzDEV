@@ -4,7 +4,11 @@ $nameFont: 'Archivo Black',
 sans-serif;
 
 .about-container {
-    height: 100vh;
+    height: 100%;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    background-color: #182027;
 
     .bar {
         height: 22%;

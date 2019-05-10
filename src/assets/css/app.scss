@@ -6,8 +6,13 @@ body {
     font-family: 'Fjalla One', sans-serif;
     margin: 0 auto;
     background-color: rgb(226, 226, 226);
+    // background-color: #000;
     // overflow-x: hidden;
     height: 100vh;
+
+    @media screen and (max-width: 420px){
+        background-color: #182027;
+    }
 
     #root {
         height: 100vh;

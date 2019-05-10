@@ -1,5 +1,9 @@
 @import "../../assets/css/media_query_mixins";
 
+#empty-homepage-container{
+  background-color: #182027;
+  height: 100%;
+}
 .link-container {
   justify-content: center;
   height: 68vh;

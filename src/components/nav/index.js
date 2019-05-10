@@ -74,7 +74,7 @@ class Nav extends Component {
 
     render(){
         const links = this.renderLinks();
-        const headerColor = {'backgroundColor': '#B9B9B9'};
+        const headerColor = {'backgroundColor': '#34364e'};
 
         return (
             <Fragment>

@@ -5,10 +5,6 @@ sans-serif;
 
 .about-container {
     height: 100%;
-    width: 100vw;
-    position: absolute;
-    left: 0;
-    background-color: #182027;
 
     .bar {
         height: 22%;
@@ -39,14 +35,9 @@ sans-serif;
         @media screen and (max-width: 580px) {
             display: none;
         }
-
-        // @media screen and (max-width: 505px) {
-        //     height: 20%;
-        // }
     }
 
     .team-card {
-        // margin-top: 5%;
         margin-top: -7%;
 
         @media screen and (min-width: 300px) {
@@ -54,16 +45,20 @@ sans-serif;
         }
 
         @media screen and (max-width: 1005px) {
-            margin-top: -13%;
+            margin-top: -7%;
+        }
+
+        @media screen and (max-width: 900px) {
+            margin-top: -8%;
+        }
+
+        @media screen and (max-width: 800px) {
+            margin-top: -9%;
         }
 
         @media screen and (max-width: 580px) {
             margin-top: 5%;
         }
-
-        // @media screen and (max-width: 505px) {
-        //     margin-top: -23%;
-        // }
 
         h3 {
             font-family: $nameFont;
@@ -71,6 +66,16 @@ sans-serif;
             color: whitesmoke;
             margin-bottom: 2%;
             margin-top: 1%;
+            font-size: 2rem;
+
+            @media screen and (min-width: 420px) {
+                color: #333;
+            }
+
+            @media screen and (max-width: 993px) {
+                font-size: 2.5rem;
+            }
+
         }
 
         .team-link {
@@ -79,6 +84,11 @@ sans-serif;
 
         img {
             margin-top: 1%;
+            border: 2px solid black;
+
+            @media screen and (max-width: 604px) {
+                border: none;
+            }
         }
 
         a {
@@ -94,6 +104,12 @@ sans-serif;
 
                 @media screen and (max-width: 1005px) {
                     margin-bottom: 50px;
+                }
+
+                path {
+                    @media screen and (min-width: 420px) {
+                        fill: #333;
+                    }
                 }
 
 

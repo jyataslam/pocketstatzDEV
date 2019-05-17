@@ -23,7 +23,7 @@ $break-mid-desktop: 869px;
     background-position-x: 50%;
 
     @include mobile {
-        height: 89vh;
+        height: 93vh;
     }
 
     @media screen and (min-width: $break-tablet) {

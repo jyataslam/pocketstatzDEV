@@ -38,9 +38,9 @@ class App extends Component {
                         <Route path="/account" component={AccountRoutes} />
                     </Switch>
                 </div>
-                <div className="navbar-fixed hide-on-med-and-up">
+                {/* <div className="navbar-fixed hide-on-med-and-up">
                     <NavFooter />
-                </div>
+                </div> */}
             </div>
         )
     }

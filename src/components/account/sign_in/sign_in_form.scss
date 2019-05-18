@@ -25,6 +25,17 @@ div > img {
     background-size: cover;
     background-position-x: 50%;
 
+    .signin-logo-container{
+        .signin-logo{
+            top: -27px;
+        }
+
+        .signin-text{
+            position: relative;
+            top: -45px;
+        }
+    }
+
     .input-field > label {
         color: white;
     }

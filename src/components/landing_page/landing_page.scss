@@ -18,21 +18,17 @@ div{
     @include mobile{
         .welcome-header{
             position: relative;
-            top: 7rem;
-
-            .welcome-logo {
-                max-width: 80%;
-            }
+            top: 4rem;
         }
     }
 
     @media screen and (min-width: $break-tablet) {
         .welcome-header{
             position: relative;
-            top: 7rem; 
+            top: 3rem; 
 
             .welcome-logo {
-                max-width: 71%;
+                max-width: 38%;
             }
         }
     }
@@ -40,10 +36,10 @@ div{
     @media screen and (min-width: $break-mid-desktop){
         .welcome-header{
             position: relative;
-            top: 7rem; 
+            top: 6rem; 
 
             .welcome-logo {
-                max-width: 60%;
+                max-width: 25%;
             }
         }
     }
@@ -56,8 +52,9 @@ div{
 }
 
 .landing-container {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url(../../../public/dist/assets/images/ball-court.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url(../../../public/dist/assets/images/bballwallpaper.jpg);
     background-attachment: fixed;
+    // background-color: #FEFBEA;
     background-size: cover;
     background-position-x: 50%;
 
@@ -83,17 +80,17 @@ div{
         font-size: 3rem;
 
         @include mobile {
-            top: 13rem;
+            top: 6rem;
             font-size: 2rem;
         }
 
         @media screen and (min-width: $break-tablet) {
-            top: 13rem;
+            top: 5rem;
             font-size: 2rem;
         }
 
         @media screen and (min-width: $break-mid-desktop) {
-            top: 13rem;
+            top: 8rem;
             font-size: 2.5rem;
         }
     }
@@ -103,11 +100,11 @@ div{
         top: 12rem;
 
         @include mobile {
-            top: 17rem;
+            top: 7rem;
         }
 
         @media screen and (min-width: $break-tablet) {
-            top: 18rem;
+            top: 8rem;
         }
 
         .signup-buttons {

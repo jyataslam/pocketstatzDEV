@@ -20,10 +20,14 @@ div > img {
 }
 
 .signin-container {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url(../../../../public/dist/assets/images/ball-court.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url(../../../../public/dist/assets/images/bballwallpaper.jpg);
     background-attachment: fixed;
     background-size: cover;
     background-position-x: 50%;
+
+    .input-field > label {
+        color: white;
+    }
 
     @include mobile {
         height: 93vh;
@@ -82,7 +86,7 @@ div > img {
         font-size: 2rem;
 
         @media screen and (min-width: $break-tablet) {
-            top: 9rem;
+            top: 7rem;
             font-size: 2.5rem;
         }
 
@@ -96,7 +100,7 @@ div > img {
         top: 6rem;
 
         @media screen and (min-width: $break-tablet){
-            top: 11rem;
+            top: 7rem;
         }
 
         @media screen and (min-width: $break-mid-desktop){
@@ -108,6 +112,16 @@ div > img {
     .error-text {
         font-size: 1rem;
         color: red;
+        position: relative;
+        bottom: 45px;
+
+        @media screen and (min-width: $break-tablet){
+            bottom: 32px;
+        }
+
+        @media screen and (min-width: $break-mid-desktop){
+            bottom: 2rem;
+        }
     }
 
     .login-button {

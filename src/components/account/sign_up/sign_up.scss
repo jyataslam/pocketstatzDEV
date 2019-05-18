@@ -17,10 +17,14 @@ $break-mid-desktop: 869px;
 }
 
 .signup-container {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url(../../../../public/dist/assets/images/ball-court.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url(../../../../public/dist/assets/images/bballwallpaper.jpg);
     background-attachment: fixed;
     background-size: cover;
     background-position-x: 50%;
+
+    .input-field > label {
+        color: white;
+    }
 
     @include mobile {
         height: 93vh;

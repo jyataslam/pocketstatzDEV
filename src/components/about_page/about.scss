@@ -5,11 +5,12 @@ sans-serif;
 
 .about-container {
     height: 100%;
+    background-color: #FEFBEA;
 
     .bar {
         height: 22%;
         width: 100%;
-        background-color: black;
+        background-color: rgb(88, 88, 88);
         z-index: -1;
 
         @media screen and (max-width: 1705px) {

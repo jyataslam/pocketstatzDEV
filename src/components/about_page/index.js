@@ -7,7 +7,7 @@ class About extends Component {
             <div className="about-container">
                 <div className="bar"></div>
                 <div className="row center">
-                    <div className="col s12 m6 l3 team-card">
+                    <div className="col s12 m6 l6 team-card">
                     <img src="/dist/assets/images/about_jason.jpg"></img><br></br>
                         <div className="wrapper"><h3>Jason</h3></div>
                         <div>
@@ -33,7 +33,7 @@ class About extends Component {
                             </a>
                         </div>
                     </div>
-                    <div className="col s12 m6 l3 team-card">
+                    <div className="col s12 m6 l6 team-card">
                         <img src="/dist/assets/images/about_joe.jpg"></img><br></br>
                         <h3>Joe</h3>
                         <div>
@@ -59,7 +59,7 @@ class About extends Component {
                             </a>
                         </div>
                     </div>
-                    <div className="col s12 m6 l3 team-card">
+                    <div className="col s12 m6 team-card">
                         <img src="/dist/assets/images/about_chris.png"></img><br></br>
                         <h3>Chris</h3>
                         <div>
@@ -85,7 +85,7 @@ class About extends Component {
                             </a>
                         </div>
                     </div>
-                    <div className="col s12 m6 l3 team-card">
+                    <div className="col s12 m6 team-card">
                         <img src="\dist\michelle.png"></img><br></br>
                         <h3>Michelle</h3>
                         <div>

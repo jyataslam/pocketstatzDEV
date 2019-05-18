@@ -18,7 +18,7 @@ class SignIn extends Component {
             <div className="signin-container">
             <div className="container">
             <div className="signin-logo-container">
-            <img className="signin-logo col s12 m8 offset-m2" src="/dist/assets/images/logos/pocketstatzicon.png" alt="LOGO"/>
+            <img className="signin-logo col s12 m8 offset-m2" src="/dist/assets/images/logos/pocketstatzlogo.png" alt="LOGO"/>
             </div>
                 <p className="center signin-text">Sign In To Your Account</p>
                 <SignInForm auth={this.props.auth} signIn={this.handleSignIn}/>

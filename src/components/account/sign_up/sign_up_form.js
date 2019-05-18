@@ -4,8 +4,9 @@ import Input from "../../general/input";
 import './sign_up.scss';
 
 const SignUpForm = props => {
-
     const {handleSubmit, signUp} = props;
+    const btnColor = {'backgroundColor':'rgb(52, 54, 78)'};
+
     return (
         <form onSubmit={handleSubmit(signUp)} className="signup-form">
             <div className="row">
@@ -25,7 +26,7 @@ const SignUpForm = props => {
             </div>
 
             <div className="row">
-                <button className="btn login-button col s12 m6 offset-m3" >Sign Up</button>
+                <button className="btn login-button col s12 m6 offset-m3" style={btnColor}>Sign Up</button>
             </div>
         </form>
     );

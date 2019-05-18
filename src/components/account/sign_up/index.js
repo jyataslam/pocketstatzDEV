@@ -20,7 +20,7 @@ class SignUp extends Component {
             <div className="signup-container">
                 <div className="container">
                     <div className="signup-logo-container">
-                        <img className="signup-logo col s12 m8 offset-m2" src="/dist/assets/images/logos/pocketstatzicon.png" alt="LOGO" />
+                        <img className="signup-logo col s12 m8 offset-m2" src="/dist/assets/images/logos/pocketstatzlogo.png" alt="LOGO" />
                     </div>
                     <p className="center signup-text">Create Your Account</p>
                     <SignUpForm signUp={this.handleSignUp} />

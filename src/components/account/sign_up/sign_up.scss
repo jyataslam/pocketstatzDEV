@@ -39,7 +39,7 @@ $break-mid-desktop: 869px;
     }
 
     @include lg-desktop {
-        height: 93vh;
+        height: 94vh;
     }
 
     @include mobile{
@@ -69,7 +69,7 @@ $break-mid-desktop: 869px;
     @media screen and (min-width: $break-mid-desktop){
         .signup-logo-container {
             position: relative;
-            top: 4rem; 
+            top: 3rem; 
 
             .signup-logo {
                 max-width: 60%;
@@ -88,7 +88,7 @@ $break-mid-desktop: 869px;
         }
 
         @media screen and (min-width: $break-mid-desktop) {
-            top: 7rem;
+            top: 4rem;
         }
     }
 
@@ -101,7 +101,7 @@ $break-mid-desktop: 869px;
         }
 
         @media screen and (min-width: $break-mid-desktop){
-            top: 7rem;
+            top: 0rem;
         }
     }
 }

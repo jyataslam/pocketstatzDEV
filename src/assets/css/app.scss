@@ -6,6 +6,7 @@ body {
     margin: 0 auto;
     background-color: white;
     height: 100vh;
+    -webkit-overflow-scrolling: touch;
 
     @media screen and (max-width: 420px){
         background-color: #182027;

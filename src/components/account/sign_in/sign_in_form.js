@@ -7,8 +7,6 @@ import "./sign_in_form.scss";
 
 const SignInForm = props => {
     const { handleSubmit, signIn } = props;
-    const btnColor = {'backgroundColor':'rgb(52, 54, 78)'};
-
     return (
         <form className="signin-form" onSubmit={handleSubmit(signIn)}>
             <div className="row">
@@ -28,7 +26,7 @@ const SignInForm = props => {
                 </div>
             </div>
             <div className="row">
-                <button type="submit" className="login-button btn col s12 m6 offset-m3" style={btnColor}>Log In</button>
+                <button type="submit" className="login-button btn col s12 m6 offset-m3">Log In</button>
             </div>
         </form>
     );

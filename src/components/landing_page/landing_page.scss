@@ -127,8 +127,12 @@ div{
 #landing-btn{
     color: white;
     border-radius: 200px;
-    background-color: rgb(207, 109, 24);
+    background-color: #ef6c00;
 
+    &:hover {
+        background-color:rgb(52, 54, 78);
+        color: white;
+    }
 }
 #landing-btn-guest{
     color: #ef6c00;

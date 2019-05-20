@@ -6,7 +6,6 @@ class About extends Component {
         return (
             <div className="about-container">
                 <div className="about-header center"><i className="material-icons chevron">fast_forward</i>Meet The Team<i className="material-icons chevron">fast_rewind</i></div>
-                {/* <div className="bar"></div> */}
                 <div className="row center about-row">
                     <div className="col s12 m6 l6 team-card">
                     <img src="/dist/assets/images/about_jason.jpg"></img><br></br>

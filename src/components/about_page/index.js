@@ -5,8 +5,8 @@ class About extends Component {
     render() {
         return (
             <div className="about-container">
-                <div className="bar"></div>
-                <div className="row center">
+                <div className="about-header center"><i className="material-icons chevron">fast_forward</i>Meet The Team<i className="material-icons chevron">fast_rewind</i></div>
+                <div className="row center about-row">
                     <div className="col s12 m6 l6 team-card">
                     <img src="/dist/assets/images/about_jason.jpg"></img><br></br>
                         <div className="wrapper"><h3>Jason</h3></div>

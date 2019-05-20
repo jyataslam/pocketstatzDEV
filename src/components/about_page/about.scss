@@ -4,62 +4,55 @@ $nameFont: 'Archivo Black',
 sans-serif;
 
 .about-container {
-    height: 100%;
-    background-color: #FEFBEA;
+    height: 100vh;
+    background-color: #182027;
 
-    .bar {
-        height: 22%;
-        width: 100%;
-        background-color: rgb(88, 88, 88);
-        z-index: -1;
+    .about-header {
+        color: #fff;
+        font-weight: bold;
+        font-size: 3.4rem;
+        padding-top: 1rem;
+        letter-spacing: .1rem;
 
-        @media screen and (max-width: 1705px) {
-            height: 20%;
+        @media screen and (max-width: 420px) {
+            color: white;
+            margin-bottom: 3rem;
         }
 
-        @media screen and (max-width: 1505px) {
-            height: 17%;
-        }
-
-        @media screen and (max-width: 1205px) {
-            height: 14%;
-        }
-
-        @media screen and (max-width: 1005px) {
-            height: 20%;
-        }
-
-        @media screen and (max-width: 705px) {
-            height: 17%;
-        }
-
-        @media screen and (max-width: 580px) {
-            display: none;
+        .chevron {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 0 1rem;
         }
     }
 
     .team-card {
-        margin-top: -7%;
+        margin-top: 3%;
+        background-color: #182027;
+
 
         @media screen and (min-width: 300px) {
             margin-bottom: 5%;
         }
 
-        @media screen and (max-width: 1005px) {
-            margin-top: -7%;
+        @media screen and (min-width: 425px) {
+            &:nth-child(n+3) {
+                margin-top: 3%;
+                padding-bottom: 20px;
+                
+            }
         }
 
-        @media screen and (max-width: 900px) {
-            margin-top: -8%;
+        @media screen and (min-width: 1000px) {
+            &:nth-child(n+3) {
+                margin-bottom: -5rem;
+            }
         }
 
-        @media screen and (max-width: 800px) {
-            margin-top: -9%;
+        .role {
+            color: white;
         }
 
-        @media screen and (max-width: 580px) {
-            margin-top: 5%;
-        }
 
         h3 {
             font-family: $nameFont;
@@ -68,9 +61,10 @@ sans-serif;
             margin-bottom: 2%;
             margin-top: 1%;
             font-size: 2rem;
+            letter-spacing: .2rem;
 
             @media screen and (min-width: 420px) {
-                color: #333;
+                color: #fff;
             }
 
             @media screen and (max-width: 993px) {
@@ -85,12 +79,14 @@ sans-serif;
 
         img {
             margin-top: 1%;
-            border: 2px solid black;
+            border: 2px solid #333;
 
             @media screen and (max-width: 604px) {
                 border: none;
             }
         }
+
+        
 
         a {
             .link-icon {
@@ -100,7 +96,9 @@ sans-serif;
                 margin: 0 3%;
 
                 &:hover {
-                    border-bottom: 4px solid #ffa500;
+                    path {
+                        fill: #ffa500;
+                    }
                 }
 
                 @media screen and (max-width: 1005px) {
@@ -109,7 +107,7 @@ sans-serif;
 
                 path {
                     @media screen and (min-width: 420px) {
-                        fill: #333;
+                        fill: #fff;
                     }
                 }
 

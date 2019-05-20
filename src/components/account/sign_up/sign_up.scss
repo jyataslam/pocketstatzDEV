@@ -104,4 +104,15 @@ $break-mid-desktop: 869px;
             top: 0rem;
         }
     }
+
+    .signup-button {
+        color: white;
+        border-radius: 200px;
+        background-color: #ef6c00;
+    
+        &:hover {
+            background-color:rgb(52, 54, 78);
+            color: white;
+        }
+    }
 }

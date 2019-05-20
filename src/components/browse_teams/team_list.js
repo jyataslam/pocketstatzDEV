@@ -154,7 +154,7 @@ class TeamList extends Component {
                 <div id="teams" className="team-list row">
                     <div className="container row">
                         <div>
-                            <ToastContainer />
+                            <ToastContainer className="toast-container" />
                         </div>
                         <Button checkUserLoggedIn={this.checkUserLoggedIn} selectedTeams={this.state.selectedTeams}/>
                         <div style={border}>

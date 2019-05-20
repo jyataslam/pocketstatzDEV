@@ -26,7 +26,7 @@ const SignUpForm = props => {
             </div>
 
             <div className="row">
-                <button className="btn login-button col s12 m6 offset-m3" style={btnColor}>Sign Up</button>
+                <button className="btn signup-button col s12 m6 offset-m3">Sign Up</button>
             </div>
         </form>
     );

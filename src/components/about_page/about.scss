@@ -4,13 +4,13 @@ $nameFont: 'Archivo Black',
 sans-serif;
 
 .about-container {
-    height: 100%;
-    background-color: #FEFBEA;
+    height: 100vh;
+    background-color: transparent;
 
     .bar {
         height: 22%;
         width: 100%;
-        background-color: rgb(88, 88, 88);
+        background-color: rgb(0, 0, 0);
         z-index: -1;
 
         @media screen and (max-width: 1705px) {
@@ -43,6 +43,12 @@ sans-serif;
 
         @media screen and (min-width: 300px) {
             margin-bottom: 5%;
+        }
+
+        @media screen and (min-width: 1000px) {
+            &:nth-child(n+3) {
+                margin-top: -2.8rem;
+            }
         }
 
         @media screen and (max-width: 1005px) {
@@ -92,6 +98,8 @@ sans-serif;
             }
         }
 
+        
+
         a {
             .link-icon {
                 height: 10%;
@@ -100,7 +108,9 @@ sans-serif;
                 margin: 0 3%;
 
                 &:hover {
-                    border-bottom: 4px solid #ffa500;
+                    path {
+                        fill: #ffa500;
+                    }
                 }
 
                 @media screen and (max-width: 1005px) {

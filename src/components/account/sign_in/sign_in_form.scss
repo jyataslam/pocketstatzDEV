@@ -83,7 +83,7 @@ div > img {
     @media screen and (min-width: $break-mid-desktop){
         .signin-logo-container {
             position: relative;
-            top: 4rem; 
+            top: 6rem; 
 
             .signin-logo {
                 max-width: 60%;
@@ -115,7 +115,7 @@ div > img {
         }
 
         @media screen and (min-width: $break-mid-desktop){
-            top: 7rem;
+            top: 10rem;
         }
 
         .login-button {
@@ -132,17 +132,19 @@ div > img {
 }
 
 .error-text {
-    font-size: 1rem;
+    font-size: 0.6rem;
     color: red;
     position: relative;
     bottom: 45px;
 
     @media screen and (min-width: $break-tablet){
         bottom: 32px;
+        font-size: 1rem;
     }
 
     @media screen and (min-width: $break-mid-desktop){
         bottom: 2rem;
+        font-size: 1rem;
     }
 }
 
